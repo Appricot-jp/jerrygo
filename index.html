@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ハイドロシェルデイリー | 水素の習慣を、毎日に。</title>
-  <meta name="description" content="独自原料「ハイドロシェル」を使用した水素サプリメント。北海道産ホタテ貝殻由来原料を採用。1日2〜4粒、毎日の習慣に取り入れやすい設計です。">
+  <meta name="description" content="独自原料「ハイドロシェル」を使用した水素サプリメント。北海道産ホタテ貝殻由来の国産原料を1カプセルあたり250mg配合。120粒入り、1日2〜4粒。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -277,14 +277,136 @@
       font-size: 1.15rem;
     }
 
-    /* ─── Concerns ─── */
-    .concerns-grid {
+    /* ─── Ingredient highlight ─── */
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .ingredient-item {
+      margin-bottom: 20px;
+    }
+    .ingredient-item:last-child { margin-bottom: 0; }
+    .ingredient-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+    }
+    .ingredient-item p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    .ingredient-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .ingredient-card-top {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .ingredient-card-body {
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .ingredient-card-body .label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .ingredient-formula {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .ingredient-formula .x {
+      color: var(--accent);
+      margin: 0 4px;
+    }
+
+    .ingredient-card-note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .ingredient-spec {
+      margin-top: 20px;
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.88);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+    }
+    .ingredient-spec h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .ingredient-spec p {
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    /* ─── Feature cards ─── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-pale);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* ─── Recommend cards ─── */
+    .recommend-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .concern-card {
+    .recommend-card {
       background: #fff;
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -294,7 +416,7 @@
       gap: 16px;
     }
 
-    .concern-icon {
+    .recommend-icon {
       width: 44px; height: 44px;
       border-radius: 10px;
       background: var(--primary-pale);
@@ -303,218 +425,18 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .concern-icon svg { width: 22px; height: 22px; fill: var(--primary); }
+    .recommend-icon svg { width: 22px; height: 22px; fill: var(--primary); }
 
-    .concern-card h3 {
+    .recommend-card h3 {
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 4px;
       color: var(--primary-dark);
     }
-    .concern-card p {
+    .recommend-card p {
       font-size: 0.85rem;
       color: var(--text-light);
       line-height: 1.7;
-    }
-
-    /* ─── About ─── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    .about-item {
-      margin-bottom: 20px;
-    }
-    .about-item:last-child { margin-bottom: 0; }
-    .about-item h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-    .about-item p {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.75;
-    }
-
-    .about-card {
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-    }
-    .about-card-top {
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-    .about-card-body {
-      padding: 36px 32px;
-      text-align: center;
-    }
-
-    .about-card-body .label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-    }
-
-    .about-formula {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .about-formula .x {
-      color: var(--accent);
-      margin: 0 4px;
-    }
-
-    .about-card-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    .about-maker {
-      margin-top: 20px;
-      background: var(--primary-dark);
-      color: rgba(255,255,255,0.88);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-    }
-    .about-maker h4 {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .about-maker p {
-      font-size: 0.82rem;
-      line-height: 1.7;
-    }
-
-    /* ─── Why HydroShell ─── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .why-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .why-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .why-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-pale);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .why-card h3 {
-      font-size: 1.02rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-    }
-    .why-card p {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.75;
-    }
-
-    /* ─── Research ─── */
-    .research-box {
-      max-width: 720px;
-      margin: 0 auto;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 32px;
-    }
-
-    .research-box h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      margin-bottom: 12px;
-    }
-
-    .research-box p {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.85;
-      margin-bottom: 12px;
-    }
-    .research-box p:last-of-type { margin-bottom: 0; }
-
-    .research-note {
-      margin-top: 20px;
-      padding: 16px 20px;
-      background: var(--bg-off);
-      border-radius: 8px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .research-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 20px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--primary);
-    }
-    .research-link svg { width: 16px; height: 16px; fill: currentColor; }
-    .research-link:hover { color: var(--primary-dark); }
-
-    .research-toggle {
-      margin-top: 16px;
-      background: none;
-      border: none;
-      color: var(--primary);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .research-toggle svg {
-      width: 16px; height: 16px; fill: currentColor;
-      transition: transform 0.3s;
-    }
-    .research-toggle.open svg { transform: rotate(180deg); }
-
-    .research-detail {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    .research-detail-inner {
-      padding-top: 16px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.8;
     }
 
     /* ─── Usage ─── */
@@ -866,10 +788,10 @@
       .hero-overlay { padding-bottom: 28px; }
       .section { padding: 52px 0; }
       .section-title { font-size: 1.35rem; }
-      .concerns-grid,
-      .why-grid,
+      .recommend-grid,
+      .feature-grid,
       .usage-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .ingredient-grid { grid-template-columns: 1fr; gap: 28px; }
       .pricing-cards { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 20px; }
       .header-cta { font-size: 0.72rem; padding: 6px 12px; }
@@ -904,7 +826,7 @@
       <div class="hero-content">
         <div class="hero-badge en">HydroShell Daily</div>
         <h1>水素の習慣を、<br>毎日に。</h1>
-        <p class="hero-sub">独自原料「ハイドロシェル」を使用した水素サプリメント。<br>1日2〜4粒、毎日の習慣に取り入れやすい設計です。</p>
+        <p class="hero-sub">独自原料「ハイドロシェル」配合。<br>北海道産ホタテ貝殻由来の国産水素原料を、1日2〜4粒で。</p>
         <p class="hero-price">初回限定 <strong>&yen;5,980</strong>（税込）</p>
         <a href="#purchase" class="btn btn--white">
           初回価格で試す
@@ -914,39 +836,43 @@
     </div>
   </section>
 
-  <!-- ─── 2. こんな方におすすめ ─── -->
-  <section class="section section--off" id="concerns">
-    <div class="container section--center">
-      <p class="section-label en fade-up">For You</p>
-      <h2 class="section-title fade-up">こんな方におすすめです</h2>
-      <p class="section-desc fade-up">毎日のコンディションが気になる方へ。<br>ハイドロシェルデイリーは、日々の習慣に取り入れやすい水素サプリメントです。</p>
+  <!-- ─── 2. ハイドロシェルとは ─── -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="ingredient-grid">
+        <div class="fade-up">
+          <p class="section-label en">About HydroShell</p>
+          <h2 class="section-title">ハイドロシェルとは</h2>
+          <p class="section-desc">ハイドロシェルデイリーの核となる独自原料。<br>北海道産ホタテ貝殻を独自技術で加工した、国産の水素発生原料です。</p>
 
-      <div class="concerns-grid">
-        <div class="concern-card fade-up">
-          <div class="concern-icon">
-            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          <div class="ingredient-item">
+            <h4>北海道産ホタテ貝殻由来</h4>
+            <p>原料のベースには、北海道産のホタテ貝殻を使用。独自の温度管理による焼成加工で、水素発生に適した状態に仕上げています。</p>
           </div>
-          <div>
-            <h3>朝のコンディションが気になる</h3>
-            <p>すっきりとした朝を迎えたい方に。毎日の習慣として続けやすい設計です。</p>
+          <div class="ingredient-item">
+            <h4>独自の加工技術</h4>
+            <p>高温焼成に頼らない独自の加工条件を採用。ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない原料設計です。</p>
           </div>
-        </div>
-        <div class="concern-card fade-up">
-          <div class="concern-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          </div>
-          <div>
-            <h3>日々のリズムを整えたい</h3>
-            <p>食事や運動と合わせて、毎日のコンディション管理を意識している方に。</p>
+          <div class="ingredient-item">
+            <h4>2013年からの国産原料</h4>
+            <p>ハイドロシェルは、2013年から開発・供給されている国産の水素発生原料です。10年以上にわたり供給が続けられています。</p>
           </div>
         </div>
-        <div class="concern-card fade-up">
-          <div class="concern-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
+
+        <div class="fade-up">
+          <div class="ingredient-card">
+            <div class="ingredient-card-top"></div>
+            <div class="ingredient-card-body">
+              <p class="label en">HYDROSHELL TECHNOLOGY</p>
+              <p class="ingredient-formula">
+                ホタテ貝殻焼成<span class="x">&times;</span>マイクロクラスター
+              </p>
+              <p class="ingredient-card-note">独自の組み合わせで設計された水素発生原料</p>
+            </div>
           </div>
-          <div>
-            <h3>続けやすいサプリを探している</h3>
-            <p>1日2〜4粒を水で飲むだけ。手軽に続けられるシンプルな設計です。</p>
+          <div class="ingredient-spec">
+            <h4>配合量</h4>
+            <p>1カプセルあたりハイドロシェル原料250mg配合。4粒で原料1gを摂取できる設計です。</p>
           </div>
         </div>
       </div>
@@ -955,96 +881,74 @@
 
   <!-- ─── CTA Band 1 ─── -->
   <div class="cta-band">
-    <p>初回限定 <strong>&yen;5,980</strong>（税込）/ 120粒入り</p>
+    <p>ハイドロシェル原料250mg &times; 120粒入り</p>
     <a href="#purchase" class="btn btn--primary">
       まずは初回価格で始める
       <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
     </a>
   </div>
 
-  <!-- ─── 3. ハイドロシェルデイリーとは ─── -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="fade-up">
-          <p class="section-label en">About</p>
-          <h2 class="section-title">ハイドロシェルデイリーとは</h2>
-          <p class="section-desc">独自原料「ハイドロシェル」を使用した水素サプリメントです。<br>北海道産ホタテ貝殻由来原料を採用し、独自の技術で加工しています。</p>
+  <!-- ─── 3. 製品の特長 ─── -->
+  <section class="section section--off" id="features">
+    <div class="container section--center">
+      <p class="section-label en fade-up">Features</p>
+      <h2 class="section-title fade-up">ハイドロシェルデイリーの特長</h2>
+      <p class="section-desc fade-up">ハイドロシェル原料を、毎日続けやすい形にしました。</p>
 
-          <div class="about-item">
-            <h4>ハイドロシェル原料を使用</h4>
-            <p>ハイドロシェルは、水素に関わる独自原料です。10年以上の開発実績を持つ株式会社ardesignが製造しています。</p>
-          </div>
-          <div class="about-item">
-            <h4>北海道産ホタテ貝殻由来</h4>
-            <p>原料のベースには、北海道産のホタテ貝殻を使用。独自の温度管理で焼成加工しています。</p>
-          </div>
-          <div class="about-item">
-            <h4>独自技術による加工</h4>
-            <p>ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない独自の原料設計です。</p>
-          </div>
+      <div class="feature-grid">
+        <div class="feature-card fade-up">
+          <p class="feature-num en">01</p>
+          <h3>ハイドロシェル原料を採用</h3>
+          <p>北海道産ホタテ貝殻由来の独自水素発生原料「ハイドロシェル」を使用。2013年から供給が続く国産素材です。</p>
         </div>
-
-        <div class="fade-up">
-          <div class="about-card">
-            <div class="about-card-top"></div>
-            <div class="about-card-body">
-              <p class="label en">HYDROSHELL TECHNOLOGY</p>
-              <p class="about-formula">
-                ホタテ貝殻焼成<span class="x">&times;</span>マイクロクラスター
-              </p>
-              <p class="about-card-note">独自の組み合わせで設計された水素原料です</p>
-            </div>
-          </div>
-          <div class="about-maker">
-            <h4>原料開発: 株式会社ardesign</h4>
-            <p>2013年から水素素材を提供。10年以上の研究開発実績を持つ原料メーカーです。</p>
-          </div>
+        <div class="feature-card fade-up">
+          <p class="feature-num en">02</p>
+          <h3>1カプセル250mg配合</h3>
+          <p>1カプセルあたりハイドロシェル原料を250mg配合。4粒で原料1gを摂取できます。</p>
+        </div>
+        <div class="feature-card fade-up">
+          <p class="feature-num en">03</p>
+          <h3>1日2〜4粒、水で飲むだけ</h3>
+          <p>120粒入りで約30〜60日分。特別な準備は不要。毎日の習慣に無理なく取り入れられます。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── 4. なぜハイドロシェルなのか ─── -->
-  <section class="section section--off" id="why">
+  <!-- ─── 4. こんな方に ─── -->
+  <section class="section" id="recommend">
     <div class="container section--center">
-      <p class="section-label en fade-up">Why HydroShell</p>
-      <h2 class="section-title fade-up">選ばれる3つの理由</h2>
-      <p class="section-desc fade-up">ハイドロシェルデイリーが選ばれている理由をご紹介します。</p>
+      <p class="section-label en fade-up">Recommend</p>
+      <h2 class="section-title fade-up">こんな方に選ばれています</h2>
+      <p class="section-desc fade-up">ハイドロシェルデイリーは、毎日の習慣として<br>水素サプリメントを取り入れたい方に選ばれています。</p>
 
-      <div class="why-grid">
-        <div class="why-card fade-up">
-          <p class="why-num en">01</p>
-          <h3>原料へのこだわり</h3>
-          <p>水素サプリメントの品質は原料で決まります。ハイドロシェルは、北海道産ホタテ貝殻由来の独自原料。10年以上の開発実績に裏打ちされています。</p>
+      <div class="recommend-grid">
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+          </div>
+          <div>
+            <h3>水素サプリメントに興味がある</h3>
+            <p>水素サプリメントを試してみたいけれど、どれを選べばいいか迷っている方に。</p>
+          </div>
         </div>
-        <div class="why-card fade-up">
-          <p class="why-num en">02</p>
-          <h3>続けやすい設計</h3>
-          <p>1日2〜4粒を水で飲むだけ。120粒入りで約30〜60日分。特別な準備は不要で、毎日の習慣に無理なく取り入れられます。</p>
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <div>
+            <h3>原料にこだわりたい</h3>
+            <p>国産・独自技術のハイドロシェル原料を使用。原料の出どころが明確なサプリメントです。</p>
+          </div>
         </div>
-        <div class="why-card fade-up">
-          <p class="why-num en">03</p>
-          <h3>品質と設計思想</h3>
-          <p>1カプセルあたりハイドロシェル原料250mgを配合。北海道産ホタテ貝殻由来の独自素材を、毎日続けやすい形にしました。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 5. ハイドロシェル原料 ─── -->
-  <section class="section" id="ingredient">
-    <div class="container section--center">
-      <p class="section-label en fade-up">Key Ingredient</p>
-      <h2 class="section-title fade-up">ハイドロシェルとは</h2>
-      <p class="section-desc fade-up">ハイドロシェルデイリーの核となる素材。<br>北海道産ホタテ貝殻を独自の加工技術で処理した、水素発生原料です。</p>
-
-      <div class="research-box fade-up">
-        <h3>国産・独自素材</h3>
-        <p>ハイドロシェルは、株式会社ardesignが2013年から開発・供給する国産の水素発生原料です。高温焼成に頼らない独自の加工条件で、ホタテ貝殻由来のカルシウム成分を活性化。胃酸環境下で水素を発生する設計になっています。</p>
-        <p style="margin-top:12px;">ハイドロシェルデイリーは、このハイドロシェル原料を1カプセルあたり250mg配合。1日2〜4粒を目安に、毎日の習慣として取り入れやすい形にしました。</p>
-        <div class="research-note">
-          ※ 本製品は栄養補助食品です。疾病の診断、治療、予防を目的とするものではありません。
+        <div class="recommend-card fade-up">
+          <div class="recommend-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
+          </div>
+          <div>
+            <h3>毎日続けやすいものがいい</h3>
+            <p>1日2〜4粒を水で飲むだけ。手軽に続けられるシンプルな設計です。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1054,12 +958,12 @@
   <div class="cta-band">
     <p>120粒入り / 1日2〜4粒目安 / 約30〜60日分</p>
     <a href="#purchase" class="btn btn--primary">
-      ハイドロシェルデイリーを購入する
+      ハイドロシェルデイリーを試す
       <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
     </a>
   </div>
 
-  <!-- ─── 6. 飲み方 ─── -->
+  <!-- ─── 5. 飲み方 ─── -->
   <section class="section section--off" id="usage">
     <div class="container section--center">
       <p class="section-label en fade-up">How to Use</p>
@@ -1087,11 +991,11 @@
       <div class="usage-spec fade-up">
         <div class="usage-spec-item">
           <p class="num en">250<span class="unit">mg</span></p>
-          <p class="label">1カプセルあたり</p>
+          <p class="label">ハイドロシェル原料 / 1粒</p>
         </div>
         <div class="usage-spec-item">
           <p class="num en">1<span class="unit">g</span></p>
-          <p class="label">4粒で原料1g</p>
+          <p class="label">4粒でハイドロシェル原料1g</p>
         </div>
         <div class="usage-spec-item">
           <p class="num en">120<span class="unit">粒</span></p>
@@ -1105,7 +1009,7 @@
 
       <div class="usage-note fade-up">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <p>本品は食品です。医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
+        <p>本品は栄養補助食品です。医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
       </div>
     </div>
   </section>
@@ -1120,7 +1024,7 @@
         <tr><th>商品名</th><td>ハイドロシェルデイリー</td></tr>
         <tr><th>名称</th><td>ホタテ貝殻焼成カルシウム含有食品</td></tr>
         <tr><th>内容量</th><td>120粒（1日2〜4粒目安 / 約30〜60日分）</td></tr>
-        <tr><th>1粒あたり</th><td>ハイドロシェル原料 250mg</td></tr>
+        <tr><th>主要原料</th><td>ハイドロシェル原料 250mg / 1カプセル</td></tr>
         <tr><th>原材料名</th><td>ホタテ貝殻焼成カルシウム、マイクロクラスター（クエン酸カリウム、炭酸カリウム、微粒酸化ケイ素、硫酸マグネシウム）/ HPMC（カプセル）</td></tr>
         <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
         <tr><th>原料製造元</th><td>株式会社ardesign（東京都港区）</td></tr>
@@ -1129,12 +1033,12 @@
     </div>
   </section>
 
-  <!-- ─── 7. 購入 ─── -->
+  <!-- ─── 購入 ─── -->
   <section class="section purchase-bg section--center" id="purchase">
     <div class="container">
       <p class="section-label en fade-up">Purchase</p>
       <h2 class="section-title fade-up">ご購入</h2>
-      <p class="section-desc fade-up">水素の習慣を、今日から始めてみませんか。</p>
+      <p class="section-desc fade-up">ハイドロシェルデイリーを、まずは初回価格でお試しください。</p>
 
       <div class="pricing-cards">
         <div class="pricing-card pricing-card--featured fade-up">
@@ -1159,7 +1063,7 @@
     </div>
   </section>
 
-  <!-- ─── 8. FAQ ─── -->
+  <!-- ─── FAQ ─── -->
   <section class="section section--off" id="faq">
     <div class="container section--center">
       <p class="section-label en fade-up">FAQ</p>
@@ -1168,10 +1072,18 @@
       <div class="faq-list">
         <div class="faq-item fade-up">
           <button class="faq-q">
+            ハイドロシェルとは何ですか？
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルは、北海道産ホタテ貝殻を独自の加工技術で処理した水素発生原料です。2013年から国内で開発・供給されている素材で、ハイドロシェルデイリーの主要原料として使用しています。</div></div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-q">
             1日何粒飲めばいいですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">1日2〜4粒を目安にお召し上がりください。1カプセルあたりハイドロシェル原料250mg配合で、4粒で原料1gを摂取できる設計です。まずは2粒から始め、体調に合わせて調整されることをおすすめします。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">1日2〜4粒を目安にお召し上がりください。1カプセルあたりハイドロシェル原料250mg配合で、4粒で原料1gを摂取できる設計です。まずは2粒から始め、ご自身のペースで調整してください。</div></div>
         </div>
 
         <div class="faq-item fade-up">
@@ -1187,15 +1099,7 @@
             いつ飲むのがいいですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。習慣化しやすいよう、朝食時など毎日決まったタイミングで飲まれることをおすすめしています。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            毎日飲む想定ですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">はい、毎日の習慣として続けていただくことをおすすめしています。食品ですので、ご自身のペースでお続けください。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
         </div>
 
         <div class="faq-item fade-up">
@@ -1208,18 +1112,10 @@
 
         <div class="faq-item fade-up">
           <button class="faq-q">
-            ハイドロシェルとはどんな原料ですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルは、北海道産ホタテ貝殻を独自の加工技術で処理した水素発生原料です。株式会社ardesignが2013年から開発・供給する国産素材で、ハイドロシェルデイリーの主成分として採用しています。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
             返品・交換はできますか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">商品到着後7日以内であれば、未開封に限り返品を承ります。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせはメールにてご連絡ください。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">商品到着後7日以内であれば、未開封に限り返品を承ります。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせは support@jerrygo.jp までご連絡ください。</div></div>
         </div>
       </div>
     </div>
@@ -1227,29 +1123,26 @@
 
   <!-- ─── CTA Band 3 ─── -->
   <div class="cta-band">
-    <p>初回限定 <strong>&yen;5,980</strong>（税込）</p>
+    <p>ハイドロシェル原料配合 / 初回限定 <strong>&yen;5,980</strong>（税込）</p>
     <a href="#purchase" class="btn btn--primary">
       初回価格で試す
       <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
     </a>
   </div>
 
-  <!-- ─── 9. Footer ─── -->
+  <!-- ─── Footer ─── -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h4 class="en">jerrygo</h4>
-          <p>独自原料「ハイドロシェル」を使用した水素サプリメント「ハイドロシェルデイリー」の販売ブランドです。</p>
+          <h4 class="en">HydroShell Daily</h4>
+          <p>独自原料「ハイドロシェル」を配合した水素サプリメント。<br>北海道産ホタテ貝殻由来・国産原料使用。<br>お問い合わせ: support@jerrygo.jp</p>
         </div>
         <div>
-          <h4>販売事業者</h4>
+          <h4>製品について</h4>
           <p>
-            株式会社ardesign<br>
-            〒105-0013 東京都港区浜松町2-2-15<br>
-            浜松町ダイヤビル 202号室<br>
-            TEL: 03-6841-0355<br>
-            お問い合わせ: support@jerrygo.jp
+            ハイドロシェルデイリーは、ハイドロシェル原料を1カプセルあたり250mg配合した栄養補助食品です。<br>
+            本品は食品であり、医薬品ではありません。
           </p>
         </div>
       </div>
@@ -1284,7 +1177,7 @@
 
             <h5>利用規約</h5>
             <p>
-              本サイトのご利用にあたっては、以下の事項をご了承ください。本製品は食品であり、医薬品ではありません。効果効能を保証するものではありません。掲載情報の正確性には万全を期しておりますが、内容の変更が生じる場合があります。商品画像はイメージであり、実際の商品と異なる場合があります。
+              本サイトのご利用にあたっては、以下の事項をご了承ください。本製品は栄養補助食品であり、医薬品ではありません。効果効能を保証するものではありません。掲載情報の正確性には万全を期しておりますが、内容の変更が生じる場合があります。商品画像はイメージであり、実際の商品と異なる場合があります。
             </p>
           </div>
         </div>
@@ -1330,14 +1223,6 @@
         }
       });
     });
-
-    // Research detail toggle
-    function toggleResearch(btn) {
-      const el = document.getElementById('research-detail');
-      const isOpen = btn.classList.contains('open');
-      btn.classList.toggle('open');
-      el.style.maxHeight = isOpen ? '0' : el.scrollHeight + 'px';
-    }
 
     // Legal toggle
     function toggleLegal(btn) {
