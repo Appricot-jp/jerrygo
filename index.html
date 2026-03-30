@@ -7,119 +7,113 @@
   <meta name="description" content="独自原料「ハイドロシェル」を使用した水素サプリメント。北海道産ホタテ貝殻由来の国産原料を1カプセルあたり250mg配合。120粒入り、1日2〜4粒。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    /* ─── Design Tokens ─── */
     :root {
-      --primary: #1B6B93;
-      --primary-light: #5A9BB5;
-      --primary-pale: #EAF3F7;
-      --primary-dark: #0E4A66;
-      --accent: #2AABB3;
-      --accent-light: #D4F1F3;
-      --text: #222;
-      --text-light: #555;
-      --text-muted: #999;
-      --bg: #fff;
-      --bg-off: #F6F9FB;
-      --border: #E2E8EE;
-      --radius: 12px;
-      --shadow: 0 2px 16px rgba(0,0,0,0.05);
-      --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+      --color-bg: #FAF9F7;
+      --color-bg-warm: #F3F0EB;
+      --color-bg-dark: #1A1A1A;
+      --color-text: #1A1A1A;
+      --color-text-mid: #555;
+      --color-text-light: #888;
+      --color-accent: #8B7355;
+      --color-accent-light: #C4B49A;
+      --color-border: #E5E0D8;
+      --color-white: #fff;
+
+      --font-serif: 'Noto Serif JP', serif;
+      --font-sans: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+
+      --w-content: 960px;
+      --w-narrow: 640px;
     }
 
+    /* ─── Reset ─── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.85;
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.9;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .en { font-family: 'Inter', sans-serif; }
     img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--primary); text-decoration: none; }
-
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    a { color: inherit; text-decoration: none; }
+    .en { font-family: var(--font-en); }
+    .serif { font-family: var(--font-serif); }
 
     /* ─── Header ─── */
     .header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3s;
-    }
-    .header.scrolled { box-shadow: var(--shadow); }
-
-    .header-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 60px;
+      padding: 0 32px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .header--scrolled {
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--color-border);
     }
 
-    .logo-mark {
-      width: 34px; height: 34px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .header-logo {
+      font-family: var(--font-en);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-white);
+      transition: color 0.4s;
     }
-    .logo-mark svg { width: 18px; height: 18px; fill: #fff; }
-
-    .logo-text {
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--primary-dark);
-    }
-    .logo-text .sub {
-      display: block;
-      font-size: 0.6rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      margin-top: -2px;
-      letter-spacing: 0.06em;
-    }
+    .header--scrolled .header-logo { color: var(--color-text); }
 
     .header-cta {
-      background: var(--primary);
-      color: #fff;
-      padding: 7px 18px;
-      border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      transition: background 0.2s;
+      letter-spacing: 0.08em;
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 2px;
+      color: var(--color-white);
+      transition: all 0.4s;
     }
-    .header-cta:hover { background: var(--primary-dark); color: #fff; }
+    .header-cta:hover { background: var(--color-white); color: var(--color-text); }
+    .header--scrolled .header-cta {
+      border-color: var(--color-text);
+      color: var(--color-text);
+    }
+    .header--scrolled .header-cta:hover {
+      background: var(--color-text);
+      color: var(--color-white);
+    }
 
     /* ─── Hero ─── */
     .hero {
       position: relative;
-      margin-top: 60px;
+      height: 100vh;
+      min-height: 600px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-image {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: 520px;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
     }
@@ -127,677 +121,297 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,0.55) 100%);
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: 44px;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.05) 40%,
+        rgba(0,0,0,0.35) 100%
+      );
     }
 
     .hero-content {
-      max-width: 1040px;
-      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--color-white);
       padding: 0 24px;
-      width: 100%;
-      color: #fff;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      padding: 5px 14px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.25);
-    }
-
-    .hero-sub {
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.75;
-      opacity: 0.93;
-      max-width: 480px;
-      margin-bottom: 8px;
-    }
-
-    .hero-price {
-      font-size: 0.85rem;
+    .hero-label {
+      font-family: var(--font-en);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.8;
       margin-bottom: 24px;
-      opacity: 0.9;
-    }
-    .hero-price strong {
-      font-size: 1.5rem;
-      font-weight: 700;
     }
 
-    .btn {
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+
+    .hero-lead {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 2;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      max-width: 440px;
+      margin: 0 auto 48px;
+    }
+
+    .hero-scroll {
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
       gap: 8px;
-      padding: 13px 28px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn svg { width: 16px; height: 16px; fill: currentColor; }
-
-    .btn--primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(27,107,147,0.35);
-    }
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(27,107,147,0.45);
-      color: #fff;
-    }
-
-    .btn--white {
-      background: #fff;
-      color: var(--primary);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .btn--white:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
-      color: var(--primary-dark);
-    }
-
-    .btn--outline {
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    .btn--outline:hover {
-      background: var(--primary-pale);
-      transform: translateY(-2px);
-    }
-
-    /* ─── Section commons ─── */
-    .section { padding: 72px 0; }
-    .section--off { background: var(--bg-off); }
-
-    .section-label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      font-family: var(--font-en);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
+      opacity: 0.6;
+      animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    .section-title {
-      font-size: 1.65rem;
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 14px;
-      color: var(--primary-dark);
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--color-white), transparent);
     }
 
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      max-width: 600px;
-      line-height: 1.85;
-      margin-bottom: 40px;
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.3; }
     }
 
-    .section--center { text-align: center; }
-    .section--center .section-desc { margin-left: auto; margin-right: auto; }
-
-    /* ─── CTA Band ─── */
-    .cta-band {
-      background: var(--primary-pale);
-      padding: 32px 0;
+    /* ─── Intro Section (About) ─── */
+    .section-intro {
+      padding: 120px 24px;
       text-align: center;
     }
 
-    .cta-band p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 16px;
-    }
-    .cta-band p strong {
-      color: var(--primary-dark);
-      font-size: 1.15rem;
+    .section-intro-inner {
+      max-width: var(--w-narrow);
+      margin: 0 auto;
     }
 
-    /* ─── Ingredient highlight ─── */
-    .ingredient-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    .ingredient-item {
+    .section-en-label {
+      font-family: var(--font-en);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-accent);
       margin-bottom: 20px;
     }
-    .ingredient-item:last-child { margin-bottom: 0; }
-    .ingredient-item h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-    .ingredient-item p {
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.75;
+
+    .section-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: 0.06em;
+      margin-bottom: 32px;
     }
 
-    .ingredient-card {
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-lg);
+    .section-intro p {
+      font-size: 0.9rem;
+      color: var(--color-text-mid);
+      line-height: 2.2;
+      letter-spacing: 0.02em;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-accent-light);
+      margin: 0 auto;
+    }
+
+    /* ─── Editorial Block (alternating image + text) ─── */
+    .editorial {
+      padding: 0 24px 120px;
+    }
+
+    .editorial-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: var(--w-content);
+      margin: 0 auto;
+    }
+    .editorial-row + .editorial-row {
+      margin-top: 100px;
+    }
+    .editorial-row--reverse .editorial-image { order: 2; }
+    .editorial-row--reverse .editorial-text { order: 1; }
+
+    .editorial-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
+      background: var(--color-bg-warm);
+      border-radius: 2px;
     }
-    .ingredient-card-top {
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+    .editorial-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .ingredient-card-body {
-      padding: 36px 32px;
-      text-align: center;
-    }
-
-    .ingredient-card-body .label {
+    .editorial-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-en);
       font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+    }
+
+    .editorial-text .section-en-label {
       margin-bottom: 16px;
     }
 
-    .ingredient-formula {
+    .editorial-text h3 {
+      font-family: var(--font-serif);
       font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-    .ingredient-formula .x {
-      color: var(--accent);
-      margin: 0 4px;
-    }
-
-    .ingredient-card-note {
-      font-size: 0.82rem;
-      color: var(--text-light);
+      font-weight: 400;
       line-height: 1.7;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
     }
 
-    .ingredient-spec {
-      margin-top: 20px;
-      background: var(--primary-dark);
-      color: rgba(255,255,255,0.88);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-    }
-    .ingredient-spec h4 {
+    .editorial-text p {
       font-size: 0.88rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .ingredient-spec p {
-      font-size: 0.82rem;
-      line-height: 1.7;
-    }
-
-    /* ─── Feature cards ─── */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .feature-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-pale);
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .feature-card h3 {
-      font-size: 1.02rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-    }
-    .feature-card p {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.75;
-    }
-
-    /* ─── Recommend cards ─── */
-    .recommend-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .recommend-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-
-    .recommend-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      background: var(--primary-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .recommend-icon svg { width: 22px; height: 22px; fill: var(--primary); }
-
-    .recommend-card h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--primary-dark);
-    }
-    .recommend-card p {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    /* ─── Usage ─── */
-    .usage-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-
-    .usage-step { text-align: center; }
-
-    .usage-num {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
+      color: var(--color-text-mid);
+      line-height: 2.1;
       margin-bottom: 16px;
     }
+    .editorial-text p:last-child { margin-bottom: 0; }
 
-    .usage-step h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-    .usage-step p {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.75;
+    /* ─── Spec Band ─── */
+    .spec-band {
+      background: var(--color-bg-warm);
+      padding: 80px 24px;
     }
 
-    .usage-spec {
-      margin-top: 36px;
+    .spec-band-inner {
+      max-width: var(--w-content);
+      margin: 0 auto;
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 80px;
       flex-wrap: wrap;
     }
 
-    .usage-spec-item {
-      text-align: center;
-    }
-    .usage-spec-item .num {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
+    .spec-item { text-align: center; }
+
+    .spec-item .num {
+      font-family: var(--font-en);
+      font-size: 2.8rem;
+      font-weight: 300;
       line-height: 1.2;
+      color: var(--color-text);
     }
-    .usage-spec-item .unit {
+    .spec-item .unit {
       font-size: 0.85rem;
-      color: var(--text-light);
+      font-weight: 400;
     }
-    .usage-spec-item .label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .usage-note {
-      margin-top: 32px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px 24px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-    .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
-    .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
-
-    /* ─── Product Table ─── */
-    .product-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .product-table th,
-    .product-table td {
-      padding: 14px 20px;
-      font-size: 0.88rem;
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-    }
-    .product-table th {
-      background: var(--primary-pale);
-      font-weight: 600;
-      color: var(--primary-dark);
-      width: 160px;
-    }
-    .product-table td { color: var(--text-light); }
-    .product-table tr:last-child th,
-    .product-table tr:last-child td { border-bottom: none; }
-
-    /* ─── Pricing ─── */
-    .purchase-bg {
-      background: linear-gradient(180deg, var(--primary-pale) 0%, var(--bg) 100%);
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      background: #fff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
-      text-align: center;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .pricing-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-    }
-    .pricing-card--featured { border-color: var(--primary); }
-
-    .pricing-badge {
-      position: absolute;
-      top: -13px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: #fff;
-      padding: 4px 18px;
-      border-radius: 20px;
+    .spec-item .label {
       font-size: 0.72rem;
-      font-weight: 600;
+      color: var(--color-text-light);
+      margin-top: 4px;
       letter-spacing: 0.04em;
-      white-space: nowrap;
     }
 
-    .pricing-label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .pricing-price {
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.2;
-      margin-bottom: 2px;
-    }
-    .pricing-price .yen { font-size: 1.1rem; font-weight: 500; }
-
-    .pricing-tax {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .pricing-detail {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .pricing-btn {
-      display: block;
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      font-family: inherit;
-    }
-    .pricing-btn--primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(27,107,147,0.3);
-    }
-    .pricing-btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(27,107,147,0.4);
-    }
-    .pricing-btn--secondary {
-      background: #fff;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-    }
-    .pricing-btn--secondary:hover {
-      background: var(--primary-pale);
-      transform: translateY(-2px);
-    }
-
-    .pricing-note {
+    /* ─── Placeholder sections (below-the-fold, to be built next) ─── */
+    .section-placeholder {
+      padding: 100px 24px;
       text-align: center;
-      margin-top: 20px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* ─── FAQ ─── */
-    .faq-list { max-width: 700px; margin: 0 auto; }
-
-    .faq-item {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      margin-bottom: 10px;
-      overflow: hidden;
-    }
-
-    .faq-q {
-      width: 100%;
-      padding: 18px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 0.92rem;
-      font-weight: 500;
-      color: var(--text);
-      text-align: left;
-      font-family: inherit;
-      line-height: 1.6;
-    }
-    .faq-q svg {
-      width: 18px; height: 18px;
-      fill: var(--text-muted);
-      flex-shrink: 0;
-      transition: transform 0.3s;
-    }
-    .faq-item.open .faq-q svg { transform: rotate(180deg); }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    .faq-a-inner {
-      padding: 0 22px 18px;
-      font-size: 0.88rem;
-      color: var(--text-light);
-      line-height: 1.85;
-    }
-
-    /* ─── Footer ─── */
-    .footer {
-      background: var(--primary-dark);
-      color: rgba(255,255,255,0.7);
-      padding: 44px 0 20px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      margin-bottom: 28px;
-    }
-    .footer h4 {
+      color: var(--color-text-light);
       font-size: 0.85rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 10px;
+      border-top: 1px solid var(--color-border);
     }
-    .footer p { font-size: 0.8rem; line-height: 1.8; }
-    .footer a { color: rgba(255,255,255,0.7); transition: color 0.2s; }
-    .footer a:hover { color: #fff; }
 
-    .footer-legal { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-
-    .legal-toggle {
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.45);
-      font-size: 0.72rem;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 4px 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .legal-toggle:hover { color: rgba(255,255,255,0.7); }
-    .legal-toggle svg {
-      width: 14px; height: 14px; fill: currentColor;
-      transition: transform 0.3s;
-    }
-    .legal-toggle.open svg { transform: rotate(180deg); }
-
-    .legal-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-    .legal-content-inner {
-      padding: 14px 0;
-      font-size: 0.72rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.45);
-    }
-    .legal-content-inner h5 {
-      color: rgba(255,255,255,0.65);
-      font-size: 0.76rem;
-      margin: 14px 0 4px;
-    }
-    .legal-content-inner h5:first-child { margin-top: 0; }
-
-    .footer-bottom {
+    /* ─── Floating CTA (Mobile) ─── */
+    .float-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 90;
+      background: rgba(250, 249, 247, 0.96);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--color-border);
+      padding: 12px 24px;
       text-align: center;
-      margin-top: 20px;
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.35);
     }
+
+    .float-cta-btn {
+      display: inline-block;
+      width: 100%;
+      max-width: 360px;
+      padding: 14px 24px;
+      background: var(--color-text);
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .float-cta-btn:hover { opacity: 0.85; }
 
     /* ─── Animation ─── */
-    .fade-up {
+    .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .fade-up.visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
     /* ─── Responsive ─── */
     @media (max-width: 768px) {
-      .hero-image { height: 360px; }
-      .hero h1 { font-size: 1.5rem; }
-      .hero-sub { font-size: 0.85rem; }
-      .hero-overlay { padding-bottom: 28px; }
-      .section { padding: 52px 0; }
-      .section-title { font-size: 1.35rem; }
-      .recommend-grid,
-      .feature-grid,
-      .usage-grid { grid-template-columns: 1fr; }
-      .ingredient-grid { grid-template-columns: 1fr; gap: 28px; }
-      .pricing-cards { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-      .header-cta { font-size: 0.72rem; padding: 6px 12px; }
-      .usage-spec { gap: 24px; }
-      .product-table th { width: 110px; padding: 12px 14px; }
-      .product-table td { padding: 12px 14px; }
+      .header { padding: 0 20px; height: 48px; }
+      .header-logo { font-size: 0.72rem; }
+      .header-cta { font-size: 0.65rem; padding: 6px 14px; }
+
+      .hero { min-height: 100svh; }
+      .hero-lead { font-size: 0.82rem; }
+
+      .section-intro { padding: 80px 20px; }
+      .section-intro h2 { font-size: 1.3rem; }
+
+      .editorial { padding: 0 20px 80px; }
+      .editorial-row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .editorial-row--reverse .editorial-image { order: 0; }
+      .editorial-row--reverse .editorial-text { order: 0; }
+      .editorial-row + .editorial-row { margin-top: 64px; }
+      .editorial-image { aspect-ratio: 3 / 4; }
+
+      .spec-band { padding: 56px 20px; }
+      .spec-band-inner { gap: 40px; }
+      .spec-item .num { font-size: 2.2rem; }
+
+      .float-cta { display: block; }
     }
   </style>
 </head>
@@ -805,398 +419,120 @@
 
   <!-- ─── Header ─── -->
   <header class="header" id="header">
-    <div class="header-inner">
-      <div class="logo">
-        <div class="logo-mark">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-        </div>
-        <div class="logo-text">
-          <span class="en">HydroShell Daily</span>
-          <span class="sub">ハイドロシェルデイリー</span>
-        </div>
-      </div>
-      <a href="#purchase" class="header-cta">初回価格で試す</a>
-    </div>
+    <span class="header-logo">HydroShell Daily</span>
+    <a href="#purchase" class="header-cta en">Pre-order</a>
   </header>
 
-  <!-- ─── 1. Hero / FV ─── -->
+  <!-- ─── Hero ─── -->
   <section class="hero">
-    <img src="images/hero.jpg" alt="毎日をすこやかに過ごす女性" class="hero-image">
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <div class="hero-badge en">HydroShell Daily</div>
-        <h1>水素の習慣を、<br>毎日に。</h1>
-        <p class="hero-sub">独自原料「ハイドロシェル」配合。<br>北海道産ホタテ貝殻由来の国産水素原料を、1日2〜4粒で。</p>
-        <p class="hero-price">初回限定 <strong>&yen;5,980</strong>（税込）</p>
-        <a href="#purchase" class="btn btn--white">
-          初回価格で試す
-          <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-        </a>
+    <img src="images/hero.jpg" alt="HydroShell Daily" class="hero-image">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-label en">HydroShell Daily</p>
+      <h1 class="hero-title">水素の習慣を、<br>毎日に。</h1>
+      <p class="hero-lead">北海道産ホタテ貝殻由来の独自原料<br>「ハイドロシェル」配合サプリメント</p>
+      <div class="hero-scroll">
+        <span class="en">Scroll</span>
+        <div class="hero-scroll-line"></div>
       </div>
     </div>
   </section>
 
-  <!-- ─── 2. ハイドロシェルとは ─── -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="ingredient-grid">
-        <div class="fade-up">
-          <p class="section-label en">About HydroShell</p>
-          <h2 class="section-title">ハイドロシェルとは</h2>
-          <p class="section-desc">ハイドロシェルデイリーの核となる独自原料。<br>北海道産ホタテ貝殻を独自技術で加工した、国産の水素発生原料です。</p>
+  <!-- ─── Intro ─── -->
+  <section class="section-intro" id="about">
+    <div class="section-intro-inner reveal">
+      <p class="section-en-label en">About HydroShell</p>
+      <h2>からだに届ける、<br>新しい水素のかたち。</h2>
+      <div class="divider" style="margin-bottom: 32px;"></div>
+      <p>
+        ハイドロシェルデイリーは、北海道産ホタテ貝殻を<br>
+        独自技術で加工した水素発生原料「ハイドロシェル」を配合。<br>
+        2013年から供給が続く国産素材を、<br>
+        1日2〜4粒のカプセルに凝縮しました。
+      </p>
+    </div>
+  </section>
 
-          <div class="ingredient-item">
-            <h4>北海道産ホタテ貝殻由来</h4>
-            <p>原料のベースには、北海道産のホタテ貝殻を使用。独自の温度管理による焼成加工で、水素発生に適した状態に仕上げています。</p>
-          </div>
-          <div class="ingredient-item">
-            <h4>独自の加工技術</h4>
-            <p>高温焼成に頼らない独自の加工条件を採用。ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない原料設計です。</p>
-          </div>
-          <div class="ingredient-item">
-            <h4>2013年からの国産原料</h4>
-            <p>ハイドロシェルは、2013年から開発・供給されている国産の水素発生原料です。10年以上にわたり供給が続けられています。</p>
-          </div>
-        </div>
+  <!-- ─── Editorial: Ingredient Story ─── -->
+  <section class="editorial" id="features">
+    <div class="editorial-row reveal">
+      <div class="editorial-image">
+        <div class="editorial-image-placeholder">Photo — Ingredient</div>
+      </div>
+      <div class="editorial-text">
+        <p class="section-en-label en">01 — Ingredient</p>
+        <h3>北海道の海が育んだ、<br>独自の水素原料。</h3>
+        <p>ハイドロシェルの原料ベースは、北海道産のホタテ貝殻。独自の温度管理による焼成加工で、水素発生に適した状態に仕上げています。</p>
+        <p>高温焼成に頼らない独自条件を採用し、ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない原料設計です。</p>
+      </div>
+    </div>
 
-        <div class="fade-up">
-          <div class="ingredient-card">
-            <div class="ingredient-card-top"></div>
-            <div class="ingredient-card-body">
-              <p class="label en">HYDROSHELL TECHNOLOGY</p>
-              <p class="ingredient-formula">
-                ホタテ貝殻焼成<span class="x">&times;</span>マイクロクラスター
-              </p>
-              <p class="ingredient-card-note">独自の組み合わせで設計された水素発生原料</p>
-            </div>
-          </div>
-          <div class="ingredient-spec">
-            <h4>配合量</h4>
-            <p>1カプセルあたりハイドロシェル原料250mg配合。4粒で原料1gを摂取できる設計です。</p>
-          </div>
-        </div>
+    <div class="editorial-row editorial-row--reverse reveal">
+      <div class="editorial-image">
+        <div class="editorial-image-placeholder">Photo — Capsule</div>
+      </div>
+      <div class="editorial-text">
+        <p class="section-en-label en">02 — Simplicity</p>
+        <h3>1日2〜4粒。<br>それだけの、シンプルな習慣。</h3>
+        <p>1カプセルあたりハイドロシェル原料を250mg配合。水またはぬるま湯で飲むだけ。特別な準備は必要ありません。</p>
+        <p>120粒入りで約30〜60日分。朝食時など決まったタイミングで続けることで、毎日の習慣に自然と溶け込みます。</p>
+      </div>
+    </div>
+
+    <div class="editorial-row reveal">
+      <div class="editorial-image">
+        <div class="editorial-image-placeholder">Photo — Lifestyle</div>
+      </div>
+      <div class="editorial-text">
+        <p class="section-en-label en">03 — Heritage</p>
+        <h3>2013年から続く、<br>国産原料の信頼。</h3>
+        <p>ハイドロシェルは2013年に開発された国産の水素発生原料。10年以上にわたり供給が続けられている実績があります。</p>
+        <p>原料製造元の株式会社ardesignが品質を管理。原料の出どころが明確な、安心して続けられるサプリメントです。</p>
       </div>
     </div>
   </section>
 
-  <!-- ─── CTA Band 1 ─── -->
-  <div class="cta-band">
-    <p>ハイドロシェル原料250mg &times; 120粒入り</p>
-    <a href="#purchase" class="btn btn--primary">
-      まずは初回価格で始める
-      <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-    </a>
+  <!-- ─── Spec Numbers ─── -->
+  <div class="spec-band">
+    <div class="spec-band-inner reveal">
+      <div class="spec-item">
+        <p class="num en">250<span class="unit">mg</span></p>
+        <p class="label">ハイドロシェル原料 / 1粒</p>
+      </div>
+      <div class="spec-item">
+        <p class="num en">120<span class="unit">粒</span></p>
+        <p class="label">1袋あたり</p>
+      </div>
+      <div class="spec-item">
+        <p class="num en">30<span class="unit">–60</span><span class="unit">日分</span></p>
+        <p class="label">目安日数</p>
+      </div>
+      <div class="spec-item">
+        <p class="num en">2013</p>
+        <p class="label">原料供給開始年</p>
+      </div>
+    </div>
   </div>
 
-  <!-- ─── 3. 製品の特長 ─── -->
-  <section class="section section--off" id="features">
-    <div class="container section--center">
-      <p class="section-label en fade-up">Features</p>
-      <h2 class="section-title fade-up">ハイドロシェルデイリーの特長</h2>
-      <p class="section-desc fade-up">ハイドロシェル原料を、毎日続けやすい形にしました。</p>
-
-      <div class="feature-grid">
-        <div class="feature-card fade-up">
-          <p class="feature-num en">01</p>
-          <h3>ハイドロシェル原料を採用</h3>
-          <p>北海道産ホタテ貝殻由来の独自水素発生原料「ハイドロシェル」を使用。2013年から供給が続く国産素材です。</p>
-        </div>
-        <div class="feature-card fade-up">
-          <p class="feature-num en">02</p>
-          <h3>1カプセル250mg配合</h3>
-          <p>1カプセルあたりハイドロシェル原料を250mg配合。4粒で原料1gを摂取できます。</p>
-        </div>
-        <div class="feature-card fade-up">
-          <p class="feature-num en">03</p>
-          <h3>1日2〜4粒、水で飲むだけ</h3>
-          <p>120粒入りで約30〜60日分。特別な準備は不要。毎日の習慣に無理なく取り入れられます。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 4. こんな方に ─── -->
-  <section class="section" id="recommend">
-    <div class="container section--center">
-      <p class="section-label en fade-up">Recommend</p>
-      <h2 class="section-title fade-up">こんな方に選ばれています</h2>
-      <p class="section-desc fade-up">ハイドロシェルデイリーは、毎日の習慣として<br>水素サプリメントを取り入れたい方に選ばれています。</p>
-
-      <div class="recommend-grid">
-        <div class="recommend-card fade-up">
-          <div class="recommend-icon">
-            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-          </div>
-          <div>
-            <h3>水素サプリメントに興味がある</h3>
-            <p>水素サプリメントを試してみたいけれど、どれを選べばいいか迷っている方に。</p>
-          </div>
-        </div>
-        <div class="recommend-card fade-up">
-          <div class="recommend-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-          </div>
-          <div>
-            <h3>原料にこだわりたい</h3>
-            <p>国産・独自技術のハイドロシェル原料を使用。原料の出どころが明確なサプリメントです。</p>
-          </div>
-        </div>
-        <div class="recommend-card fade-up">
-          <div class="recommend-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
-          </div>
-          <div>
-            <h3>毎日続けやすいものがいい</h3>
-            <p>1日2〜4粒を水で飲むだけ。手軽に続けられるシンプルな設計です。</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA Band 2 ─── -->
-  <div class="cta-band">
-    <p>120粒入り / 1日2〜4粒目安 / 約30〜60日分</p>
-    <a href="#purchase" class="btn btn--primary">
-      ハイドロシェルデイリーを試す
-      <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-    </a>
+  <!-- ─── Below-the-fold: Purchase / FAQ / Footer (次のステップで実装) ─── -->
+  <div class="section-placeholder" id="purchase">
+    ─ Purchase / FAQ / Product Info / Footer ─<br>
+    次のステップで実装予定
   </div>
 
-  <!-- ─── 5. 飲み方 ─── -->
-  <section class="section section--off" id="usage">
-    <div class="container section--center">
-      <p class="section-label en fade-up">How to Use</p>
-      <h2 class="section-title fade-up">飲み方</h2>
-      <p class="section-desc fade-up">毎日の習慣に取り入れやすい、シンプルな飲み方です。</p>
-
-      <div class="usage-grid">
-        <div class="usage-step fade-up">
-          <div class="usage-num en">1</div>
-          <h3>1日2〜4粒を目安に</h3>
-          <p>体調やライフスタイルに合わせて、1日2〜4粒をお召し上がりください。</p>
-        </div>
-        <div class="usage-step fade-up">
-          <div class="usage-num en">2</div>
-          <h3>水またはぬるま湯で</h3>
-          <p>カプセルをそのまま水またはぬるま湯と一緒にお召し上がりください。</p>
-        </div>
-        <div class="usage-step fade-up">
-          <div class="usage-num en">3</div>
-          <h3>毎日続けることが大切</h3>
-          <p>習慣として毎日続けることをおすすめしています。朝食時など、決まったタイミングが続けやすいです。</p>
-        </div>
-      </div>
-
-      <div class="usage-spec fade-up">
-        <div class="usage-spec-item">
-          <p class="num en">250<span class="unit">mg</span></p>
-          <p class="label">ハイドロシェル原料 / 1粒</p>
-        </div>
-        <div class="usage-spec-item">
-          <p class="num en">1<span class="unit">g</span></p>
-          <p class="label">4粒でハイドロシェル原料1g</p>
-        </div>
-        <div class="usage-spec-item">
-          <p class="num en">120<span class="unit">粒</span></p>
-          <p class="label">1袋あたり</p>
-        </div>
-        <div class="usage-spec-item">
-          <p class="num en">30<span class="unit">〜60日分</span></p>
-          <p class="label">目安日数</p>
-        </div>
-      </div>
-
-      <div class="usage-note fade-up">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <p>本品は栄養補助食品です。医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── 製品情報 ─── -->
-  <section class="section" id="product">
-    <div class="container">
-      <p class="section-label en fade-up">Product</p>
-      <h2 class="section-title fade-up">製品情報</h2>
-
-      <table class="product-table fade-up">
-        <tr><th>商品名</th><td>ハイドロシェルデイリー</td></tr>
-        <tr><th>名称</th><td>ホタテ貝殻焼成カルシウム含有食品</td></tr>
-        <tr><th>内容量</th><td>120粒（1日2〜4粒目安 / 約30〜60日分）</td></tr>
-        <tr><th>主要原料</th><td>ハイドロシェル原料 250mg / 1カプセル</td></tr>
-        <tr><th>原材料名</th><td>ホタテ貝殻焼成カルシウム、マイクロクラスター（クエン酸カリウム、炭酸カリウム、微粒酸化ケイ素、硫酸マグネシウム）/ HPMC（カプセル）</td></tr>
-        <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
-        <tr><th>原料製造元</th><td>株式会社ardesign（東京都港区）</td></tr>
-        <tr><th>お召し上がり方</th><td>1日2〜4粒を目安に、水またはぬるま湯でお召し上がりください</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- ─── 購入 ─── -->
-  <section class="section purchase-bg section--center" id="purchase">
-    <div class="container">
-      <p class="section-label en fade-up">Purchase</p>
-      <h2 class="section-title fade-up">ご購入</h2>
-      <p class="section-desc fade-up">ハイドロシェルデイリーを、まずは初回価格でお試しください。</p>
-
-      <div class="pricing-cards">
-        <div class="pricing-card pricing-card--featured fade-up">
-          <div class="pricing-badge">初回限定</div>
-          <p class="pricing-label">はじめての方へ</p>
-          <p class="pricing-price"><span class="yen">&yen;</span>5,980</p>
-          <p class="pricing-tax">税込 / 送料無料</p>
-          <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
-          <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で試す</button>
-        </div>
-        <div class="pricing-card fade-up">
-          <p class="pricing-label">2回目以降のご購入</p>
-          <p class="pricing-price"><span class="yen">&yen;</span>9,800</p>
-          <p class="pricing-tax">税込 / 送料無料</p>
-          <p class="pricing-detail">120粒入り（約30〜60日分）</p>
-          <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
-        </div>
-      </div>
-
-      <p class="pricing-note fade-up" style="margin-bottom:12px;"><strong style="color:var(--primary-dark);">入荷予定日: 2026年5月18日</strong><br>ご予約いただいた方から順次発送いたします。</p>
-      <p class="pricing-note fade-up">お支払いはクレジットカード決済（Stripe）をご利用いただけます。</p>
-    </div>
-  </section>
-
-  <!-- ─── FAQ ─── -->
-  <section class="section section--off" id="faq">
-    <div class="container section--center">
-      <p class="section-label en fade-up">FAQ</p>
-      <h2 class="section-title fade-up">よくあるご質問</h2>
-
-      <div class="faq-list">
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            ハイドロシェルとは何ですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルは、北海道産ホタテ貝殻を独自の加工技術で処理した水素発生原料です。2013年から国内で開発・供給されている素材で、ハイドロシェルデイリーの主要原料として使用しています。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            1日何粒飲めばいいですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">1日2〜4粒を目安にお召し上がりください。1カプセルあたりハイドロシェル原料250mg配合で、4粒で原料1gを摂取できる設計です。まずは2粒から始め、ご自身のペースで調整してください。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            1袋で何日分ですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">1袋120粒入りです。1日2粒なら約60日分、1日4粒なら約30日分となります。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            いつ飲むのがいいですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            薬と一緒に飲んでも大丈夫ですか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</div></div>
-        </div>
-
-        <div class="faq-item fade-up">
-          <button class="faq-q">
-            返品・交換はできますか？
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">商品到着後7日以内であれば、未開封に限り返品を承ります。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせは support@jerrygo.jp までご連絡ください。</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA Band 3 ─── -->
-  <div class="cta-band">
-    <p>ハイドロシェル原料配合 / 初回限定 <strong>&yen;5,980</strong>（税込）</p>
-    <a href="#purchase" class="btn btn--primary">
-      初回価格で試す
-      <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-    </a>
+  <!-- ─── Floating CTA (Mobile) ─── -->
+  <div class="float-cta" id="floatCta">
+    <button class="float-cta-btn" onclick="handleCheckout('first')">初回限定 ¥5,980 で試す</button>
   </div>
-
-  <!-- ─── Footer ─── -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h4 class="en">HydroShell Daily</h4>
-          <p>独自原料「ハイドロシェル」を配合した水素サプリメント。<br>北海道産ホタテ貝殻由来・国産原料使用。<br>お問い合わせ: support@jerrygo.jp</p>
-        </div>
-        <div>
-          <h4>製品について</h4>
-          <p>
-            ハイドロシェルデイリーは、ハイドロシェル原料を1カプセルあたり250mg配合した栄養補助食品です。<br>
-            本品は食品であり、医薬品ではありません。
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-legal" id="legal-section">
-        <button class="legal-toggle" onclick="toggleLegal(this)">
-          特定商取引法に基づく表記・プライバシーポリシー
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="legal-content" id="legal-content">
-          <div class="legal-content-inner">
-            <h5>特定商取引法に基づく表記</h5>
-            <p>
-              販売業者: 株式会社ardesign<br>
-              運営責任者: 川野 豪大<br>
-              所在地: 〒105-0013 東京都港区浜松町2丁目2-15 浜松町ダイヤビル 202号室<br>
-              電話番号: 03-6841-0355<br>
-              メールアドレス: support@jerrygo.jp<br>
-              販売URL: https://jerrygo.jp/<br>
-              販売価格: 初回 5,980円（税込）/ 通常 9,800円（税込）<br>
-              商品代金以外の必要料金: 送料無料<br>
-              お支払方法: クレジットカード決済（Stripe）<br>
-              お支払時期: ご注文時にお支払い<br>
-              商品の引渡時期: 入荷予定日 2026年5月18日以降、ご予約順に3〜5営業日以内に発送<br>
-              返品・キャンセル: 商品到着後7日以内、未開封に限り返品可。お客様都合の返品の場合、返送料はお客様負担。商品に不備があった場合は送料当社負担にて交換いたします。ご注文後のキャンセルは発送前に限りお受けいたします。
-            </p>
-
-            <h5>プライバシーポリシー</h5>
-            <p>
-              当サイト（jerrygo.jp）は、株式会社ardesignが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、support@jerrygo.jp までご連絡ください。
-            </p>
-
-            <h5>利用規約</h5>
-            <p>
-              本サイトのご利用にあたっては、以下の事項をご了承ください。本製品は栄養補助食品であり、医薬品ではありません。効果効能を保証するものではありません。掲載情報の正確性には万全を期しておりますが、内容の変更が生じる場合があります。商品画像はイメージであり、実際の商品と異なる場合があります。
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 HydroShell Daily. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 
   <script>
-    // Header scroll
+    // Header scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
+      header.classList.toggle('header--scrolled', window.scrollY > 60);
     });
 
-    // Fade-up observer
+    // Reveal on scroll
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1204,35 +540,20 @@
           obs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // FAQ accordion
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const ans = item.querySelector('.faq-a');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(o => {
-          o.classList.remove('open');
-          o.querySelector('.faq-a').style.maxHeight = '0';
-        });
-        if (!isOpen) {
-          item.classList.add('open');
-          ans.style.maxHeight = ans.scrollHeight + 'px';
-        }
-      });
-    });
+    // Show floating CTA after scrolling past hero
+    const floatCta = document.getElementById('floatCta');
+    const heroEnd = document.querySelector('.section-intro');
+    const floatObs = new IntersectionObserver(([e]) => {
+      if (window.innerWidth <= 768) {
+        floatCta.style.display = e.isIntersecting || e.boundingClientRect.top < 0 ? 'block' : 'none';
+      }
+    }, { threshold: 0 });
+    floatObs.observe(heroEnd);
 
-    // Legal toggle
-    function toggleLegal(btn) {
-      const el = document.getElementById('legal-content');
-      const isOpen = btn.classList.contains('open');
-      btn.classList.toggle('open');
-      el.style.maxHeight = isOpen ? '0' : el.scrollHeight + 'px';
-    }
-
-    // Stripe Checkout
+    // Stripe Checkout (preserved from original)
     async function handleCheckout(priceType) {
       try {
         const res = await fetch('/api/checkout', {
