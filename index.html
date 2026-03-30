@@ -439,6 +439,30 @@
       line-height: 1.7;
     }
 
+    /* ─── Why HydroShell ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .why-card {
+      background: var(--primary-pale);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+    }
+    .why-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
     /* ─── Usage ─── */
     .usage-grid {
       display: grid;
@@ -790,7 +814,8 @@
       .section-title { font-size: 1.35rem; }
       .recommend-grid,
       .feature-grid,
-      .usage-grid { grid-template-columns: 1fr; }
+      .usage-grid,
+      .why-grid { grid-template-columns: 1fr; }
       .ingredient-grid { grid-template-columns: 1fr; gap: 28px; }
       .pricing-cards { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -826,7 +851,7 @@
       <div class="hero-content">
         <div class="hero-badge en">HydroShell Daily</div>
         <h1>水素の習慣を、<br>毎日に。</h1>
-        <p class="hero-sub">独自原料「ハイドロシェル」配合。<br>北海道産ホタテ貝殻由来の国産水素原料を、1日2〜4粒で。</p>
+        <p class="hero-sub">独自原料「ハイドロシェル」配合。<br>北海道産ホタテ貝殻由来のハイドロシェル原料を、1日2〜4粒で。</p>
         <p class="hero-price">初回限定 <strong>&yen;5,980</strong>（税込）</p>
         <a href="#purchase" class="btn btn--white">
           初回価格で試す
@@ -846,12 +871,12 @@
           <p class="section-desc">ハイドロシェルデイリーの核となる独自原料。<br>北海道産ホタテ貝殻を独自技術で加工した、国産の水素発生原料です。</p>
 
           <div class="ingredient-item">
-            <h4>北海道産ホタテ貝殻由来</h4>
-            <p>原料のベースには、北海道産のホタテ貝殻を使用。独自の温度管理による焼成加工で、水素発生に適した状態に仕上げています。</p>
+            <h4>北海道産ホタテ貝殻由来のハイドロシェル</h4>
+            <p>ハイドロシェルのベースには、北海道産のホタテ貝殻を使用。独自の温度管理による焼成加工で、水素発生に適した状態に仕上げています。</p>
           </div>
           <div class="ingredient-item">
-            <h4>独自の加工技術</h4>
-            <p>高温焼成に頼らない独自の加工条件を採用。ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない原料設計です。</p>
+            <h4>ハイドロシェル独自の加工技術</h4>
+            <p>ハイドロシェルは高温焼成に頼らない独自の加工条件を採用。ホタテ貝殻焼成とマイクロクラスターを組み合わせた、他にはない原料設計です。</p>
           </div>
           <div class="ingredient-item">
             <h4>2013年からの国産原料</h4>
@@ -871,8 +896,8 @@
             </div>
           </div>
           <div class="ingredient-spec">
-            <h4>配合量</h4>
-            <p>1カプセルあたりハイドロシェル原料250mg配合。4粒で原料1gを摂取できる設計です。</p>
+            <h4>ハイドロシェルの配合量</h4>
+            <p>1カプセルあたりハイドロシェル原料250mg配合。4粒でハイドロシェル原料1gを摂取できる設計です。</p>
           </div>
         </div>
       </div>
@@ -903,13 +928,13 @@
         </div>
         <div class="feature-card fade-up">
           <p class="feature-num en">02</p>
-          <h3>1カプセル250mg配合</h3>
-          <p>1カプセルあたりハイドロシェル原料を250mg配合。4粒で原料1gを摂取できます。</p>
+          <h3>ハイドロシェル原料1カプセル250mg配合</h3>
+          <p>1カプセルあたりハイドロシェル原料を250mg配合。4粒でハイドロシェル原料1gを摂取できます。</p>
         </div>
         <div class="feature-card fade-up">
           <p class="feature-num en">03</p>
-          <h3>1日2〜4粒、水で飲むだけ</h3>
-          <p>120粒入りで約30〜60日分。特別な準備は不要。毎日の習慣に無理なく取り入れられます。</p>
+          <h3>ハイドロシェルを1日2〜4粒、水で飲むだけ</h3>
+          <p>ハイドロシェル原料120粒入りで約30〜60日分。特別な準備は不要。毎日の習慣に無理なく取り入れられます。</p>
         </div>
       </div>
     </div>
@@ -928,8 +953,8 @@
             <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
           </div>
           <div>
-            <h3>水素サプリメントに興味がある</h3>
-            <p>水素サプリメントを試してみたいけれど、どれを選べばいいか迷っている方に。</p>
+            <h3>ハイドロシェル配合の水素サプリメントに興味がある</h3>
+            <p>ハイドロシェル原料を使った水素サプリメントを試してみたいけれど、どれを選べばいいか迷っている方に。</p>
           </div>
         </div>
         <div class="recommend-card fade-up">
@@ -946,9 +971,37 @@
             <svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
           </div>
           <div>
-            <h3>毎日続けやすいものがいい</h3>
-            <p>1日2〜4粒を水で飲むだけ。手軽に続けられるシンプルな設計です。</p>
+            <h3>ハイドロシェルを毎日続けたい</h3>
+            <p>ハイドロシェル原料を1日2〜4粒、水で飲むだけ。手軽に続けられるシンプルな設計です。</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ハイドロシェルが選ばれる理由 ─── -->
+  <section class="section section--off">
+    <div class="container section--center">
+      <p class="section-label en fade-up">Why HydroShell</p>
+      <h2 class="section-title fade-up">ハイドロシェルが選ばれる理由</h2>
+      <p class="section-desc fade-up">ハイドロシェルは、数ある水素発生原料の中でも独自のポジションを持つ国産原料です。</p>
+
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <h3>10年以上の供給実績</h3>
+          <p>ハイドロシェルは2013年から開発・供給が続けられている水素発生原料です。長年にわたる安定供給の実績が、ハイドロシェルの信頼性を支えています。</p>
+        </div>
+        <div class="why-card fade-up">
+          <h3>ハイドロシェル独自の原料設計</h3>
+          <p>ハイドロシェルは、ホタテ貝殻焼成とマイクロクラスターを組み合わせた独自の原料設計。他の水素原料とは異なるハイドロシェルならではのアプローチです。</p>
+        </div>
+        <div class="why-card fade-up">
+          <h3>北海道産の天然素材</h3>
+          <p>ハイドロシェルのベースは北海道産ホタテ貝殻。自然由来の国産素材を使用しているため、ハイドロシェルは原料の出どころが明確です。</p>
+        </div>
+        <div class="why-card fade-up">
+          <h3>ハイドロシェルの品質管理</h3>
+          <p>ハイドロシェル原料は国内で製造・管理されています。原料供給元による一貫した品質管理体制のもとで、ハイドロシェルは製造されています。</p>
         </div>
       </div>
     </div>
@@ -956,7 +1009,7 @@
 
   <!-- ─── CTA Band 2 ─── -->
   <div class="cta-band">
-    <p>120粒入り / 1日2〜4粒目安 / 約30〜60日分</p>
+    <p>ハイドロシェル原料120粒入り / 1日2〜4粒目安 / 約30〜60日分</p>
     <a href="#purchase" class="btn btn--primary">
       ハイドロシェルデイリーを試す
       <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
@@ -968,23 +1021,23 @@
     <div class="container section--center">
       <p class="section-label en fade-up">How to Use</p>
       <h2 class="section-title fade-up">飲み方</h2>
-      <p class="section-desc fade-up">毎日の習慣に取り入れやすい、シンプルな飲み方です。</p>
+      <p class="section-desc fade-up">ハイドロシェルを毎日の習慣に取り入れやすい、シンプルな飲み方です。</p>
 
       <div class="usage-grid">
         <div class="usage-step fade-up">
           <div class="usage-num en">1</div>
-          <h3>1日2〜4粒を目安に</h3>
-          <p>体調やライフスタイルに合わせて、1日2〜4粒をお召し上がりください。</p>
+          <h3>ハイドロシェルを1日2〜4粒</h3>
+          <p>体調やライフスタイルに合わせて、ハイドロシェル原料配合カプセルを1日2〜4粒お召し上がりください。</p>
         </div>
         <div class="usage-step fade-up">
           <div class="usage-num en">2</div>
           <h3>水またはぬるま湯で</h3>
-          <p>カプセルをそのまま水またはぬるま湯と一緒にお召し上がりください。</p>
+          <p>ハイドロシェル配合カプセルをそのまま水またはぬるま湯と一緒にお召し上がりください。</p>
         </div>
         <div class="usage-step fade-up">
           <div class="usage-num en">3</div>
-          <h3>毎日続けることが大切</h3>
-          <p>習慣として毎日続けることをおすすめしています。朝食時など、決まったタイミングが続けやすいです。</p>
+          <h3>ハイドロシェルを毎日続ける</h3>
+          <p>ハイドロシェルは習慣として毎日続けることをおすすめしています。朝食時など、決まったタイミングが続けやすいです。</p>
         </div>
       </div>
 
@@ -1009,7 +1062,7 @@
 
       <div class="usage-note fade-up">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <p>本品は栄養補助食品です。医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
+        <p>ハイドロシェルデイリーは栄養補助食品です。医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
       </div>
     </div>
   </section>
@@ -1043,18 +1096,18 @@
       <div class="pricing-cards">
         <div class="pricing-card pricing-card--featured fade-up">
           <div class="pricing-badge">初回限定</div>
-          <p class="pricing-label">はじめての方へ</p>
+          <p class="pricing-label">はじめてハイドロシェルを試す方へ</p>
           <p class="pricing-price"><span class="yen">&yen;</span>5,980</p>
           <p class="pricing-tax">税込 / 送料無料</p>
-          <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
-          <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で試す</button>
+          <p class="pricing-detail">ハイドロシェル原料120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
+          <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">ハイドロシェルを初回価格で試す</button>
         </div>
         <div class="pricing-card fade-up">
-          <p class="pricing-label">2回目以降のご購入</p>
+          <p class="pricing-label">ハイドロシェルデイリー 2回目以降</p>
           <p class="pricing-price"><span class="yen">&yen;</span>9,800</p>
           <p class="pricing-tax">税込 / 送料無料</p>
-          <p class="pricing-detail">120粒入り（約30〜60日分）</p>
-          <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
+          <p class="pricing-detail">ハイドロシェル原料120粒入り（約30〜60日分）</p>
+          <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">ハイドロシェルデイリーを購入する</button>
         </div>
       </div>
 
@@ -1080,6 +1133,22 @@
 
         <div class="faq-item fade-up">
           <button class="faq-q">
+            ハイドロシェルは他の水素原料と何が違うのですか？
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルは、ホタテ貝殻焼成とマイクロクラスターを組み合わせた独自の原料設計が特長です。一般的な水素発生原料とは異なり、ハイドロシェル独自の加工技術で製造されています。2013年から国内で供給が続くハイドロシェルは、長年の実績を持つ国産水素発生原料です。</div></div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-q">
+            ハイドロシェルの原料はどこで作られていますか？
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルは国内で製造されている国産原料です。ハイドロシェルのベースとなるホタテ貝殻は北海道産を使用しており、ハイドロシェル原料の供給元である株式会社ardesignが開発・製造を行っています。</div></div>
+        </div>
+
+        <div class="faq-item fade-up">
+          <button class="faq-q">
             1日何粒飲めばいいですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
@@ -1091,7 +1160,7 @@
             1袋で何日分ですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">1袋120粒入りです。1日2粒なら約60日分、1日4粒なら約30日分となります。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルデイリーは1袋120粒入りです。ハイドロシェル原料を1日2粒なら約60日分、1日4粒なら約30日分となります。</div></div>
         </div>
 
         <div class="faq-item fade-up">
@@ -1099,7 +1168,7 @@
             いつ飲むのがいいですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルデイリーは食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングでハイドロシェルを飲まれると習慣化しやすくなります。</div></div>
         </div>
 
         <div class="faq-item fade-up">
@@ -1107,7 +1176,7 @@
             薬と一緒に飲んでも大丈夫ですか？
             <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</div></div>
+          <div class="faq-a"><div class="faq-a-inner">ハイドロシェルデイリーは食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上ハイドロシェルデイリーをお召し上がりください。</div></div>
         </div>
 
         <div class="faq-item fade-up">
