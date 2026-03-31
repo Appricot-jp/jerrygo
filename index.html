@@ -5,28 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ハイドロシェルデイリー | 水素の習慣を、毎日に。</title>
 <meta name="description" content="独自原料「ハイドロシェル」を使用した水素サプリメント。北海道産ホタテ貝殻由来の国産原料を1カプセルあたり250mg配合。120粒入り、1日2〜4粒。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F0CB4A;
+    --gold-pale: #FFFCF3;
+    --gold-dark: #7A5D0E;
+    --gold-deep: #4A3A1A;
+    --blue: #1B6B93;
+    --blue-light: #5A9BB5;
+    --blue-pale: #EAF3F7;
+    --blue-dark: #0E4A66;
+    --teal: #2AABB3;
+    --teal-light: #D4F1F3;
+    --text: #222;
+    --text-light: #555;
+    --text-muted: #999;
+    --bg: #fff;
+    --bg-off: #F6F9FB;
+    --border: #E2E8EE;
+    --radius: 10px;
+    --shadow: 0 2px 16px rgba(0,0,0,0.05);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
     font-family: 'Noto Sans JP', sans-serif;
-    color: #333;
-    background: #fff;
-    line-height: 1.8;
-    overflow-x: hidden;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.85;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+
+  .en { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
   img { max-width: 100%; height: auto; display: block; }
-  a { color: #D4A017; text-decoration: none; }
+  a { color: var(--gold); text-decoration: none; }
 
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
   }
 
-  /* ===== FV SECTION (そのまま) ===== */
+  /* ===== FV (ローカル版そのまま) ===== */
   .fv {
     position: relative;
     width: 100%;
@@ -56,10 +83,45 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 60px 5%;
+    padding: 60px 5% 36px;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+  }
+  .fixed-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 16px;
+    text-align: center;
+    z-index: 100;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+  .fixed-cta-bar.visible {
+    transform: translateY(0);
+  }
+  .fv-cta-btn {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 14px 36px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 60px;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 16px rgba(212,160,23,0.35);
+    transition: background 0.3s, transform 0.2s;
+  }
+  .fv-cta-btn:hover {
+    background: var(--gold-dark);
+    transform: translateY(-2px);
   }
   .fv-side {
     text-align: center;
@@ -85,18 +147,18 @@
   }
   .fv-badge {
     position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.95);
-    color: #333;
-    padding: 10px 32px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26,60,80,0.75);
+    color: #fff;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-align: center;
     z-index: 2;
+    backdrop-filter: blur(6px);
   }
   .fv-headline {
     position: absolute;
@@ -121,332 +183,405 @@
   }
 
   /* ===== SECTION COMMON ===== */
-  .sec {
-    padding: 72px 0;
+  .section { padding: 72px 0; }
+  .section--off { background: var(--bg-off); }
+  .section--center { text-align: center; }
+  .section--center .section-desc { margin-left: auto; margin-right: auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
   }
-  .sec--alt {
-    background: #FAFAF7;
+  .section-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    color: var(--blue-dark);
   }
-  .sec-head {
-    text-align: center;
+  .section-desc {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    max-width: 600px;
+    line-height: 1.85;
     margin-bottom: 40px;
   }
-  .sec-en {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #C9960F;
-    margin-bottom: 4px;
-  }
-  .sec-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #222;
-    line-height: 1.5;
-  }
-  .sec-lead {
-    font-size: 0.88rem;
-    color: #888;
-    margin-top: 8px;
-  }
 
-  /* ===== ABOUT ===== */
-  .about-body {
+  /* ===== ABOUT (jerrygo.jp構成) ===== */
+  .ingredient-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
     align-items: start;
   }
-  .about-text p {
-    font-size: 0.9rem;
-    color: #555;
+  .ingredient-item {
     margin-bottom: 20px;
   }
-  .about-points {
-    display: flex;
-    gap: 24px;
-    margin-top: 24px;
+  .ingredient-item:last-child { margin-bottom: 0; }
+  .ingredient-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--blue-dark);
   }
-  .about-point {
-    text-align: center;
-    flex: 1;
+  .ingredient-item p {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.75;
   }
-  .about-point-num {
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #D4A017;
-    line-height: 1.2;
-  }
-  .about-point-num small {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #888;
-  }
-  .about-point-label {
-    font-size: 0.72rem;
-    color: #888;
-    margin-top: 2px;
-  }
-  .about-card {
+  .ingredient-card {
     background: #fff;
-    border: 1px solid #EDEDED;
-    border-radius: 10px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
   }
-  .about-card-accent {
-    height: 3px;
-    background: linear-gradient(90deg, #D4A017, #F0CB4A);
-  }
-  .about-card-body {
-    padding: 32px 24px;
+  .ingredient-card-body {
+    padding: 36px 28px;
     text-align: center;
   }
-  .about-card-label {
-    font-size: 0.68rem;
-    color: #aaa;
-    letter-spacing: 0.12em;
+  .ingredient-card-body .label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .ingredient-formula {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    line-height: 1.5;
     margin-bottom: 14px;
   }
-  .about-card-formula {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #7A5D0E;
-    margin-bottom: 10px;
+  .ingredient-formula .x {
+    color: var(--teal);
+    margin: 0 4px;
   }
-  .about-card-formula .x { color: #D4A017; margin: 0 6px; }
-  .about-card-note {
-    font-size: 0.8rem;
-    color: #888;
-    line-height: 1.6;
-  }
-  .about-card-spec {
-    background: #4A3A1A;
-    color: rgba(255,255,255,0.85);
-    padding: 18px 24px;
-    font-size: 0.8rem;
-    line-height: 1.7;
-  }
-  .about-card-spec strong {
-    color: #fff;
+  .ingredient-card-note {
     font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.7;
   }
 
   /* ===== FEATURES ===== */
-  .feat-grid {
+  .feature-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  .feat-card {
+  .feature-card {
     background: #fff;
-    border: 1px solid #EDEDED;
-    border-radius: 10px;
-    padding: 28px 22px;
-    transition: box-shadow 0.2s;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .feat-card:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  .feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
-  .feat-num {
-    font-size: 1.4rem;
+  .feature-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #F0E4C4;
     line-height: 1;
     margin-bottom: 14px;
   }
-  .feat-card h3 {
-    font-size: 0.95rem;
+  .feature-card h3 {
+    font-size: 0.98rem;
     font-weight: 600;
-    color: #333;
     margin-bottom: 8px;
+    color: var(--blue-dark);
   }
-  .feat-card p {
+  .feature-card p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+
+  /* ===== RECOMMEND ===== */
+  .recommend-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .recommend-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .recommend-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--blue-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .recommend-icon svg { width: 22px; height: 22px; fill: var(--blue); }
+  .recommend-card h3 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--blue-dark);
+  }
+  .recommend-card p {
     font-size: 0.82rem;
-    color: #777;
+    color: var(--text-light);
     line-height: 1.7;
+  }
+
+  /* ===== USAGE ===== */
+  .usage-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .usage-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .usage-image img {
+    width: auto;
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  .usage-text p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 2;
+  }
+  .usage-note {
+    margin-top: 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
+  .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ===== VOICE ===== */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .voice-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .voice-text {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .voice-attr {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .voice-note {
+    margin-top: 20px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
   }
 
   /* ===== PRODUCT TABLE ===== */
   .product-table {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #EDEDED;
-    border-radius: 8px;
+    background: #fff;
+    border-radius: var(--radius);
     overflow: hidden;
+    border: 1px solid var(--border);
     font-size: 0.85rem;
   }
   .product-table th,
   .product-table td {
-    padding: 13px 18px;
-    border-bottom: 1px solid #EDEDED;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
     text-align: left;
   }
   .product-table th {
-    background: #FFFCF3;
+    background: var(--blue-pale);
     font-weight: 600;
-    color: #7A5D0E;
-    width: 140px;
+    color: var(--blue-dark);
+    width: 150px;
   }
-  .product-table td { color: #555; }
+  .product-table td { color: var(--text-light); }
   .product-table tr:last-child th,
   .product-table tr:last-child td { border-bottom: none; }
 
   /* ===== PURCHASE ===== */
-  .purchase {
-    background: linear-gradient(180deg, #FFFCF3 0%, #fff 100%);
-    text-align: center;
+  .purchase-bg {
+    background: linear-gradient(180deg, var(--gold-pale) 0%, var(--bg) 100%);
   }
   .pricing-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    max-width: 600px;
+    gap: 24px;
+    max-width: 640px;
     margin: 0 auto;
   }
   .pricing-card {
     background: #fff;
-    border: 2px solid #EDEDED;
-    border-radius: 10px;
-    padding: 28px 20px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 22px;
     text-align: center;
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .pricing-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
-  .pricing-card--featured { border-color: #D4A017; }
+  .pricing-card--featured { border-color: var(--gold); }
   .pricing-badge {
     position: absolute;
-    top: -12px; left: 50%;
+    top: -13px; left: 50%;
     transform: translateX(-50%);
-    background: #D4A017;
+    background: var(--gold);
     color: #fff;
-    padding: 3px 16px;
+    padding: 4px 18px;
     border-radius: 20px;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 600;
     white-space: nowrap;
   }
   .pricing-label {
-    font-size: 0.78rem;
-    color: #aaa;
-    margin-bottom: 6px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
   }
   .pricing-price {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: 700;
-    color: #7A5D0E;
+    color: var(--blue-dark);
     line-height: 1.2;
     margin-bottom: 2px;
   }
-  .pricing-price .yen { font-size: 1rem; font-weight: 500; }
+  .pricing-price .yen { font-size: 1.1rem; font-weight: 500; }
   .pricing-tax {
     font-size: 0.72rem;
-    color: #aaa;
-    margin-bottom: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
   }
   .pricing-detail {
-    font-size: 0.78rem;
-    color: #777;
-    margin-bottom: 18px;
-    line-height: 1.5;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
   }
   .pricing-btn {
     display: block;
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     border: none;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
+    transition: transform 0.2s, box-shadow 0.2s;
     font-family: inherit;
   }
   .pricing-btn--primary {
-    background: #D4A017;
+    background: var(--gold);
     color: #fff;
-    box-shadow: 0 3px 12px rgba(212,160,23,0.3);
+    box-shadow: 0 4px 16px rgba(212,160,23,0.3);
   }
   .pricing-btn--primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 18px rgba(212,160,23,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,160,23,0.4);
   }
   .pricing-btn--secondary {
     background: #fff;
-    color: #D4A017;
-    border: 1.5px solid #D4A017;
+    color: var(--gold);
+    border: 2px solid var(--gold);
   }
   .pricing-btn--secondary:hover {
-    background: #FFFCF3;
-    transform: translateY(-1px);
+    background: var(--gold-pale);
+    transform: translateY(-2px);
   }
   .pricing-note {
     text-align: center;
-    margin-top: 18px;
-    font-size: 0.75rem;
-    color: #aaa;
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
   }
 
   /* ===== FAQ ===== */
-  .faq-list {
-    max-width: 680px;
-    margin: 0 auto;
-  }
+  .faq-list { max-width: 700px; margin: 0 auto; }
   .faq-item {
-    border-bottom: 1px solid #EDEDED;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
   }
-  .faq-item:last-child { border-bottom: none; }
   .faq-q {
     width: 100%;
-    padding: 18px 0;
-    font-size: 0.92rem;
-    font-weight: 500;
-    cursor: pointer;
+    padding: 18px 22px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 14px;
     background: none;
     border: none;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
     text-align: left;
     font-family: inherit;
-    color: #333;
     line-height: 1.6;
   }
-  .faq-q .q-mark {
-    color: #D4A017;
-    font-weight: 700;
-    margin-right: 10px;
-    flex-shrink: 0;
-  }
-  .faq-q .arrow {
-    font-size: 1.2rem;
-    color: #ccc;
+  .faq-q svg {
+    width: 18px; height: 18px;
+    fill: var(--text-muted);
     flex-shrink: 0;
     transition: transform 0.3s;
   }
-  .faq-item.open .faq-q .arrow {
-    transform: rotate(180deg);
-  }
+  .faq-item.open .faq-q svg { transform: rotate(180deg); }
   .faq-a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
-  .faq-a p {
-    font-size: 0.85rem;
-    color: #777;
-    line-height: 1.8;
-    padding: 0 0 18px 28px;
+  .faq-a-inner {
+    padding: 0 22px 18px;
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.85;
   }
 
   /* ===== CTA ===== */
   .cta {
-    background: #D4A017;
+    background: var(--gold);
     text-align: center;
     padding: 56px 20px;
     color: #fff;
@@ -465,8 +600,8 @@
     display: inline-block;
     padding: 14px 48px;
     background: #fff;
-    color: #D4A017;
-    border-radius: 6px;
+    color: var(--gold);
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 700;
     box-shadow: 0 4px 16px rgba(0,0,0,0.15);
@@ -481,84 +616,83 @@
   }
 
   /* ===== FOOTER ===== */
-  footer {
-    background: #2A2318;
-    color: rgba(255,255,255,0.55);
-    padding: 36px 20px 18px;
-    font-size: 0.78rem;
+  .footer {
+    background: var(--blue-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 44px 0 20px;
   }
-  .footer-inner {
-    max-width: 960px;
-    margin: 0 auto;
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    margin-bottom: 28px;
   }
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
-    margin-bottom: 24px;
-  }
-  .footer-col { flex: 1; }
-  footer h4 {
-    font-size: 0.82rem;
+  .footer h4 {
+    font-size: 0.85rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 8px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
   }
-  footer p { line-height: 1.75; }
-  footer a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
-  footer a:hover { color: #fff; }
+  .footer p { font-size: 0.8rem; line-height: 1.8; }
+  .footer a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+  .footer a:hover { color: #fff; }
 
-  .footer-legal {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 16px;
+  .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
+  .footer-legal-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .legal-sep {
+    color: rgba(255,255,255,0.25);
+    font-size: 0.72rem;
+    user-select: none;
   }
   .legal-toggle {
     background: none;
     border: none;
-    color: rgba(255,255,255,0.35);
-    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.72rem;
     cursor: pointer;
     font-family: inherit;
     padding: 4px 0;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    display: inline;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .legal-toggle:hover { color: rgba(255,255,255,0.6); }
-  .legal-toggle svg {
-    width: 13px; height: 13px; fill: currentColor;
-    transition: transform 0.3s;
-  }
-  .legal-toggle.open svg { transform: rotate(180deg); }
+  .legal-toggle:hover { color: rgba(255,255,255,0.65); }
+  .legal-toggle.open { color: rgba(255,255,255,0.7); }
   .legal-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
   }
   .legal-content-inner {
-    padding: 12px 0;
-    font-size: 0.7rem;
+    padding: 14px 0;
+    font-size: 0.72rem;
     line-height: 1.8;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.4);
   }
   .legal-content-inner h5 {
-    color: rgba(255,255,255,0.55);
-    font-size: 0.72rem;
-    margin: 12px 0 3px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.76rem;
+    margin: 14px 0 4px;
   }
   .legal-content-inner h5:first-child { margin-top: 0; }
-  .footer-copy {
+  .footer-bottom {
     text-align: center;
-    margin-top: 16px;
-    font-size: 0.68rem;
-    color: rgba(255,255,255,0.25);
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
   }
 
   /* ===== FADE ===== */
   .fade-up {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
   .fade-up.visible {
     opacity: 1;
@@ -570,28 +704,33 @@
     .fv-headline h1 { font-size: 1.6rem; }
     .fv-number { font-size: 3rem; }
     .fv-content { padding: 40px 3%; }
-    .sec { padding: 52px 0; }
-    .sec-title { font-size: 1.3rem; }
-    .about-body { grid-template-columns: 1fr; gap: 28px; }
-    .about-points { gap: 16px; }
-    .feat-grid { grid-template-columns: 1fr; }
+    .fv-cta-btn { font-size: 0.88rem; padding: 12px 28px; }
+    .section { padding: 52px 0; }
+    .section-title { font-size: 1.3rem; }
+    .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
+    .ingredient-card img { max-height: 200px; object-fit: cover; }
+    .feature-grid,
+    .recommend-grid,
+    .usage-layout { grid-template-columns: 1fr; gap: 24px; }
+    .usage-image img { max-height: 160px; }
+    .voice-grid { grid-template-columns: 1fr; }
     .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
-    .footer-top { flex-direction: column; gap: 20px; }
-    .product-table th { width: 100px; padding: 10px 12px; }
-    .product-table td { padding: 10px 12px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+    .product-table th { width: 110px; padding: 12px 14px; }
+    .product-table td { padding: 12px 14px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ===== FV (そのまま) ===== -->
+<!-- ===== FV (ローカル版) ===== -->
 <div class="fv">
   <img class="fv-bg" src="images/hero.jpg" alt="ハイドロシェルデイリー サプリメント">
   <div class="fv-overlay"></div>
-  <div class="fv-badge">HYDROSHELL 配合サプリメント</div>
+  <div class="fv-badge">国産原料ハイドロシェル配合</div>
   <div class="fv-headline">
-    <h1>あなたの毎日に、<br>水素のチカラを。</h1>
-    <p>ハイドロシェル配合 ─ 独自製法の水素サプリメント</p>
+    <h1>水素の習慣を、<br>毎日に。</h1>
+    <p>独自原料ハイドロシェル配合。毎日続けやすいカプセルタイプ。</p>
   </div>
   <div class="fv-content">
     <div class="fv-side">
@@ -606,41 +745,18 @@
 </div>
 
 <!-- ===== ABOUT ===== -->
-<section class="sec" id="about">
+<section class="section" id="about">
   <div class="container">
-    <div class="sec-head fade-up">
-      <p class="sec-en">About HydroShell</p>
-      <h2 class="sec-title">ハイドロシェルとは</h2>
-    </div>
-    <div class="about-body">
-      <div class="about-text fade-up">
-        <p>北海道産ホタテ貝殻を独自技術で加工した、国産の水素発生原料です。独自の温度管理による焼成加工と、マイクロクラスターを組み合わせた原料設計。2013年から10年以上にわたり供給が続けられています。</p>
-        <div class="about-points">
-          <div class="about-point">
-            <div class="about-point-num">2013<small>年〜</small></div>
-            <div class="about-point-label">供給実績</div>
-          </div>
-          <div class="about-point">
-            <div class="about-point-num">GMP</div>
-            <div class="about-point-label">認定工場</div>
-          </div>
-          <div class="about-point">
-            <div class="about-point-num">250<small>mg</small></div>
-            <div class="about-point-label">1粒あたり</div>
-          </div>
-        </div>
-      </div>
+    <div class="ingredient-grid">
       <div class="fade-up">
-        <div class="about-card">
-          <div class="about-card-accent"></div>
-          <div class="about-card-body">
-            <p class="about-card-label">HYDROSHELL TECHNOLOGY</p>
-            <p class="about-card-formula">ホタテ貝殻焼成<span class="x">&times;</span>マイクロクラスター</p>
-            <p class="about-card-note">独自の組み合わせで設計された水素発生原料</p>
-          </div>
-          <div class="about-card-spec">
-            <strong>配合量:</strong> 1カプセルあたり250mg配合。4粒で1g。
-          </div>
+        <p class="section-label en">About HydroShell</p>
+        <h2 class="section-title">ハイドロシェルとは</h2>
+        <p class="section-desc" style="margin-bottom:20px;">ハイドロシェルは、北海道産ホタテ貝殻を独自技術で加工した国産原料です。ハイドロシェルデイリーには、この原料を毎日続けやすい形で配合しています。</p>
+      </div>
+
+      <div class="fade-up">
+        <div class="ingredient-card">
+          <img src="images/hydroshell-material.jpg" alt="ハイドロシェル原料" style="width:100%;max-height:200px;object-fit:cover;display:block;">
         </div>
       </div>
     </div>
@@ -648,58 +764,138 @@
 </section>
 
 <!-- ===== FEATURES ===== -->
-<section class="sec sec--alt" id="features">
-  <div class="container">
-    <div class="sec-head fade-up">
-      <p class="sec-en">Features</p>
-      <h2 class="sec-title">製品の特長</h2>
-    </div>
-    <div class="feat-grid">
-      <div class="feat-card fade-up">
-        <div class="feat-num">01</div>
-        <h3>独自の国産原料</h3>
-        <p>北海道産ホタテ貝殻由来。2013年から供給が続く「ハイドロシェル」原料を使用しています。</p>
+<section class="section section--off" id="features">
+  <div class="container section--center">
+    <p class="section-label en fade-up">Features</p>
+    <h2 class="section-title fade-up">製品の特長</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card fade-up">
+        <p class="feature-num en">01</p>
+        <h3>国産原料を配合</h3>
+        <p>独自原料ハイドロシェルを配合しています。</p>
       </div>
-      <div class="feat-card fade-up">
-        <div class="feat-num">02</div>
-        <h3>1カプセル250mg配合</h3>
-        <p>ハイドロシェル原料を1粒あたり250mg配合。4粒で原料1gを摂取できます。</p>
+      <div class="feature-card fade-up">
+        <p class="feature-num en">02</p>
+        <h3>たっぷり配合量</h3>
+        <p>1カプセルあたりハイドロシェル原料250mg配合。4粒で原料1gを摂取できる設計です。</p>
       </div>
-      <div class="feat-card fade-up">
-        <div class="feat-num">03</div>
-        <h3>毎日、水で飲むだけ</h3>
-        <p>120粒入りで約30〜60日分。1日2〜4粒を目安に、朝食時などにどうぞ。</p>
+      <div class="feature-card fade-up">
+        <p class="feature-num en">03</p>
+        <h3>たっぷり120粒入り</h3>
+        <p>1袋で約30〜60日分。毎日の習慣に取り入れやすい内容量です。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PRODUCT ===== -->
-<section class="sec" id="product">
-  <div class="container">
-    <div class="sec-head fade-up">
-      <p class="sec-en">Product</p>
-      <h2 class="sec-title">製品情報</h2>
+<!-- ===== RECOMMEND ===== -->
+<section class="section" id="recommend">
+  <div class="container section--center">
+    <p class="section-label en fade-up">Recommend</p>
+    <h2 class="section-title fade-up">こんな方に選ばれています</h2>
+
+    <div class="recommend-grid">
+      <div class="recommend-card fade-up">
+        <div class="recommend-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+        </div>
+        <div>
+          <h3>水素習慣を始めたい方</h3>
+          <p>初めて水素サプリを取り入れたい方に。</p>
+        </div>
+      </div>
+      <div class="recommend-card fade-up">
+        <div class="recommend-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <div>
+          <h3>原料の出どころを重視したい方</h3>
+          <p>国産原料にこだわって選びたい方に。</p>
+        </div>
+      </div>
+      <div class="recommend-card fade-up">
+        <div class="recommend-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z"/></svg>
+        </div>
+        <div>
+          <h3>無理なく続けたい方</h3>
+          <p>毎日の習慣として無理なく続けたい方に。</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== USAGE ===== -->
+<section class="section section--off" id="usage">
+  <div class="container">
+    <p class="section-label en fade-up">How to Use</p>
+    <h2 class="section-title fade-up">飲み方</h2>
+    <div class="usage-layout fade-up">
+      <div class="usage-image">
+        <img src="images/usage-hand.png" alt="手のひらの上のサプリメント">
+      </div>
+      <div class="usage-text">
+        <p>1日2〜4粒を目安に、水またはぬるま湯でそのままお召し上がりください。体調に合わせて量を調整し、朝食時など毎日決まったタイミングで飲むと習慣化しやすくなります。</p>
+        <div class="usage-note">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <p>本品は栄養補助食品です。医薬品ではありません。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICE ===== -->
+<section class="section" id="voice">
+  <div class="container section--center">
+    <p class="section-label en fade-up">Voice</p>
+    <h2 class="section-title fade-up">お客様の声</h2>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <p class="voice-text">「水素サプリは気になっていたけど、どれを選べばいいか分からなかった。国産原料というのが決め手でした。カプセルも小さくて飲みやすいです。」</p>
+        <p class="voice-attr">— 40代女性・会社員</p>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">「朝のルーティンに2粒プラスするだけなので、手軽に続けられています。水素を毎日の習慣にしたかったので、ちょうどよかったです。」</p>
+        <p class="voice-attr">— 30代男性・フリーランス</p>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">「原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました。家族にもすすめています。」</p>
+        <p class="voice-attr">— 50代女性・主婦</p>
+      </div>
+    </div>
+    <p class="voice-note">※ 個人の感想であり、効果効能を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- ===== PRODUCT ===== -->
+<section class="section section--off" id="product">
+  <div class="container">
+    <p class="section-label en fade-up">Product</p>
+    <h2 class="section-title fade-up">製品情報</h2>
+
     <table class="product-table fade-up">
       <tr><th>商品名</th><td>ハイドロシェルデイリー</td></tr>
       <tr><th>名称</th><td>ホタテ貝殻焼成カルシウム含有食品</td></tr>
       <tr><th>内容量</th><td>120粒（1日2〜4粒目安 / 約30〜60日分）</td></tr>
       <tr><th>主要原料</th><td>ハイドロシェル原料 250mg / 1カプセル</td></tr>
-      <tr><th>原材料名</th><td>ホタテ貝殻焼成カルシウム、マイクロクラスター（クエン酸カリウム、炭酸カリウム、微粒酸化ケイ素、硫酸マグネシウム）/ HPMC（カプセル）</td></tr>
+      <tr><th>原材料名</th><td>ホタテ貝殻焼成カルシウム、クエン酸カリウム、炭酸カリウム、微粒酸化ケイ素、硫酸マグネシウム / HPMC（カプセル）</td></tr>
       <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
-      <tr><th>製造元</th><td>株式会社ardesign（東京都港区）</td></tr>
+      <tr><th>販売元</th><td>JerryGo</td></tr>
+      <tr><th>お召し上がり方</th><td>1日2〜4粒を目安に、水またはぬるま湯でお召し上がりください</td></tr>
     </table>
   </div>
 </section>
 
 <!-- ===== PURCHASE ===== -->
-<section class="sec purchase" id="purchase">
+<section class="section purchase-bg section--center" id="purchase">
   <div class="container">
-    <div class="sec-head fade-up">
-      <p class="sec-en">Purchase</p>
-      <h2 class="sec-title">ご購入</h2>
-    </div>
+    <p class="section-label en fade-up">Purchase</p>
+    <h2 class="section-title fade-up">ご購入</h2>
+    <p class="section-desc fade-up">まずは初回価格でお試しください。</p>
+
     <div class="pricing-cards">
       <div class="pricing-card pricing-card--featured fade-up">
         <div class="pricing-badge">初回限定</div>
@@ -710,120 +906,137 @@
         <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で試す</button>
       </div>
       <div class="pricing-card fade-up">
-        <p class="pricing-label">2回目以降</p>
+        <p class="pricing-label">2回目以降のご購入</p>
         <p class="pricing-price"><span class="yen">&yen;</span>9,800</p>
         <p class="pricing-tax">税込 / 送料無料</p>
         <p class="pricing-detail">120粒入り（約30〜60日分）</p>
-        <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入</button>
+        <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
       </div>
     </div>
-    <p class="pricing-note fade-up" style="margin-bottom:10px;"><strong style="color:#7A5D0E;">入荷予定日: 2026年5月18日</strong><br>ご予約順に順次発送いたします。</p>
+
+    <p class="pricing-note fade-up" style="margin-bottom:12px;"><strong style="color:var(--blue-dark);">入荷予定日: 2026年5月18日</strong><br>ご予約いただいた方から順次発送いたします。</p>
     <p class="pricing-note fade-up">お支払いはクレジットカード決済（Stripe）をご利用いただけます。</p>
   </div>
 </section>
 
 <!-- ===== FAQ ===== -->
-<section class="sec sec--alt" id="faq">
-  <div class="container">
-    <div class="sec-head fade-up">
-      <p class="sec-en">FAQ</p>
-      <h2 class="sec-title">よくあるご質問</h2>
-    </div>
+<section class="section section--off" id="faq">
+  <div class="container section--center">
+    <p class="section-label en fade-up">FAQ</p>
+    <h2 class="section-title fade-up">よくあるご質問</h2>
+
     <div class="faq-list">
       <div class="faq-item fade-up">
-        <button class="faq-q"><span class="q-mark">Q.</span>ハイドロシェルとは何ですか？<span class="arrow">&#9662;</span></button>
-        <div class="faq-a"><p>北海道産ホタテ貝殻を独自の加工技術で処理した水素発生原料です。2013年から国内で開発・供給されている素材で、本製品の主要原料として使用しています。</p></div>
+        <button class="faq-q">
+          いつ飲むのがいいですか？
+          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
       </div>
+
       <div class="faq-item fade-up">
-        <button class="faq-q"><span class="q-mark">Q.</span>1日何粒飲めばいいですか？<span class="arrow">&#9662;</span></button>
-        <div class="faq-a"><p>1日2〜4粒を目安にお召し上がりください。まずは2粒から始め、ご自身のペースで調整してください。</p></div>
+        <button class="faq-q">
+          薬と一緒に飲んでも大丈夫ですか？
+          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</div></div>
       </div>
+
       <div class="faq-item fade-up">
-        <button class="faq-q"><span class="q-mark">Q.</span>1袋で何日分ですか？<span class="arrow">&#9662;</span></button>
-        <div class="faq-a"><p>1袋120粒入りです。1日2粒なら約60日分、1日4粒なら約30日分となります。</p></div>
+        <button class="faq-q">
+          返品・交換はできますか？
+          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">お客様都合による返品・返金は原則としてお受けしておりません。商品に不備（破損・汚損・誤配送等）があった場合に限り、送料当社負担にて交換対応いたします。商品到着後7日以内に、お客様ご相談窓口までご連絡ください。</div></div>
       </div>
-      <div class="faq-item fade-up">
-        <button class="faq-q"><span class="q-mark">Q.</span>薬と一緒に飲んでも大丈夫ですか？<span class="arrow">&#9662;</span></button>
-        <div class="faq-a"><p>本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</p></div>
-      </div>
-      <div class="faq-item fade-up">
-        <button class="faq-q"><span class="q-mark">Q.</span>返品・交換はできますか？<span class="arrow">&#9662;</span></button>
-        <div class="faq-a"><p>商品到着後7日以内であれば、未開封に限り返品を承ります。商品に不備があった場合は送料当社負担にて交換いたします。</p></div>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
+<!-- ===== CTA (1本だけ) ===== -->
 <div class="cta">
-  <p class="cta-title">水素の習慣を、今日から。</p>
+  <p class="cta-title">まずはお試しください。</p>
   <p class="cta-sub">初回限定 &yen;5,980（税込・送料無料）</p>
   <button class="cta-btn" onclick="handleCheckout('first')">初回価格で試す</button>
 </div>
 
 <!-- ===== FOOTER ===== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-col">
-        <h4>HydroShell Daily</h4>
-        <p>独自原料「ハイドロシェル」配合の水素サプリメント。<br>北海道産ホタテ貝殻由来・国産原料使用。</p>
-      </div>
-      <div class="footer-col">
-        <h4>お問い合わせ</h4>
-        <p>support@jerrygo.jp<br>
-        <a href="https://ardesign-h2.com" target="_blank" rel="noopener">原料メーカー情報 &rarr;</a></p>
-      </div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <h4 class="en">JerryGo — HydroShell Daily</h4>
+      <p>独自原料ハイドロシェル配合の水素サプリメント。<br>本品は栄養補助食品であり、医薬品ではありません。</p>
     </div>
-    <div class="footer-legal" id="legal-section">
-      <button class="legal-toggle" onclick="toggleLegal(this)">
-        特定商取引法に基づく表記・プライバシーポリシー
-        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-      </button>
-      <div class="legal-content" id="legal-content">
+
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <button class="legal-toggle" onclick="togglePanel('tokushouhou', this)">特定商取引法に基づく表記</button>
+        <span class="legal-sep">|</span>
+        <button class="legal-toggle" onclick="togglePanel('privacy', this)">プライバシーポリシー</button>
+        <span class="legal-sep">|</span>
+        <button class="legal-toggle" onclick="togglePanel('contact', this)">お客様ご相談窓口</button>
+      </div>
+
+      <div class="legal-content" id="tokushouhou">
         <div class="legal-content-inner">
-          <h5>特定商取引法に基づく表記</h5>
           <p>
-            販売業者: 株式会社ardesign<br>
-            運営責任者: 川野 豪大<br>
-            所在地: 〒105-0013 東京都港区浜松町2丁目2-15 浜松町ダイヤビル 202号室<br>
-            電話番号: 03-6841-0355<br>
-            メールアドレス: support@jerrygo.jp<br>
+            販売業者: 有限会社ジェリーゴウ<br>
+            運営責任者: 石井 里美<br>
+            所在地: 〒248-0005 神奈川県鎌倉市雪ノ下三丁目10番23号<br>
+            お客様ご相談窓口: customer@ardesign-h2.com<br>
             販売URL: https://jerrygo.jp/<br>
             販売価格: 初回 5,980円（税込）/ 通常 9,800円（税込）<br>
             商品代金以外の必要料金: 送料無料<br>
             お支払方法: クレジットカード決済（Stripe）<br>
             お支払時期: ご注文時にお支払い<br>
             商品の引渡時期: 入荷予定日 2026年5月18日以降、ご予約順に3〜5営業日以内に発送<br>
-            返品・キャンセル: 商品到着後7日以内、未開封に限り返品可。お客様都合の返品の場合、返送料はお客様負担。商品に不備があった場合は送料当社負担にて交換。ご注文後のキャンセルは発送前に限りお受けいたします。
+            返品・キャンセル: お客様都合による返品・キャンセルは原則としてお受けしておりません。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせはお客様ご相談窓口までご連絡ください。
           </p>
-          <h5>プライバシーポリシー</h5>
+        </div>
+      </div>
+
+      <div class="legal-content" id="privacy">
+        <div class="legal-content-inner">
           <p>
-            当サイト（jerrygo.jp）は、株式会社ardesignが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、support@jerrygo.jp までご連絡ください。
+            当サイト（jerrygo.jp）は、JerryGoが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、お客様ご相談窓口までご連絡ください。
           </p>
-          <h5>利用規約</h5>
-          <p>
+          <p style="margin-top:10px;">
             本サイトのご利用にあたっては、以下の事項をご了承ください。本製品は栄養補助食品であり、医薬品ではありません。効果効能を保証するものではありません。掲載情報の正確性には万全を期しておりますが、内容の変更が生じる場合があります。商品画像はイメージであり、実際の商品と異なる場合があります。
           </p>
         </div>
       </div>
+
+      <div class="legal-content" id="contact">
+        <div class="legal-content-inner">
+          <p>お客様ご相談窓口: <a href="mailto:customer@ardesign-h2.com" style="color:rgba(255,255,255,0.8);">customer@ardesign-h2.com</a></p>
+        </div>
+      </div>
     </div>
-    <div class="footer-copy">
-      <p>&copy; 2026 HydroShell Daily. All rights reserved.</p>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 JerryGo. All rights reserved.</p>
     </div>
   </div>
 </footer>
 
+<div class="fixed-cta-bar" id="fixedCta">
+  <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格 &yen;5,980（税込）で試す</button>
+</div>
+
 <script>
-  // Fade observer
+  // Fade-up observer
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // FAQ
+  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -833,18 +1046,44 @@
         o.classList.remove('open');
         o.querySelector('.faq-a').style.maxHeight = '0';
       });
-      if (!isOpen) { item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
     });
   });
 
-  // Legal
-  function toggleLegal(btn) {
-    const el = document.getElementById('legal-content');
-    btn.classList.toggle('open');
-    el.style.maxHeight = btn.classList.contains('open') ? el.scrollHeight + 'px' : '0';
+  // Legal panel toggle (independent panels)
+  function togglePanel(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const isOpen = btn.classList.contains('open');
+    // Close all panels first
+    document.querySelectorAll('.legal-content').forEach(p => p.style.maxHeight = '0');
+    document.querySelectorAll('.footer-legal-links .legal-toggle').forEach(b => b.classList.remove('open'));
+    // Open clicked one if it was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      el.style.maxHeight = el.scrollHeight + 'px';
+    }
   }
 
-  // Stripe
+  // Fixed CTA bar — show after scrolling past FV, hide near footer purchase section
+  const fixedCta = document.getElementById('fixedCta');
+  const fvEl = document.querySelector('.fv');
+  const purchaseEl = document.getElementById('purchase');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const fvBottom = fvEl.offsetTop + fvEl.offsetHeight;
+    const purchaseTop = purchaseEl ? purchaseEl.offsetTop - window.innerHeight : Infinity;
+    if (scrollY > fvBottom && scrollY < purchaseTop) {
+      fixedCta.classList.add('visible');
+    } else {
+      fixedCta.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // Stripe Checkout
   async function handleCheckout(priceType) {
     try {
       const res = await fetch('/api/checkout', {
@@ -852,10 +1091,16 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ price_type: priceType })
       });
-      if (!res.ok) { const err = await res.json(); alert(err.error || '決済エラーが発生しました。'); return; }
+      if (!res.ok) {
+        const err = await res.json();
+        alert(err.error || '決済の処理中にエラーが発生しました。');
+        return;
+      }
       const data = await res.json();
       if (data.url) window.location.href = data.url;
-    } catch (e) { alert('ネットワークエラーが発生しました。時間をおいて再度お試しください。'); }
+    } catch (e) {
+      alert('ネットワークエラーが発生しました。時間をおいて再度お試しください。');
+    }
   }
 </script>
 
