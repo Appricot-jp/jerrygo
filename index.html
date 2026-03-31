@@ -10,26 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #B89B62;
-    --gold-light: #D4BC8A;
-    --gold-pale: #FCFBF8;
-    --gold-dark: #A98B52;
-    --gold-deep: #6B5A38;
-    --blue: #7A8A8E;
-    --blue-light: #A8B5B8;
-    --blue-pale: #DCE6E8;
-    --blue-dark: #2F3437;
-    --teal: #8A9A7E;
-    --teal-light: #E8EDE5;
-    --text: #2F3437;
-    --text-light: #6F767B;
-    --text-muted: #9AA0A5;
-    --bg: #FCFBF8;
-    --bg-off: #F3F0EA;
-    --border: #E5DED2;
+    --gold: #CCA215;
+    --gold-light: #EBC94A;
+    --gold-pale: #FFFCF2;
+    --gold-dark: #B08C10;
+    --gold-deep: #3E3008;
+    --blue: #1A6B8F;
+    --blue-light: #4D9DBD;
+    --blue-pale: #EDF5F9;
+    --blue-dark: #14405A;
+    --teal: #1A8B87;
+    --teal-light: #D0ECEB;
+    --text: #1C2B3A;
+    --text-light: #456070;
+    --text-muted: #8A96A0;
+    --bg: #FAFBFC;
+    --bg-off: #F1F5F7;
+    --border: #D8E0E6;
     --radius: 10px;
-    --shadow: 0 2px 16px rgba(0,0,0,0.04);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.06);
+    --shadow: 0 2px 16px rgba(0,0,0,0.05);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -116,7 +116,7 @@
     cursor: pointer;
     font-family: inherit;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 16px rgba(184,155,98,0.35);
+    box-shadow: 0 4px 16px rgba(204,162,21,0.35);
     transition: background 0.3s, transform 0.2s;
   }
   .fv-cta-btn:hover {
@@ -150,7 +150,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(47,52,55,0.75);
+    background: rgba(20,64,90,0.75);
     color: #fff;
     padding: 10px 16px;
     font-size: 0.78rem;
@@ -287,7 +287,7 @@
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #E5DED2;
+    color: #DDE3E8;
     line-height: 1;
     margin-bottom: 14px;
   }
@@ -313,10 +313,12 @@
     background: #fff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 26px 22px;
+    padding: 28px 22px;
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
   }
   .recommend-icon {
     width: 44px; height: 44px;
@@ -328,6 +330,7 @@
     flex-shrink: 0;
   }
   .recommend-icon svg { width: 22px; height: 22px; fill: var(--blue); }
+  .recommend-card > div { text-align: center; }
   .recommend-card h3 {
     font-size: 0.92rem;
     font-weight: 600;
@@ -512,11 +515,11 @@
   .pricing-btn--primary {
     background: var(--gold);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(184,155,98,0.3);
+    box-shadow: 0 4px 16px rgba(204,162,21,0.3);
   }
   .pricing-btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(184,155,98,0.4);
+    box-shadow: 0 6px 20px rgba(204,162,21,0.4);
   }
   .pricing-btn--secondary {
     background: #fff;
@@ -587,12 +590,12 @@
     color: #fff;
   }
   .cta-title {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 500;
     margin-bottom: 8px;
   }
   .cta-sub {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     margin-bottom: 24px;
     opacity: 0.9;
   }
@@ -709,8 +712,8 @@
     .section-title { font-size: 1.3rem; }
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
     .ingredient-card img { max-height: 200px; object-fit: cover; }
-    .feature-grid,
-    .recommend-grid,
+    .feature-grid { grid-template-columns: 1fr; gap: 24px; }
+    .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
     .voice-grid { grid-template-columns: 1fr; }
@@ -984,7 +987,7 @@
             販売業者: 有限会社ジェリーゴウ<br>
             運営責任者: 石井 里美<br>
             所在地: 〒248-0005 神奈川県鎌倉市雪ノ下三丁目10番23号<br>
-            お客様ご相談窓口: customer@ardesign-h2.com<br>
+            お客様ご相談窓口: support@jerrygo.jp<br>
             販売URL: https://jerrygo.jp/<br>
             販売価格: 初回 5,980円（税込）/ 通常 9,800円（税込）<br>
             商品代金以外の必要料金: 送料無料<br>
@@ -1009,7 +1012,7 @@
 
       <div class="legal-content" id="contact">
         <div class="legal-content-inner">
-          <p>お客様ご相談窓口: <a href="mailto:customer@ardesign-h2.com" style="color:rgba(255,255,255,0.8);">customer@ardesign-h2.com</a></p>
+          <p>お客様ご相談窓口: <a href="mailto:support@jerrygo.jp" style="color:rgba(255,255,255,0.8);">support@jerrygo.jp</a></p>
         </div>
       </div>
     </div>
