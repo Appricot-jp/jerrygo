@@ -325,7 +325,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-top: 8px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
   .evidence-block {
     background: #fff;
@@ -1175,6 +1177,7 @@
   <div class="container section--center">
     <p class="section-label en fade-up">Evidence</p>
     <h2 class="section-title fade-up">原料評価データ</h2>
+  </div>
   <div class="evidence-grid fade-up">
     <div class="evidence-block">
       <div class="evidence-hero">
@@ -1260,8 +1263,7 @@
       </div>
     </div>
   </div>
-    <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
-  </div>
+  <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;padding:0 24px;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
 </section>
 
 <!-- ===== RECOMMEND ===== -->
