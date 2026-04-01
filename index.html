@@ -233,43 +233,34 @@
     filter: drop-shadow(0 12px 40px rgba(0,0,0,0.15));
     border-radius: 8px;
   }
-  .capsule-highlight {
+  .capsule-specs {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--blue-dark);
-    border-radius: 14px;
-    padding: 20px 24px;
-    color: #fff;
+    gap: 0;
+    margin-top: 8px;
   }
-  .capsule-highlight-num {
+  .capsule-spec-item {
+    flex: 1;
+    padding: 16px 0;
+    border-top: 2px solid var(--border);
+    text-align: center;
+  }
+  .capsule-spec-item:first-child { border-top-color: var(--gold); }
+  .capsule-spec-num {
     font-family: 'Inter', sans-serif;
-    font-size: 2.8rem;
-    font-weight: 900;
-    line-height: 1;
-    flex-shrink: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--blue-dark);
+    line-height: 1.2;
   }
-  .capsule-highlight-num span {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
+  .capsule-spec-num span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
   }
-  .capsule-highlight-title {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .capsule-highlight-sub {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.6;
-  }
-  .capsule-highlight-img {
-    width: 72px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(255,255,255,0.15));
-    flex-shrink: 0;
+  .capsule-spec-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 2px;
   }
   .spec-row {
     display: flex;
@@ -1100,9 +1091,7 @@
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
     .product-capsule-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
     .pkg-img { max-width: 260px; }
-    .capsule-highlight { flex-direction: column; text-align: center; gap: 12px; }
-    .capsule-highlight-num { font-size: 2.2rem; }
-    .capsule-highlight-img { width: 48px; }
+    .capsule-spec-num { font-size: 1.4rem; }
     .evidence-grid { grid-template-columns: 1fr; }
     .evidence-hero { padding: 28px 20px; }
     .evidence-big-num { font-size: 2.6rem; }
@@ -1168,12 +1157,18 @@
         <p class="section-label en">HydroShell Daily</p>
         <h2 class="section-title" style="margin-bottom:10px;">ハイドロシェルデイリー</h2>
         <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:24px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
-        <div class="capsule-highlight">
-          <img src="images/capsule.png" alt="カプセル" class="capsule-highlight-img">
-          <p class="capsule-highlight-num en">250<span>mg</span></p>
-          <div>
-            <p class="capsule-highlight-title">1粒にたっぷり配合</p>
-            <p class="capsule-highlight-sub">1カプセルあたりハイドロシェル原料250mg / 4粒で原料1g / 120粒入り</p>
+        <div class="capsule-specs">
+          <div class="capsule-spec-item">
+            <p class="capsule-spec-num en">250<span>mg</span></p>
+            <p class="capsule-spec-label">1粒あたり</p>
+          </div>
+          <div class="capsule-spec-item">
+            <p class="capsule-spec-num en">120<span>粒</span></p>
+            <p class="capsule-spec-label">1袋あたり</p>
+          </div>
+          <div class="capsule-spec-item">
+            <p class="capsule-spec-num en">1<span>g</span></p>
+            <p class="capsule-spec-label">4粒で原料</p>
           </div>
         </div>
       </div>
