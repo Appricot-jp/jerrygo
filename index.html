@@ -585,9 +585,17 @@
   /* ===== CTA ===== */
   .cta {
     background: var(--gold);
-    text-align: center;
-    padding: 28px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 18px 20px;
     color: #fff;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  .cta-text {
+    text-align: left;
   }
   .cta-title {
     font-size: 0.95rem;
@@ -596,7 +604,6 @@
   }
   .cta-sub {
     font-size: 0.8rem;
-    margin-bottom: 14px;
     opacity: 0.9;
   }
   .cta-btn {
@@ -612,6 +619,8 @@
     border: none;
     cursor: pointer;
     font-family: inherit;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .cta-btn:hover {
     transform: translateY(-2px);
@@ -959,8 +968,10 @@
 
 <!-- ===== CTA (1本だけ) ===== -->
 <div class="cta">
-  <p class="cta-title">まずはお試しください。</p>
-  <p class="cta-sub">初回限定 &yen;5,980（税込・送料無料）</p>
+  <div class="cta-text">
+    <p class="cta-title">まずはお試しください。</p>
+    <p class="cta-sub">初回限定 &yen;5,980（税込・送料無料）</p>
+  </div>
   <button class="cta-btn" onclick="handleCheckout('first')">初回価格で試す</button>
 </div>
 
