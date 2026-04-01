@@ -211,7 +211,53 @@
     margin-bottom: 40px;
   }
 
-  /* ===== ABOUT (jerrygo.jp構成) ===== */
+  /* ===== PRODUCT SPEC ===== */
+  .product-spec-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .product-spec-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .product-spec-image img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.15));
+  }
+  .spec-row {
+    display: flex;
+    gap: 24px;
+  }
+  .spec-item {
+    flex: 1;
+    padding: 16px 0;
+    border-top: 2px solid var(--border);
+  }
+  .spec-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .spec-value span {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+  .spec-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== legacy (keep for other sections) ===== */
   .ingredient-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -721,6 +767,10 @@
     .section { padding: 52px 0; }
     .section-title { font-size: 1.3rem; }
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
+    .product-spec-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+    .product-spec-image img { max-height: 280px; }
+    .spec-row { flex-direction: column; gap: 0; }
+    .spec-item { padding: 14px 0; }
     .ingredient-card img { max-height: 200px; object-fit: cover; }
     .feature-grid { grid-template-columns: 1fr; gap: 24px; }
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -757,46 +807,33 @@
   </div>
 </div>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== PRODUCT SPEC ===== -->
 <section class="section" id="about">
   <div class="container">
-    <div class="ingredient-grid">
-      <div class="fade-up">
-        <p class="section-label en">About HydroShell</p>
-        <h2 class="section-title">ハイドロシェルとは</h2>
-        <p class="section-desc" style="margin-bottom:20px;">ハイドロシェルとは、ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料です。水素反応ポテンシャル23.02g、水素発生持続24hの原料評価データを取得しています。</p>
+    <div class="product-spec-grid fade-up">
+      <div class="product-spec-image">
+        <img src="images/package.png" alt="HydroShell Daily パッケージ">
       </div>
+      <div class="product-spec-info">
+        <p class="section-label en">HydroShell Daily</p>
+        <h2 class="section-title" style="margin-bottom:10px;">ハイドロシェルデイリー</h2>
+        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:28px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
 
-      <div class="fade-up">
-        <div class="ingredient-card">
-          <img src="images/hydroshell-material.jpg" alt="ハイドロシェル原料" style="width:100%;max-height:200px;object-fit:cover;display:block;">
+        <div class="spec-row">
+          <div class="spec-item">
+            <p class="spec-value en">250<span>mg</span> &times; 120<span>粒</span></p>
+            <p class="spec-label">1カプセルあたり配合量 / 4粒で原料1g</p>
+          </div>
+          <div class="spec-item">
+            <p class="spec-value en">23.02<span>g</span></p>
+            <p class="spec-label">水素反応ポテンシャル<br>飽和水素水換算時 約14.4L/g</p>
+          </div>
+          <div class="spec-item">
+            <p class="spec-value en">24<span>h</span></p>
+            <p class="spec-label">水素発生持続<br>30分〜24時間の段階測定で確認</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FEATURES ===== -->
-<section class="section section--off" id="features">
-  <div class="container section--center">
-    <p class="section-label en fade-up">Features</p>
-    <h2 class="section-title fade-up">製品の特長</h2>
-
-    <div class="feature-grid">
-      <div class="feature-card fade-up">
-        <p class="feature-num en">01</p>
-        <h3>250mg &times; 120粒</h3>
-        <p>1カプセルあたりハイドロシェル原料250mg配合。4粒で原料1g。120粒入りで約30〜60日分。</p>
-      </div>
-      <div class="feature-card fade-up">
-        <p class="feature-num en">02</p>
-        <h3>水素反応ポテンシャル 23.02g</h3>
-        <p>飽和水素水換算時 約14.4L/g。第三者機関による原料評価データ。※測定条件に基づく数値です。</p>
-      </div>
-      <div class="feature-card fade-up">
-        <p class="feature-num en">03</p>
-        <h3>水素発生持続 24h</h3>
-        <p>30分、1時間、4時間、16時間、24時間を含む段階測定で確認。※原料評価における測定データです。</p>
+        <p style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;">※数値は第三者機関による原料評価データです。測定条件に基づきます。</p>
       </div>
     </div>
   </div>
