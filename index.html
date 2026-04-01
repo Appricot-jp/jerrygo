@@ -430,95 +430,97 @@
   .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
   .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ===== VOICE ===== */
-  .voice-list {
-    max-width: 640px;
+  /* ===== VOICE (LINE chat style) ===== */
+  .voice-chat {
+    max-width: 520px;
     margin: 0 auto;
+    background: #8CAAB6;
+    border-radius: 16px;
+    padding: 28px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
   }
-  .voice-item {
+  .voice-chat::before {
+    content: 'HydroShell Daily — お客様の声';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: rgba(0,0,0,0.12);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 6px;
+  }
+  .voice-msg {
     display: flex;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: flex-end;
+    gap: 8px;
+    max-width: 85%;
   }
-  .voice-item--right {
+  .voice-msg--right {
+    align-self: flex-end;
     flex-direction: row-reverse;
   }
-  .voice-avatar {
-    width: 56px;
-    height: 56px;
+  .voice-msg--left {
+    align-self: flex-start;
+  }
+  .voice-icon {
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: var(--blue-pale);
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }
-  .voice-avatar svg {
-    width: 28px;
-    height: 28px;
+  .voice-icon svg {
+    width: 18px;
+    height: 18px;
     fill: var(--blue);
   }
-  .voice-bubble {
-    position: relative;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 24px;
-    max-width: 480px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .voice-bubble::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-  }
-  .voice-item:not(.voice-item--right) .voice-bubble::before {
-    left: -16px;
-    border-right-color: var(--border);
-  }
-  .voice-item:not(.voice-item--right) .voice-bubble::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: -14px;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    border-right-color: #fff;
-  }
-  .voice-item--right .voice-bubble::before {
-    right: -16px;
-    left: auto;
-    border-left-color: var(--border);
-    border-right-color: transparent;
-  }
-  .voice-item--right .voice-bubble::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    right: -14px;
-    left: auto;
-    width: 0;
-    height: 0;
-    border: 8px solid transparent;
-    border-left-color: #fff;
-  }
-  .voice-bubble-text {
-    font-size: 0.88rem;
-    line-height: 1.9;
+  .voice-balloon {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 0.84rem;
+    line-height: 1.75;
     color: var(--text);
-    margin-bottom: 8px;
+    position: relative;
   }
-  .voice-bubble-attr {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+  .voice-msg--left .voice-balloon {
+    background: #fff;
+    border-bottom-left-radius: 4px;
+  }
+  .voice-msg--right .voice-balloon {
+    background: #C1E8A0;
+    border-bottom-right-radius: 4px;
+  }
+  .voice-time {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.6);
+    align-self: flex-end;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .voice-name {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2px;
+    padding-left: 44px;
+  }
+  .voice-name--right {
     text-align: right;
+    padding-left: 0;
+    padding-right: 44px;
+  }
+  .voice-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
   .voice-note {
     margin-top: 24px;
@@ -843,10 +845,9 @@
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
-    .voice-item, .voice-item--right { gap: 12px; }
-    .voice-avatar { width: 44px; height: 44px; }
-    .voice-avatar svg { width: 22px; height: 22px; }
-    .voice-bubble { padding: 16px 18px; }
+    .voice-chat { padding: 24px 14px 16px; }
+    .voice-msg { max-width: 92%; }
+    .voice-balloon { font-size: 0.8rem; padding: 10px 14px; }
     .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
     .footer-grid { grid-template-columns: 1fr; gap: 20px; }
     .product-table th { width: 110px; padding: 12px 14px; }
@@ -972,34 +973,53 @@
   <div class="container section--center">
     <p class="section-label en fade-up">Voice</p>
     <h2 class="section-title fade-up">お客様の声</h2>
-    <div class="voice-list">
-      <div class="voice-item fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    <div class="voice-chat fade-up">
+
+      <div class="voice-group">
+        <p class="voice-name">Mさん・40代女性</p>
+        <div class="voice-msg voice-msg--left">
+          <div class="voice-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="voice-balloon">水素サプリは気になっていたけど、どれを選べばいいか分からなくて。国産原料というのが決め手でした</div>
+          <span class="voice-time">12:04</span>
         </div>
-        <div class="voice-bubble">
-          <p class="voice-bubble-text">水素サプリは気になっていたけど、どれを選べばいいか分からなかった。国産原料というのが決め手でした。カプセルも小さくて飲みやすいです。</p>
-          <p class="voice-bubble-attr">40代女性・会社員</p>
-        </div>
-      </div>
-      <div class="voice-item voice-item--right fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <div class="voice-bubble">
-          <p class="voice-bubble-text">朝のルーティンに2粒プラスするだけなので、手軽に続けられています。水素を毎日の習慣にしたかったので、ちょうどよかったです。</p>
-          <p class="voice-bubble-attr">30代男性・フリーランス</p>
+        <div class="voice-msg voice-msg--left" style="padding-left:44px;">
+          <div class="voice-balloon">カプセルも小さくて飲みやすいです</div>
+          <span class="voice-time">12:04</span>
         </div>
       </div>
-      <div class="voice-item fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+
+      <div class="voice-group">
+        <p class="voice-name voice-name--right">Tさん・30代男性</p>
+        <div class="voice-msg voice-msg--right">
+          <div class="voice-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="voice-balloon">朝のルーティンに2粒プラスするだけなので手軽に続けられてます</div>
+          <span class="voice-time">15:32</span>
         </div>
-        <div class="voice-bubble">
-          <p class="voice-bubble-text">原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました。家族にもすすめています。</p>
-          <p class="voice-bubble-attr">50代女性・主婦</p>
+        <div class="voice-msg voice-msg--right" style="padding-right:44px;">
+          <div class="voice-balloon">水素を毎日の習慣にしたかったのでちょうどよかった</div>
+          <span class="voice-time">15:33</span>
         </div>
       </div>
+
+      <div class="voice-group">
+        <p class="voice-name">Kさん・50代女性</p>
+        <div class="voice-msg voice-msg--left">
+          <div class="voice-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="voice-balloon">原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました</div>
+          <span class="voice-time">9:18</span>
+        </div>
+        <div class="voice-msg voice-msg--left" style="padding-left:44px;">
+          <div class="voice-balloon">家族にもすすめてます</div>
+          <span class="voice-time">9:18</span>
+        </div>
+      </div>
+
     </div>
     <p class="voice-note fade-up">※ 個人の感想であり、効果効能を保証するものではありません。</p>
   </div>
