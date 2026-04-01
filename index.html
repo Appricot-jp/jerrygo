@@ -668,26 +668,25 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: stretch;
+    align-items: start;
+    min-height: 300px;
   }
   .usage-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-off);
     border-radius: 16px;
     overflow: hidden;
+    height: 100%;
   }
   .usage-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    display: block;
   }
   .usage-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 8px 0;
   }
   .usage-text p {
     font-size: 0.95rem;
