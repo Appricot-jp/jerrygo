@@ -668,13 +668,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    align-items: start;
-    min-height: 300px;
+    align-items: stretch;
   }
   .usage-image {
     border-radius: 16px;
     overflow: hidden;
-    height: 100%;
   }
   .usage-image img {
     width: 100%;
@@ -686,7 +684,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 8px 0;
   }
   .usage-text p {
     font-size: 0.95rem;
@@ -1262,10 +1259,10 @@
 <!-- ===== USAGE ===== -->
 <section class="section section--off" id="usage">
   <div class="container">
-    <p class="section-label en fade-up">How to Use</p>
-    <h2 class="section-title fade-up">飲み方</h2>
     <div class="usage-layout fade-up">
       <div class="usage-text">
+        <p class="section-label en">How to Use</p>
+        <h2 class="section-title">飲み方</h2>
         <p>1日2〜4粒を目安に、水またはぬるま湯でそのままお召し上がりください。体調に合わせて量を調整し、朝食時など毎日決まったタイミングで飲むと習慣化しやすくなります。</p>
         <div class="usage-note">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
