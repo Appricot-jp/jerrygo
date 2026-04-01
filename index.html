@@ -430,100 +430,85 @@
   .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
   .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ===== VOICE (LINE chat style) ===== */
-  .voice-chat {
-    max-width: 520px;
+  /* ===== VOICE (blob style) ===== */
+  .voice-list {
+    max-width: 640px;
     margin: 0 auto;
-    background: #8CAAB6;
-    border-radius: 16px;
-    padding: 28px 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    position: relative;
-    overflow: hidden;
+    gap: 40px;
   }
-  .voice-chat::before {
-    content: 'HydroShell Daily — お客様の声';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    background: rgba(0,0,0,0.12);
-    color: rgba(255,255,255,0.85);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-align: center;
-    padding: 6px;
-  }
-  .voice-msg {
+  .voice-item {
     display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    max-width: 85%;
+    align-items: center;
+    gap: 0;
+    position: relative;
   }
-  .voice-msg--right {
-    align-self: flex-end;
+  .voice-item--right {
     flex-direction: row-reverse;
   }
-  .voice-msg--left {
-    align-self: flex-start;
+  .voice-blob {
+    position: relative;
+    padding: 32px 36px;
+    max-width: 420px;
+    z-index: 1;
   }
-  .voice-icon {
-    width: 36px;
-    height: 36px;
+  .voice-blob::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .voice-item:nth-child(1) .voice-blob::before {
+    background: #F5DDD5;
+    border-radius: 60% 40% 50% 45% / 50% 60% 40% 55%;
+  }
+  .voice-item:nth-child(2) .voice-blob::before {
+    background: #D5E5EA;
+    border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%;
+  }
+  .voice-item:nth-child(3) .voice-blob::before {
+    background: #F0EACC;
+    border-radius: 50% 45% 55% 40% / 40% 55% 45% 60%;
+  }
+  .voice-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .voice-body {
+    font-size: 0.84rem;
+    color: var(--text-light);
+    line-height: 1.85;
+    margin-bottom: 10px;
+  }
+  .voice-attr {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+  }
+  .voice-illust {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--bg-off);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin: 0 -20px;
+    z-index: 2;
   }
-  .voice-icon svg {
-    width: 18px;
-    height: 18px;
-    fill: var(--blue);
-  }
-  .voice-balloon {
-    padding: 12px 16px;
-    border-radius: 18px;
-    font-size: 0.84rem;
-    line-height: 1.75;
-    color: var(--text);
-    position: relative;
-  }
-  .voice-msg--left .voice-balloon {
-    background: #fff;
-    border-bottom-left-radius: 4px;
-  }
-  .voice-msg--right .voice-balloon {
-    background: #C1E8A0;
-    border-bottom-right-radius: 4px;
-  }
-  .voice-time {
-    font-size: 0.6rem;
-    color: rgba(255,255,255,0.6);
-    align-self: flex-end;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-  .voice-name {
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 2px;
-    padding-left: 44px;
-  }
-  .voice-name--right {
-    text-align: right;
-    padding-left: 0;
-    padding-right: 44px;
-  }
-  .voice-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  .voice-illust svg {
+    width: 48px;
+    height: 48px;
+    fill: var(--blue-light);
+    opacity: 0.6;
   }
   .voice-note {
-    margin-top: 24px;
+    margin-top: 28px;
     font-size: 0.72rem;
     color: var(--text-muted);
   }
@@ -845,9 +830,9 @@
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
-    .voice-chat { padding: 24px 14px 16px; }
-    .voice-msg { max-width: 92%; }
-    .voice-balloon { font-size: 0.8rem; padding: 10px 14px; }
+    .voice-item, .voice-item--right { flex-direction: column; }
+    .voice-illust { margin: 0 0 -16px 0; }
+    .voice-blob { max-width: 100%; padding: 28px 24px; }
     .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
     .footer-grid { grid-template-columns: 1fr; gap: 20px; }
     .product-table th { width: 110px; padding: 12px 14px; }
@@ -973,50 +958,38 @@
   <div class="container section--center">
     <p class="section-label en fade-up">Voice</p>
     <h2 class="section-title fade-up">お客様の声</h2>
-    <div class="voice-chat fade-up">
+    <div class="voice-list">
 
-      <div class="voice-group">
-        <p class="voice-name">Mさん・40代女性</p>
-        <div class="voice-msg voice-msg--left">
-          <div class="voice-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <div class="voice-balloon">水素サプリは気になっていたけど、どれを選べばいいか分からなくて。国産原料というのが決め手でした</div>
-          <span class="voice-time">12:04</span>
+      <div class="voice-item fade-up">
+        <div class="voice-illust">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
-        <div class="voice-msg voice-msg--left" style="padding-left:44px;">
-          <div class="voice-balloon">カプセルも小さくて飲みやすいです</div>
-          <span class="voice-time">12:04</span>
+        <div class="voice-blob">
+          <p class="voice-heading">国産原料が決め手でした</p>
+          <p class="voice-body">水素サプリは気になっていたけど、どれを選べばいいか分からなくて。国産原料というのが決め手でした。カプセルも小さくて飲みやすいです。</p>
+          <p class="voice-attr">40代・女性</p>
         </div>
       </div>
 
-      <div class="voice-group">
-        <p class="voice-name voice-name--right">Tさん・30代男性</p>
-        <div class="voice-msg voice-msg--right">
-          <div class="voice-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <div class="voice-balloon">朝のルーティンに2粒プラスするだけなので手軽に続けられてます</div>
-          <span class="voice-time">15:32</span>
+      <div class="voice-item voice-item--right fade-up">
+        <div class="voice-illust">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
-        <div class="voice-msg voice-msg--right" style="padding-right:44px;">
-          <div class="voice-balloon">水素を毎日の習慣にしたかったのでちょうどよかった</div>
-          <span class="voice-time">15:33</span>
+        <div class="voice-blob">
+          <p class="voice-heading">朝の習慣に2粒プラス</p>
+          <p class="voice-body">朝のルーティンに2粒プラスするだけなので、手軽に続けられています。水素を毎日の習慣にしたかったので、ちょうどよかったです。</p>
+          <p class="voice-attr">30代・男性</p>
         </div>
       </div>
 
-      <div class="voice-group">
-        <p class="voice-name">Kさん・50代女性</p>
-        <div class="voice-msg voice-msg--left">
-          <div class="voice-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <div class="voice-balloon">原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました</div>
-          <span class="voice-time">9:18</span>
+      <div class="voice-item fade-up">
+        <div class="voice-illust">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
         </div>
-        <div class="voice-msg voice-msg--left" style="padding-left:44px;">
-          <div class="voice-balloon">家族にもすすめてます</div>
-          <span class="voice-time">9:18</span>
+        <div class="voice-blob">
+          <p class="voice-heading">家族にもすすめています</p>
+          <p class="voice-body">原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました。家族にもすすめています。</p>
+          <p class="voice-attr">50代・女性</p>
         </div>
       </div>
 
