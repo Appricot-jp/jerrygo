@@ -279,6 +279,51 @@
     line-height: 1.6;
   }
 
+  /* ===== CAPSULE HERO ===== */
+  .capsule-hero {
+    background: #0A0A0A;
+    padding: 64px 0;
+    overflow: hidden;
+  }
+  .capsule-hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+  }
+  .capsule-img {
+    max-height: 280px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 40px rgba(255,255,255,0.08));
+  }
+  .capsule-text {
+    text-align: left;
+  }
+  .capsule-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .capsule-num span {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+  .capsule-copy {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
   /* ===== legacy (keep for other sections) ===== */
   .ingredient-grid {
     display: grid;
@@ -865,6 +910,11 @@
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
+    .capsule-hero-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .capsule-img { max-height: 180px; }
+    .capsule-num { font-size: 3rem; }
+    .capsule-copy { font-size: 0.95rem; }
+    .capsule-text { text-align: center; }
     .recommend-row-h { gap: 16px; }
     .recommend-word { font-size: 0.88rem; }
     .recommend-num { font-size: 2rem; }
@@ -939,6 +989,17 @@
         </div>
         <p style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;">※数値は第三者機関による原料評価データです。測定条件に基づきます。</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAPSULE HERO ===== -->
+<section class="capsule-hero">
+  <div class="capsule-hero-inner">
+    <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="capsule-img fade-up">
+    <div class="capsule-text fade-up">
+      <p class="capsule-num en">250<span>mg</span></p>
+      <p class="capsule-copy">1粒にハイドロシェル原料を<br>たっぷり配合</p>
     </div>
   </div>
 </section>
