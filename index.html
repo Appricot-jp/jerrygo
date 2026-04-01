@@ -320,100 +320,176 @@
     line-height: 1.6;
   }
 
-  /* ===== REPORT CARDS ===== */
-  .report-card {
+  /* ===== EVIDENCE ===== */
+  .evidence-block {
+    max-width: 680px;
+    margin: 0 auto;
     background: #fff;
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     border: 1px solid var(--border);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
   }
-  .report-header {
-    padding: 20px 24px 12px;
-    border-bottom: 1px solid var(--border);
+  .evidence-hero {
+    background: var(--blue-dark);
+    color: #fff;
+    padding: 36px 32px;
+    text-align: center;
   }
-  .report-tag {
+  .evidence-label {
     font-size: 0.65rem;
     font-weight: 600;
-    color: var(--teal);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+  }
+  .evidence-big-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.6rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .evidence-big-num span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    margin-left: 4px;
+  }
+  .evidence-big-title {
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 4px;
   }
-  .report-title {
-    font-size: 0.95rem;
+  .evidence-big-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+  }
+  .evidence-detail {
+    padding: 28px 32px;
+  }
+  .evidence-h {
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--blue-dark);
-  }
-  .report-body {
-    padding: 24px;
-  }
-  .report-result {
-    text-align: center;
     margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
   }
-  .report-num {
+  .evidence-points {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .evidence-point-num {
     font-family: 'Inter', sans-serif;
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--blue-dark);
     line-height: 1.2;
   }
-  .report-num span {
-    font-size: 1.4rem;
+  .evidence-point-num span {
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--text-muted);
     margin: 0 4px;
   }
-  .report-unit {
-    font-size: 0.8rem;
+  .evidence-point-label {
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin-top: 4px;
   }
-  .report-chart {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    display: block;
+  .evidence-visual {
+    margin-top: 8px;
+  }
+  .evidence-visual-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
     margin-bottom: 12px;
   }
-  .report-method {
+  .evidence-bar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .evidence-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .evidence-bar-label {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    width: 90px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .evidence-bar {
+    height: 24px;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+  .evidence-bar-val {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    flex-shrink: 0;
+  }
+  .evidence-bar-note {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 10px;
+  }
+  .evidence-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .evidence-tl-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .evidence-tl-time {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-light);
+    width: 56px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .evidence-tl-bar-wrap {
+    flex: 1;
+    height: 20px;
+    background: var(--bg-off);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .evidence-tl-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--blue));
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+  .evidence-tl-val {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    width: 100px;
+    flex-shrink: 0;
+  }
+  .evidence-tl-val span {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 2px;
+  }
+  .evidence-source {
     font-size: 0.68rem;
     color: var(--text-muted);
+    margin-top: 16px;
     text-align: center;
-  }
-  .report-h2-data {
-    margin-bottom: 20px;
-  }
-  .report-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-    margin-bottom: 16px;
-  }
-  .report-table th {
-    padding: 8px 12px;
-    background: var(--bg-off);
-    font-weight: 600;
-    color: var(--blue-dark);
-    text-align: left;
-    border-bottom: 2px solid var(--border);
-    font-size: 0.75rem;
-  }
-  .report-table td {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-light);
-  }
-  .report-table td strong {
-    color: var(--blue-dark);
-    font-weight: 700;
-  }
-  .report-table tr:last-child td {
-    border-bottom: none;
   }
 
   /* ===== CAPSULE HERO ===== */
@@ -1013,8 +1089,12 @@
     .capsule-highlight { flex-direction: column; text-align: center; gap: 12px; }
     .capsule-highlight-num { font-size: 2.2rem; }
     .capsule-highlight-img { width: 48px; }
-    .spec-row { flex-direction: column; gap: 0; }
-    .spec-item { padding: 14px 0; }
+    .evidence-hero { padding: 28px 20px; }
+    .evidence-big-num { font-size: 2.6rem; }
+    .evidence-detail { padding: 20px 16px; }
+    .evidence-bar-label { width: 70px; font-size: 0.65rem; }
+    .evidence-tl-time { width: 44px; font-size: 0.7rem; }
+    .evidence-tl-val { width: 80px; font-size: 0.68rem; }
     .ingredient-card img { max-height: 200px; object-fit: cover; }
     .feature-grid { grid-template-columns: 1fr; gap: 24px; }
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1023,7 +1103,6 @@
     .recommend-row-h { gap: 16px; }
     .recommend-word { font-size: 0.88rem; }
     .recommend-num { font-size: 2rem; }
-    .spec-row { flex-direction: column; gap: 12px; }
     .voice-list { grid-template-columns: 1fr; max-width: 480px; }
     .voice-bubble { padding: 16px 18px; }
     .cta-title { font-size: 0.82rem; }
@@ -1086,63 +1165,98 @@
   </div>
 </section>
 
-<!-- ===== SPEC DATA ===== -->
-<section class="section section--off" id="spec">
-  <div class="container section--center">
-    <p class="section-label en fade-up">Spec Data</p>
-    <h2 class="section-title fade-up">原料評価データ</h2>
-    <div class="spec-row fade-up">
-      <div class="spec-item">
-        <p class="spec-value en">23.02<span>g</span></p>
-        <p class="spec-title">水素反応ポテンシャル</p>
-        <p class="spec-label">飽和水素水換算時 約14.4L/g</p>
+<!-- ===== EVIDENCE: 還元力 ===== -->
+<section class="section section--off" id="evidence-1">
+  <div class="container">
+    <div class="evidence-block fade-up">
+      <div class="evidence-hero">
+        <p class="evidence-label en">Evidence 01</p>
+        <p class="evidence-big-num en">23.02<span>mg/g</span></p>
+        <p class="evidence-big-title">水素反応ポテンシャル</p>
+        <p class="evidence-big-sub">飽和水素水換算時 約14.4L/g</p>
       </div>
-      <div class="spec-item">
-        <p class="spec-value en">24<span>h</span></p>
-        <p class="spec-title">水素発生持続</p>
-        <p class="spec-label">30分〜24時間の段階測定で確認</p>
-      </div>
-    </div>
-
-    <!-- NAD+ 還元力測定 -->
-    <div class="report-card fade-up" style="margin-top:36px;">
-      <div class="report-header">
-        <p class="report-tag">還元力測定</p>
-        <h3 class="report-title">NAD+ 反応測定</h3>
-      </div>
-      <div class="report-body">
-        <div class="report-result">
-          <p class="report-num en">21.55<span>〜</span>24.49</p>
-          <p class="report-unit">mg/g（還元当量）</p>
+      <div class="evidence-detail">
+        <h3 class="evidence-h">還元力（NAD+ 反応測定）</h3>
+        <div class="evidence-points">
+          <div class="evidence-point">
+            <p class="evidence-point-num en">21.55<span>〜</span>24.49</p>
+            <p class="evidence-point-label">mg/g（還元当量）</p>
+          </div>
         </div>
-        <img src="images/chart-nad.png" alt="UV-Vis 吸収スペクトル" class="report-chart">
-        <p class="report-method">UV-Vis 吸収スペクトル（340nm）による測定</p>
-      </div>
-    </div>
-
-    <!-- 水素発生量測定 -->
-    <div class="report-card fade-up" style="margin-top:24px;">
-      <div class="report-header">
-        <p class="report-tag">水素発生量測定</p>
-        <h3 class="report-title">GC法 水素濃度の推移（24h）</h3>
-      </div>
-      <div class="report-body">
-        <div class="report-h2-data">
-          <table class="report-table">
-            <tr><th>経過時間</th><th>水素濃度</th></tr>
-            <tr><td>30分後</td><td><strong>233,000</strong> ppm</td></tr>
-            <tr><td>1時間後</td><td><strong>321,000</strong> ppm</td></tr>
-            <tr><td>4時間後</td><td><strong>510,000</strong> ppm</td></tr>
-            <tr><td>16時間後</td><td><strong>530,000</strong> ppm</td></tr>
-            <tr><td>24時間後</td><td><strong>580,000</strong> ppm</td></tr>
-          </table>
+        <div class="evidence-visual">
+          <p class="evidence-visual-title">UV-Vis 吸収スペクトル（340nm）</p>
+          <div class="evidence-bar-group">
+            <div class="evidence-bar-row">
+              <span class="evidence-bar-label">NADH 標準</span>
+              <div class="evidence-bar" style="width:75%;background:var(--gold);"></div>
+              <span class="evidence-bar-val en">2.752</span>
+            </div>
+            <div class="evidence-bar-row">
+              <span class="evidence-bar-label">ハイドロシェル</span>
+              <div class="evidence-bar" style="width:60%;background:var(--teal);"></div>
+              <span class="evidence-bar-val en">2.006</span>
+            </div>
+          </div>
+          <p class="evidence-bar-note">吸光度（340nm）— 標準物質との比較による還元当量算出</p>
         </div>
-        <img src="images/chart-h2.png" alt="水素濃度の推移グラフ" class="report-chart">
-        <p class="report-method">ガスクロマトグラフィー法（GC-BID）による測定 ｜ 一般社団法人 国際水素規格協会</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:20px;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
+<!-- ===== EVIDENCE: 水素発生持続 ===== -->
+<section class="section" id="evidence-2">
+  <div class="container">
+    <div class="evidence-block fade-up">
+      <div class="evidence-hero">
+        <p class="evidence-label en">Evidence 02</p>
+        <p class="evidence-big-num en">24<span>h</span></p>
+        <p class="evidence-big-title">水素発生持続</p>
+        <p class="evidence-big-sub">30分〜24時間にわたり水素発生を確認</p>
+      </div>
+      <div class="evidence-detail">
+        <h3 class="evidence-h">水素発生量の推移（GC法）</h3>
+        <div class="evidence-timeline">
+          <div class="evidence-tl-item">
+            <span class="evidence-tl-time">30分</span>
+            <div class="evidence-tl-bar-wrap">
+              <div class="evidence-tl-bar" style="width:40%;"></div>
+            </div>
+            <span class="evidence-tl-val en">233,000<span>ppm</span></span>
+          </div>
+          <div class="evidence-tl-item">
+            <span class="evidence-tl-time">1時間</span>
+            <div class="evidence-tl-bar-wrap">
+              <div class="evidence-tl-bar" style="width:55%;"></div>
+            </div>
+            <span class="evidence-tl-val en">321,000<span>ppm</span></span>
+          </div>
+          <div class="evidence-tl-item">
+            <span class="evidence-tl-time">4時間</span>
+            <div class="evidence-tl-bar-wrap">
+              <div class="evidence-tl-bar" style="width:88%;"></div>
+            </div>
+            <span class="evidence-tl-val en">510,000<span>ppm</span></span>
+          </div>
+          <div class="evidence-tl-item">
+            <span class="evidence-tl-time">16時間</span>
+            <div class="evidence-tl-bar-wrap">
+              <div class="evidence-tl-bar" style="width:91%;"></div>
+            </div>
+            <span class="evidence-tl-val en">530,000<span>ppm</span></span>
+          </div>
+          <div class="evidence-tl-item">
+            <span class="evidence-tl-time">24時間</span>
+            <div class="evidence-tl-bar-wrap">
+              <div class="evidence-tl-bar" style="width:100%;"></div>
+            </div>
+            <span class="evidence-tl-val en">580,000<span>ppm</span></span>
+          </div>
+        </div>
+        <p class="evidence-source">測定: 一般社団法人 国際水素規格協会（WHSA）</p>
+      </div>
+    </div>
+    <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
   </div>
 </section>
 
