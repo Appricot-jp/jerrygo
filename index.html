@@ -211,27 +211,67 @@
     margin-bottom: 40px;
   }
 
-  /* ===== PRODUCT SPEC ===== */
-  .product-spec-grid {
+  /* ===== PRODUCT + CAPSULE ===== */
+  .product-capsule-grid {
     display: grid;
     grid-template-columns: 420px 1fr;
-    gap: 56px;
+    gap: 48px;
     align-items: center;
   }
-  .product-spec-image {
+  .product-capsule-visual {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 24px;
   }
-  .product-spec-image img {
+  .pkg-img {
     max-width: 100%;
-    max-height: 520px;
+    max-height: 380px;
     object-fit: contain;
-    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.12));
+  }
+  .cap-img {
+    max-width: 220px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
+    border-radius: 60px;
+  }
+  .capsule-highlight {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--blue-dark);
+    border-radius: 14px;
+    padding: 20px 24px;
+    color: #fff;
+  }
+  .capsule-highlight-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .capsule-highlight-num span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+  .capsule-highlight-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .capsule-highlight-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
   }
   .spec-row {
     display: flex;
-    gap: 20px;
+    gap: 24px;
+    max-width: 520px;
+    margin: 0 auto;
   }
   .spec-item {
     flex: 1;
@@ -901,8 +941,11 @@
     .section { padding: 52px 0; }
     .section-title { font-size: 1.3rem; }
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
-    .product-spec-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
-    .product-spec-image img { max-height: 360px; }
+    .product-capsule-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
+    .pkg-img { max-height: 320px; }
+    .cap-img { max-width: 160px; }
+    .capsule-highlight { flex-direction: column; text-align: center; gap: 12px; }
+    .capsule-highlight-num { font-size: 2.2rem; }
     .spec-row { flex-direction: column; gap: 0; }
     .spec-item { padding: 14px 0; }
     .ingredient-card img { max-height: 200px; object-fit: cover; }
@@ -910,11 +953,6 @@
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
-    .capsule-hero-inner { flex-direction: column; gap: 24px; text-align: center; }
-    .capsule-img { max-height: 180px; }
-    .capsule-num { font-size: 3rem; }
-    .capsule-copy { font-size: 0.95rem; }
-    .capsule-text { text-align: center; }
     .recommend-row-h { gap: 16px; }
     .recommend-word { font-size: 0.88rem; }
     .recommend-num { font-size: 2rem; }
@@ -958,49 +996,48 @@
   </div>
 </div>
 
-<!-- ===== PRODUCT SPEC ===== -->
+<!-- ===== PRODUCT + CAPSULE (統合) ===== -->
 <section class="section" id="about">
   <div class="container">
-    <div class="product-spec-grid fade-up">
-      <div class="product-spec-image">
-        <img src="images/package.png" alt="HydroShell Daily パッケージ">
+    <div class="product-capsule-grid fade-up">
+      <div class="product-capsule-visual">
+        <img src="images/package.png" alt="HydroShell Daily パッケージ" class="pkg-img">
+        <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="cap-img">
       </div>
-      <div class="product-spec-info">
+      <div class="product-capsule-info">
         <p class="section-label en">HydroShell Daily</p>
         <h2 class="section-title" style="margin-bottom:10px;">ハイドロシェルデイリー</h2>
-        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:28px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
-
-        <div class="spec-row">
-          <div class="spec-item">
-            <p class="spec-value en">250<span>mg</span> &times; 120<span>粒</span></p>
-            <p class="spec-title">たっぷり配合</p>
-            <p class="spec-label">1カプセルあたり / 4粒で原料1g</p>
-          </div>
-          <div class="spec-item">
-            <p class="spec-value en">23.02<span>g</span></p>
-            <p class="spec-title">水素反応ポテンシャル</p>
-            <p class="spec-label">飽和水素水換算時 約14.4L/g</p>
-          </div>
-          <div class="spec-item">
-            <p class="spec-value en">24<span>h</span></p>
-            <p class="spec-title">水素発生持続</p>
-            <p class="spec-label">30分〜24時間の段階測定で確認</p>
+        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:24px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
+        <div class="capsule-highlight">
+          <p class="capsule-highlight-num en">250<span>mg</span></p>
+          <div>
+            <p class="capsule-highlight-title">1粒にたっぷり配合</p>
+            <p class="capsule-highlight-sub">1カプセルあたりハイドロシェル原料250mg / 4粒で原料1g / 120粒入り</p>
           </div>
         </div>
-        <p style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;">※数値は第三者機関による原料評価データです。測定条件に基づきます。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CAPSULE HERO ===== -->
-<section class="capsule-hero">
-  <div class="capsule-hero-inner">
-    <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="capsule-img fade-up">
-    <div class="capsule-text fade-up">
-      <p class="capsule-num en">250<span>mg</span></p>
-      <p class="capsule-copy">1粒にハイドロシェル原料を<br>たっぷり配合</p>
+<!-- ===== SPEC DATA ===== -->
+<section class="section section--off" id="spec">
+  <div class="container section--center">
+    <p class="section-label en fade-up">Spec Data</p>
+    <h2 class="section-title fade-up">原料評価データ</h2>
+    <div class="spec-row fade-up">
+      <div class="spec-item">
+        <p class="spec-value en">23.02<span>g</span></p>
+        <p class="spec-title">水素反応ポテンシャル</p>
+        <p class="spec-label">飽和水素水換算時 約14.4L/g</p>
+      </div>
+      <div class="spec-item">
+        <p class="spec-value en">24<span>h</span></p>
+        <p class="spec-title">水素発生持続</p>
+        <p class="spec-label">30分〜24時間の段階測定で確認</p>
+      </div>
     </div>
+    <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;">※数値は第三者機関による原料評価データです。測定条件に基づきます。</p>
   </div>
 </section>
 
