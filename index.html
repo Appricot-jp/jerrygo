@@ -233,6 +233,35 @@
     filter: drop-shadow(0 12px 40px rgba(0,0,0,0.15));
     border-radius: 8px;
   }
+  .capsule-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .capsule-row-img {
+    width: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.1));
+    flex-shrink: 0;
+  }
+  .capsule-row-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--blue-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .capsule-row-num span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .capsule-row-label {
+    font-size: 0.82rem;
+    color: var(--text-light);
+  }
   .capsule-specs {
     display: flex;
     gap: 0;
@@ -1091,6 +1120,8 @@
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
     .product-capsule-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
     .pkg-img { max-width: 260px; }
+    .capsule-row-img { width: 72px; }
+    .capsule-row-num { font-size: 2.2rem; }
     .capsule-spec-num { font-size: 1.4rem; }
     .evidence-grid { grid-template-columns: 1fr; }
     .evidence-hero { padding: 28px 20px; }
@@ -1157,18 +1188,25 @@
         <p class="section-label en">HydroShell Daily</p>
         <h2 class="section-title" style="margin-bottom:10px;">ハイドロシェルデイリー</h2>
         <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:24px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
+        <div class="capsule-row">
+          <img src="images/capsule.png" alt="カプセル" class="capsule-row-img">
+          <div class="capsule-row-text">
+            <p class="capsule-row-num en">250<span>mg</span></p>
+            <p class="capsule-row-label">1粒あたりハイドロシェル原料を配合</p>
+          </div>
+        </div>
         <div class="capsule-specs">
           <div class="capsule-spec-item">
-            <p class="capsule-spec-num en">250<span>mg</span></p>
-            <p class="capsule-spec-label">1粒あたり</p>
-          </div>
-          <div class="capsule-spec-item">
             <p class="capsule-spec-num en">120<span>粒</span></p>
-            <p class="capsule-spec-label">1袋あたり</p>
+            <p class="capsule-spec-label">1袋</p>
           </div>
           <div class="capsule-spec-item">
-            <p class="capsule-spec-num en">1<span>g</span></p>
-            <p class="capsule-spec-label">4粒で原料</p>
+            <p class="capsule-spec-num en">4<span>粒</span></p>
+            <p class="capsule-spec-label">で原料1g</p>
+          </div>
+          <div class="capsule-spec-item">
+            <p class="capsule-spec-num en">30<span>〜60日</span></p>
+            <p class="capsule-spec-label">分</p>
           </div>
         </div>
       </div>
