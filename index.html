@@ -231,28 +231,50 @@
   }
   .spec-row {
     display: flex;
-    gap: 24px;
+    gap: 20px;
   }
   .spec-item {
     flex: 1;
-    padding: 16px 0;
-    border-top: 2px solid var(--border);
+    padding: 20px;
+    background: var(--bg-off);
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .spec-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 2px;
   }
   .spec-value {
     font-family: 'Inter', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2.2rem;
+    font-weight: 800;
     color: var(--blue-dark);
     line-height: 1.2;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    margin-top: 8px;
   }
   .spec-value span {
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: var(--text-light);
   }
+  .spec-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-bottom: 4px;
+  }
   .spec-label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--text-muted);
     line-height: 1.6;
   }
@@ -350,37 +372,31 @@
   }
 
   /* ===== RECOMMEND ===== */
-  .recommend-strip {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  .recommend-row-h {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
     max-width: 720px;
     margin: 0 auto;
   }
-  .recommend-row {
-    display: flex;
-    align-items: center;
-    padding: 28px 0;
-    border-bottom: 1px solid var(--border);
-    gap: 24px;
+  .recommend-col {
+    text-align: center;
+    padding: 8px 0;
   }
-  .recommend-row:last-child { border-bottom: none; }
   .recommend-num {
     font-family: 'Inter', sans-serif;
-    font-size: 3.2rem;
+    font-size: 2.6rem;
     font-weight: 800;
-    color: var(--blue-pale);
+    color: var(--gold);
     line-height: 1;
-    flex-shrink: 0;
-    width: 60px;
-    text-align: center;
+    margin-bottom: 10px;
+    opacity: 0.35;
   }
   .recommend-word {
-    font-size: 1.4rem;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--blue-dark);
-    letter-spacing: 0.02em;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   /* ===== USAGE ===== */
@@ -849,8 +865,8 @@
     .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
     .usage-layout { grid-template-columns: 1fr; gap: 24px; }
     .usage-image img { max-height: 160px; }
-    .recommend-word { font-size: 1.1rem; }
-    .recommend-num { font-size: 2.4rem; width: 44px; }
+    .recommend-row-h { grid-template-columns: 1fr; gap: 28px; }
+    .spec-row { flex-direction: column; gap: 12px; }
     .voice-item, .voice-item--right { flex-direction: row !important; gap: 12px; }
     .voice-avatar { width: 40px; height: 40px; }
     .voice-bubble { padding: 16px 18px; }
@@ -899,15 +915,18 @@
         <div class="spec-row">
           <div class="spec-item">
             <p class="spec-value en">250<span>mg</span> &times; 120<span>粒</span></p>
-            <p class="spec-label">1カプセルあたり配合量 / 4粒で原料1g</p>
+            <p class="spec-title">たっぷり配合</p>
+            <p class="spec-label">1カプセルあたり / 4粒で原料1g</p>
           </div>
           <div class="spec-item">
             <p class="spec-value en">23.02<span>g</span></p>
-            <p class="spec-label">水素反応ポテンシャル<br>飽和水素水換算時 約14.4L/g</p>
+            <p class="spec-title">水素反応ポテンシャル</p>
+            <p class="spec-label">飽和水素水換算時 約14.4L/g</p>
           </div>
           <div class="spec-item">
             <p class="spec-value en">24<span>h</span></p>
-            <p class="spec-label">水素発生持続<br>30分〜24時間の段階測定で確認</p>
+            <p class="spec-title">水素発生持続</p>
+            <p class="spec-label">30分〜24時間の段階測定で確認</p>
           </div>
         </div>
         <p style="font-size:0.7rem;color:var(--text-muted);margin-top:16px;">※数値は第三者機関による原料評価データです。測定条件に基づきます。</p>
@@ -921,18 +940,18 @@
   <div class="container">
     <p class="section-label en fade-up" style="text-align:center;">For You</p>
     <h2 class="section-title fade-up" style="text-align:center;">こんな方に</h2>
-    <div class="recommend-strip">
-      <div class="recommend-row fade-up">
+    <div class="recommend-row-h fade-up">
+      <div class="recommend-col">
         <p class="recommend-num en">01</p>
-        <p class="recommend-word">はじめての水素サプリに</p>
+        <p class="recommend-word">はじめての<br>水素サプリに</p>
       </div>
-      <div class="recommend-row fade-up">
+      <div class="recommend-col">
         <p class="recommend-num en">02</p>
-        <p class="recommend-word">原料の出どころが気になる</p>
+        <p class="recommend-word">原料の出どころが<br>気になる</p>
       </div>
-      <div class="recommend-row fade-up">
+      <div class="recommend-col">
         <p class="recommend-num en">03</p>
-        <p class="recommend-word">毎日、無理なく続けたい</p>
+        <p class="recommend-word">毎日、無理なく<br>続けたい</p>
       </div>
     </div>
   </div>
