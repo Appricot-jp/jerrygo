@@ -585,7 +585,9 @@
   /* ===== CTA ===== */
   .cta {
     background: var(--gold);
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     gap: 24px;
@@ -594,6 +596,7 @@
   }
   .cta-text {
     text-align: left;
+    flex-shrink: 1;
   }
   .cta-title {
     font-size: 0.95rem;
