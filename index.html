@@ -707,77 +707,79 @@
   .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
   .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
 
-  /* ===== VOICE (speech bubble) ===== */
+  /* ===== VOICE (person + bubble) ===== */
   .voice-list {
     max-width: 960px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 20px;
+    align-items: end;
   }
   .voice-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 0;
   }
-  .voice-item--right {
-    flex-direction: column;
-  }
-  .voice-avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .voice-item:nth-child(1) .voice-avatar { background: #E8EFF2; }
-  .voice-item:nth-child(2) .voice-avatar { background: #EDF5F0; }
-  .voice-item:nth-child(3) .voice-avatar { background: #F2EDE8; }
-  .voice-avatar svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--blue);
-    opacity: 0.5;
-  }
-  .voice-content {
-    flex: 1;
-    width: 100%;
-  }
-  .voice-name {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    padding-left: 4px;
-  }
-  .voice-item--right .voice-name {
-    text-align: center;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .voice-name { text-align: center; padding-left: 0; }
   .voice-bubble {
     position: relative;
-    padding: 20px 24px;
-    border-radius: 20px;
-    font-size: 0.86rem;
+    padding: 20px 22px;
+    border-radius: 24px;
+    font-size: 0.84rem;
     line-height: 1.85;
     color: var(--text);
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  .voice-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
   }
   .voice-item:nth-child(1) .voice-bubble { background: #E8EFF2; }
+  .voice-item:nth-child(1) .voice-bubble::after { border-top: 12px solid #E8EFF2; }
   .voice-item:nth-child(2) .voice-bubble { background: #EDF5F0; }
+  .voice-item:nth-child(2) .voice-bubble::after { border-top: 12px solid #EDF5F0; }
   .voice-item:nth-child(3) .voice-bubble { background: #F2EDE8; }
+  .voice-item:nth-child(3) .voice-bubble::after { border-top: 12px solid #F2EDE8; }
   .voice-heading {
     font-weight: 600;
     margin-bottom: 6px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
   }
   .voice-body {
-    font-size: 0.84rem;
+    font-size: 0.82rem;
     color: var(--text-light);
-    line-height: 1.85;
+    line-height: 1.8;
+  }
+  .voice-person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .voice-person-icon {
+    width: 64px;
+    height: 64px;
+  }
+  .voice-item:nth-child(2) .voice-person-icon {
+    width: 72px;
+    height: 72px;
+  }
+  .voice-person-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .voice-name {
+    font-size: 0.7rem;
+    color: var(--text-muted);
   }
   .voice-note {
     margin-top: 28px;
@@ -1113,8 +1115,9 @@
     .recommend-row-h { gap: 16px; }
     .recommend-word { font-size: 0.88rem; }
     .recommend-num { font-size: 2rem; }
-    .voice-list { grid-template-columns: 1fr; max-width: 480px; }
-    .voice-bubble { padding: 16px 18px; }
+    .voice-list { grid-template-columns: 1fr; max-width: 360px; gap: 28px; }
+    .voice-bubble { padding: 16px 18px; font-size: 0.8rem; }
+    .voice-person-icon, .voice-item:nth-child(2) .voice-person-icon { width: 56px; height: 56px; }
     .cta-title { font-size: 0.82rem; }
     .cta-sub { font-size: 0.72rem; }
     .cta-btn { padding: 9px 28px; font-size: 0.82rem; }
@@ -1284,41 +1287,59 @@
     <div class="voice-list">
 
       <div class="voice-item fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="voice-bubble">
+          <p class="voice-heading">国産原料が決め手</p>
+          <p class="voice-body">どれを選べばいいか分からなかったけど、国産原料というのが決め手でした。カプセルも飲みやすいです。</p>
         </div>
-        <div class="voice-content">
+        <div class="voice-person">
+          <div class="voice-person-icon">
+            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="18" fill="#C8D6DC"/>
+              <path d="M50 52c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#C8D6DC"/>
+              <circle cx="50" cy="30" r="14" fill="#E8EFF2"/>
+              <path d="M50 48c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#E8EFF2"/>
+              <path d="M42 27c0-1 1-3 4-4s8 0 8 0" stroke="#A0B4BE" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p class="voice-name">40代・女性</p>
-          <div class="voice-bubble">
-            <p class="voice-heading">国産原料が決め手でした</p>
-            <p class="voice-body">水素サプリは気になっていたけど、どれを選べばいいか分からなくて。国産原料というのが決め手でした。カプセルも小さくて飲みやすいです。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="voice-item voice-item--right fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        </div>
-        <div class="voice-content">
-          <p class="voice-name">30代・男性</p>
-          <div class="voice-bubble">
-            <p class="voice-heading">朝の習慣に2粒プラス</p>
-            <p class="voice-body">朝のルーティンに2粒プラスするだけなので、手軽に続けられています。水素を毎日の習慣にしたかったので、ちょうどよかったです。</p>
-          </div>
         </div>
       </div>
 
       <div class="voice-item fade-up">
-        <div class="voice-avatar">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <div class="voice-bubble">
+          <p class="voice-heading">朝の習慣に2粒プラス</p>
+          <p class="voice-body">朝のルーティンに2粒プラスするだけなので手軽。水素を毎日の習慣にしたかったので、ちょうどよかったです。</p>
         </div>
-        <div class="voice-content">
-          <p class="voice-name">50代・女性</p>
-          <div class="voice-bubble">
-            <p class="voice-heading">家族にもすすめています</p>
-            <p class="voice-body">原料がどこで作られているかを気にする方なので、国産で透明性がある点が安心できました。家族にもすすめています。</p>
+        <div class="voice-person">
+          <div class="voice-person-icon">
+            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="28" r="18" fill="#C0D4C8"/>
+              <path d="M50 50c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#C0D4C8"/>
+              <circle cx="50" cy="28" r="14" fill="#EDF5F0"/>
+              <path d="M50 46c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#EDF5F0"/>
+              <rect x="38" y="18" width="24" height="6" rx="3" fill="#C0D4C8"/>
+            </svg>
           </div>
+          <p class="voice-name">30代・男性</p>
+        </div>
+      </div>
+
+      <div class="voice-item fade-up">
+        <div class="voice-bubble">
+          <p class="voice-heading">家族にもすすめてます</p>
+          <p class="voice-body">国産で透明性がある点が安心できました。家族にもすすめています。</p>
+        </div>
+        <div class="voice-person">
+          <div class="voice-person-icon">
+            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="30" r="18" fill="#D8CFC4"/>
+              <path d="M50 52c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#D8CFC4"/>
+              <circle cx="50" cy="30" r="14" fill="#F2EDE8"/>
+              <path d="M50 48c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#F2EDE8"/>
+              <path d="M36 24c2-6 8-10 14-10s12 4 14 10c1 2 0 4-2 4H38c-2 0-3-2-2-4z" fill="#D8CFC4"/>
+            </svg>
+          </div>
+          <p class="voice-name">50代・女性</p>
         </div>
       </div>
 
