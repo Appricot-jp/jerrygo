@@ -230,16 +230,10 @@
     object-fit: contain;
     filter: drop-shadow(0 8px 32px rgba(0,0,0,0.12));
   }
-  .cap-img {
-    max-width: 220px;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.1));
-    border-radius: 60px;
-  }
   .capsule-highlight {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     background: var(--blue-dark);
     border-radius: 14px;
     padding: 20px 24px;
@@ -266,6 +260,13 @@
     font-size: 0.75rem;
     color: rgba(255,255,255,0.6);
     line-height: 1.6;
+  }
+  .capsule-highlight-img {
+    width: 56px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(255,255,255,0.15));
+    flex-shrink: 0;
   }
   .spec-row {
     display: flex;
@@ -913,9 +914,9 @@
     .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
     .product-capsule-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
     .pkg-img { max-height: 320px; }
-    .cap-img { max-width: 160px; }
     .capsule-highlight { flex-direction: column; text-align: center; gap: 12px; }
     .capsule-highlight-num { font-size: 2.2rem; }
+    .capsule-highlight-img { width: 48px; }
     .spec-row { flex-direction: column; gap: 0; }
     .spec-item { padding: 14px 0; }
     .ingredient-card img { max-height: 200px; object-fit: cover; }
@@ -971,13 +972,13 @@
     <div class="product-capsule-grid fade-up">
       <div class="product-capsule-visual">
         <img src="images/package.png" alt="HydroShell Daily パッケージ" class="pkg-img">
-        <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="cap-img">
       </div>
       <div class="product-capsule-info">
         <p class="section-label en">HydroShell Daily</p>
         <h2 class="section-title" style="margin-bottom:10px;">ハイドロシェルデイリー</h2>
         <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:24px;">ardesign社が国産ホタテ貝殻を独自の加工技術で処理した水素発生原料「ハイドロシェル」を配合。</p>
         <div class="capsule-highlight">
+          <img src="images/capsule.png" alt="カプセル" class="capsule-highlight-img">
           <p class="capsule-highlight-num en">250<span>mg</span></p>
           <div>
             <p class="capsule-highlight-title">1粒にたっぷり配合</p>
