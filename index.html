@@ -357,6 +357,8 @@
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
   }
   .evidence-hero {
     background: var(--blue-dark);
@@ -396,6 +398,10 @@
   }
   .evidence-detail {
     padding: 28px 32px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .evidence-h {
     font-size: 0.9rem;
@@ -1364,7 +1370,7 @@
 <span class="evidence-bar-val en">2.006</span>
 </div>
 </div>
-<p class="evidence-bar-note">吸光度（340nm）— 標準物質との比較による還元当量算出<br>※上記測定データを基に自社にて算出<br>測定: 山梨県産業技術センター（依頼試験結果書 産技セ第3102号）</p>
+<p class="evidence-bar-note">測定: 山梨県産業技術センター（依頼試験結果書 産技セ第3102号）<br>装置: 島津 SolidSpec-3700（UV-Vis）/ 石英セル / 340nm / Beer-Lambert法<br>※上記測定データを基に自社にて算出</p>
 </div>
 </div>
 <div class="evidence-block">
