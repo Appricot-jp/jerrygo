@@ -262,31 +262,6 @@
     font-size: 0.82rem;
     color: var(--text-light);
   }
-  .capsule-inline {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .capsule-inline-img {
-    width: 64px;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
-    flex-shrink: 0;
-  }
-  .capsule-inline-title {
-    font-size: 0.92rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    margin-bottom: 2px;
-  }
-  .capsule-inline-sub {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
   .capsule-specs {
     display: flex;
     gap: 0;
@@ -1223,14 +1198,22 @@
             <p class="capsule-spec-label">分</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="capsule-inline">
-          <img src="images/capsule.png" alt="カプセル" class="capsule-inline-img">
-          <div class="capsule-inline-text">
-            <p class="capsule-inline-title">1粒に、たっぷり原料250mg</p>
-            <p class="capsule-inline-sub">飽和水素水約3.6L分をぎゅっと。4粒で原料1gを摂取できる設計です。</p>
-          </div>
-        </div>
+<!-- ===== CAPSULE DETAIL ===== -->
+<section class="section section--off" id="capsule">
+  <div class="container">
+    <div class="product-capsule-grid fade-up">
+      <div class="product-capsule-info">
+        <p class="section-label en">Inside Each Capsule</p>
+        <h2 class="section-title" style="margin-bottom:10px;">1粒に、たっぷり原料250mg</h2>
+        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:24px;">飽和水素水約3.6L分をぎゅっと。4粒で原料1gを摂取できる設計です。</p>
+      </div>
+      <div class="product-capsule-visual">
+        <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="pkg-img" style="max-width:280px;">
       </div>
     </div>
   </div>
