@@ -522,16 +522,16 @@
 
   /* ===== RESEARCH BLOCK ===== */
   .research-block {
-    max-width: 680px;
-    margin: 36px auto 0;
-    padding: 0 24px;
+    grid-column: 1 / -1;
   }
   .research-block-inner {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 40px 36px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 40px;
   }
   .research-block-label {
     font-size: 0.68rem;
@@ -541,30 +541,32 @@
     color: var(--teal);
     margin-bottom: 8px;
   }
+  .research-block-text {
+    flex: 1;
+  }
   .research-block-title {
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--blue-dark);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .research-block-paper {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text);
     line-height: 1.7;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .research-block-meta {
     font-size: 0.75rem;
     color: var(--text-muted);
-    margin-bottom: 28px;
   }
   .research-block-prof {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 14px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    padding-left: 40px;
+    border-left: 1px solid var(--border);
   }
   .research-block-photo {
     width: 56px;
@@ -1221,6 +1223,8 @@
     .capsule-row-num { font-size: 2.2rem; }
     .capsule-spec-num { font-size: 1.4rem; }
     .evidence-grid { grid-template-columns: 1fr; }
+    .research-block-inner { flex-direction: column; gap: 20px; text-align: center; }
+    .research-block-prof { padding-left: 0; border-left: none; padding-top: 16px; border-top: 1px solid var(--border); justify-content: center; }
     .evidence-hero { padding: 28px 20px; }
     .evidence-big-num { font-size: 2.6rem; }
     .evidence-detail { padding: 20px 16px; }
@@ -1368,14 +1372,14 @@
 </div>
 </div>
 </div>
-<p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;padding:0 24px;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
-
 <div class="research-block fade-up">
   <div class="research-block-inner">
-    <p class="research-block-label en">Joint Research</p>
-    <h3 class="research-block-title">桐蔭横浜大学との共同研究</h3>
-    <p class="research-block-paper">水素発生サプリメント摂取が骨格筋細胞内情報伝達<br class="pc-only">および持久パフォーマンスに及ぼす影響</p>
-    <p class="research-block-meta">最終報告書（2026年2月13日）</p>
+    <div class="research-block-text">
+      <p class="research-block-label en">Joint Research</p>
+      <h3 class="research-block-title">桐蔭横浜大学との共同研究</h3>
+      <p class="research-block-paper">水素発生サプリメント摂取が骨格筋細胞内情報伝達<br class="pc-only">および持久パフォーマンスに及ぼす影響</p>
+      <p class="research-block-meta">最終報告書（2026年2月13日）</p>
+    </div>
     <div class="research-block-prof">
       <div class="research-block-photo">
         <img src="images/prof-sakurai.jpg" alt="桜井 智野風 教授">
@@ -1387,6 +1391,8 @@
     </div>
   </div>
 </div>
+</div>
+<p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;padding:0 24px;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
 </section>
 
 <!-- ===== SAFETY ===== -->
