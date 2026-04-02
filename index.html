@@ -473,6 +473,41 @@
     color: var(--blue-dark);
     flex-shrink: 0;
   }
+  .evidence-spectrum {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .spectrum-svg {
+    width: 100%;
+    max-height: 220px;
+  }
+  .spectrum-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .spectrum-legend-item {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .spectrum-dot {
+    width: 8px;
+    height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .evidence-bar-caption {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
   .evidence-bar-note {
     font-size: 0.65rem;
     color: var(--text-muted);
@@ -1363,16 +1398,42 @@
 </div>
 <div class="evidence-detail">
 <h3 class="evidence-h">原料1gあたりの水素反応ポテンシャル当量（H⁺ + 2e⁻）[ mg換算 ]</h3>
-<div class="evidence-bar-group">
-<div class="evidence-bar-row">
-<span class="evidence-bar-label">NADH 標準</span>
-<div class="evidence-bar" style="width:75%;background:var(--gold);"></div>
-<span class="evidence-bar-val en">2.752</span>
-</div>
-<div class="evidence-bar-row">
-<span class="evidence-bar-label">ハイドロシェル</span>
-<div class="evidence-bar" style="width:60%;background:var(--teal);"></div>
-<span class="evidence-bar-val en">2.006</span>
+<div class="evidence-spectrum">
+<p class="evidence-bar-caption">UV-Vis 吸収スペクトル</p>
+<svg viewBox="0 0 400 200" class="spectrum-svg">
+<!-- Grid -->
+<line x1="50" y1="10" x2="50" y2="170" stroke="#e5e7eb" stroke-width="0.5"/>
+<line x1="50" y1="170" x2="380" y2="170" stroke="#e5e7eb" stroke-width="0.5"/>
+<line x1="50" y1="120" x2="380" y2="120" stroke="#e5e7eb" stroke-width="0.3" stroke-dasharray="4"/>
+<line x1="50" y1="70" x2="380" y2="70" stroke="#e5e7eb" stroke-width="0.3" stroke-dasharray="4"/>
+<line x1="50" y1="20" x2="380" y2="20" stroke="#e5e7eb" stroke-width="0.3" stroke-dasharray="4"/>
+<!-- 340nm vertical line -->
+<line x1="270" y1="10" x2="270" y2="170" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="3"/>
+<text x="270" y="185" text-anchor="middle" font-size="8" fill="#94a3b8">340nm</text>
+<!-- Y axis labels -->
+<text x="45" y="173" text-anchor="end" font-size="7" fill="#94a3b8">0</text>
+<text x="45" y="123" text-anchor="end" font-size="7" fill="#94a3b8">1.0</text>
+<text x="45" y="73" text-anchor="end" font-size="7" fill="#94a3b8">2.0</text>
+<text x="45" y="23" text-anchor="end" font-size="7" fill="#94a3b8">3.0</text>
+<!-- X axis labels -->
+<text x="83" y="185" text-anchor="middle" font-size="7" fill="#94a3b8">260</text>
+<text x="380" y="185" text-anchor="end" font-size="7" fill="#94a3b8">500nm</text>
+<!-- 1 mmol NAD+ (blue) - peak at 260nm, near zero at 340nm -->
+<path d="M50,165 C60,160 70,80 83,25 C96,80 120,155 150,163 C200,168 270,168 380,169" fill="none" stroke="#3b82f6" stroke-width="2"/>
+<!-- 0.5 mmol NADH (red) - peaks at 260nm AND 340nm -->
+<path d="M50,165 C60,155 70,60 83,30 C96,60 120,90 160,85 C200,82 240,50 270,18 C300,50 330,130 380,165" fill="none" stroke="#ef4444" stroke-width="2"/>
+<!-- NAD+ + HydroShell (green) - similar to NADH but lower at 340nm -->
+<path d="M50,165 C60,155 70,65 83,35 C96,65 120,100 160,95 C200,92 240,70 270,55 C300,75 330,140 380,165" fill="none" stroke="#22c55e" stroke-width="2"/>
+<!-- 340nm value annotations -->
+<circle cx="270" cy="18" r="3" fill="#ef4444"/>
+<text x="278" y="16" font-size="8" font-weight="700" fill="#ef4444">2.752</text>
+<circle cx="270" cy="55" r="3" fill="#22c55e"/>
+<text x="278" y="53" font-size="8" font-weight="700" fill="#22c55e">2.006</text>
+</svg>
+<div class="spectrum-legend">
+<span class="spectrum-legend-item"><span class="spectrum-dot" style="background:#3b82f6;"></span>1 mmol NAD+</span>
+<span class="spectrum-legend-item"><span class="spectrum-dot" style="background:#ef4444;"></span>0.5 mmol NADH</span>
+<span class="spectrum-legend-item"><span class="spectrum-dot" style="background:#22c55e;"></span>NAD+ + ハイドロシェル</span>
 </div>
 </div>
 <p class="evidence-bar-note">測定: 山梨県産業技術センター（依頼試験結果書 産技セ第3102号）<br>装置: 島津 SolidSpec-3700（UV-Vis）/ 石英セル / 340nm / Beer-Lambert法<br>※上記測定データを基に自社にて算出</p>
