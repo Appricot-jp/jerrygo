@@ -520,36 +520,75 @@
     text-align: center;
   }
 
-  /* ===== RESEARCH BADGE ===== */
-  .evidence-research {
+  /* ===== RESEARCH BLOCK ===== */
+  .research-block {
+    max-width: 680px;
+    margin: 36px auto 0;
+    padding: 0 24px;
+  }
+  .research-block-inner {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    text-align: center;
+  }
+  .research-block-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .research-block-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
+  }
+  .research-block-paper {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .research-block-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+  .research-block-prof {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 14px;
-    margin: 28px auto 0;
-    max-width: 520px;
-    padding: 18px 24px;
-    background: var(--blue-dark);
-    border-radius: 12px;
-    color: #fff;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
   }
-  .evidence-research-icon {
-    width: 32px;
-    height: 32px;
+  .research-block-photo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--bg-off);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    color: rgba(255,255,255,0.6);
+    color: var(--text-muted);
   }
-  .evidence-research-icon svg {
-    width: 100%;
-    height: 100%;
+  .research-block-photo svg {
+    width: 28px;
+    height: 28px;
   }
-  .evidence-research-title {
-    font-size: 0.88rem;
+  .research-block-prof-name {
+    font-size: 0.95rem;
     font-weight: 600;
+    color: var(--blue-dark);
   }
-  .evidence-research-sub {
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.55);
+  .research-block-prof-affil {
+    font-size: 0.75rem;
+    color: var(--text-muted);
     margin-top: 2px;
   }
 
@@ -1334,13 +1373,21 @@
 </div>
 <p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;padding:0 24px;">※上記は原料に対する評価データであり、本製品の効果効能を示すものではありません。測定条件に基づく数値です。</p>
 
-<div class="evidence-research fade-up">
-  <div class="evidence-research-icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-  </div>
-  <div class="evidence-research-text">
-    <p class="evidence-research-title">桐蔭横浜大学との共同研究実績あり</p>
-    <p class="evidence-research-sub">ハイドロシェル原料は、桐蔭横浜大学スポーツ科学研究科との共同研究が実施されています。</p>
+<div class="research-block fade-up">
+  <div class="research-block-inner">
+    <p class="research-block-label en">Joint Research</p>
+    <h3 class="research-block-title">桐蔭横浜大学との共同研究</h3>
+    <p class="research-block-paper">水素発生サプリメント摂取が骨格筋細胞内情報伝達<br class="pc-only">および持久パフォーマンスに及ぼす影響</p>
+    <p class="research-block-meta">最終報告書（2026年2月13日）</p>
+    <div class="research-block-prof">
+      <div class="research-block-photo">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </div>
+      <div>
+        <p class="research-block-prof-name">桜井 智野風 教授</p>
+        <p class="research-block-prof-affil">桐蔭横浜大学大学院 スポーツ科学研究科</p>
+      </div>
+    </div>
   </div>
 </div>
 </section>
