@@ -106,7 +106,7 @@
     transform: translateY(0);
   }
   .fv-cta-btn {
-    background: var(--gold);
+    background: var(--blue-dark);
     color: #fff;
     border: none;
     padding: 14px 36px;
@@ -116,11 +116,11 @@
     cursor: pointer;
     font-family: inherit;
     letter-spacing: 0.05em;
-    box-shadow: 0 4px 16px rgba(204,162,21,0.35);
+    box-shadow: 0 4px 16px rgba(15,46,64,0.25);
     transition: background 0.3s, transform 0.2s;
   }
   .fv-cta-btn:hover {
-    background: var(--gold-dark);
+    background: #0A2030;
     transform: translateY(-2px);
   }
   .fv-side {
@@ -1115,30 +1115,17 @@
   .voice-bubble {
     position: relative;
     padding: 20px 22px;
-    border-radius: 24px;
+    border-radius: 8px;
     font-size: 0.84rem;
     line-height: 1.85;
     color: var(--text);
     margin-bottom: 12px;
     width: 100%;
+    background: #fff;
+    border-left: 3px solid var(--blue-dark);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
-  .voice-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-  }
-  .voice-item:nth-child(1) .voice-bubble { background: #E8EFF2; }
-  .voice-item:nth-child(1) .voice-bubble::after { border-top: 12px solid #E8EFF2; }
-  .voice-item:nth-child(2) .voice-bubble { background: #EDF5F0; }
-  .voice-item:nth-child(2) .voice-bubble::after { border-top: 12px solid #EDF5F0; }
-  .voice-item:nth-child(3) .voice-bubble { background: #F2EDE8; }
-  .voice-item:nth-child(3) .voice-bubble::after { border-top: 12px solid #F2EDE8; }
+  .voice-bubble::after { display: none; }
   .voice-heading {
     font-weight: 600;
     margin-bottom: 6px;
@@ -1277,21 +1264,21 @@
     font-family: inherit;
   }
   .pricing-btn--primary {
-    background: var(--gold);
+    background: var(--blue-dark);
     color: #fff;
-    box-shadow: 0 4px 16px rgba(204,162,21,0.3);
+    box-shadow: 0 4px 16px rgba(15,46,64,0.25);
   }
   .pricing-btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(204,162,21,0.4);
+    box-shadow: 0 6px 20px rgba(15,46,64,0.35);
   }
   .pricing-btn--secondary {
     background: #fff;
-    color: var(--gold);
-    border: 2px solid var(--gold);
+    color: var(--blue-dark);
+    border: 2px solid var(--blue-dark);
   }
   .pricing-btn--secondary:hover {
-    background: var(--gold-pale);
+    background: var(--blue-pale);
     transform: translateY(-2px);
   }
   .pricing-note {
@@ -1348,7 +1335,7 @@
 
   /* ===== CTA ===== */
   .cta {
-    background: var(--gold);
+    background: var(--blue-dark);
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap;
@@ -1479,9 +1466,8 @@
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .pc-only { display: none; }
-    .fv-headline h1 { font-size: 1.6rem; }
-    .fv-number { font-size: 3rem; }
-    .fv-content { padding: 40px 3%; }
+    .fv > div:first-child { grid-template-columns: 1fr !important; text-align: center; padding: 48px 24px 40px !important; }
+    .fv > div:first-child > div:last-child { order: -1; }
     .fv-cta-btn { font-size: 0.88rem; padding: 12px 28px; }
     .section { padding: 52px 0; }
     .section-title { font-size: 1.3rem; }
@@ -1527,26 +1513,24 @@
 </head>
 <body>
 
-<!-- ===== FV (ローカル版) ===== -->
-<div class="fv">
-  <img class="fv-bg" src="images/hero.jpg" alt="ハイドロシェルデイリー サプリメント">
-  <div class="fv-overlay"></div>
-  <div class="fv-badge">ardesign社独自開発の国産原料「ハイドロシェル」配合</div>
-  <div class="fv-headline">
-    <h1>毎日のことだから、<br>中身で選びたい。</h1>
-    <p>国産原料・独自加工・第三者試験。過程の見える水素サプリメント。</p>
-  </div>
-  <div class="fv-content">
-    <div class="fv-side">
-      <div class="fv-label">普段は</div>
-      <div class="fv-number">2<span>粒</span></div>
+<!-- ===== FV ===== -->
+<section class="fv" style="height:auto;min-height:auto;background:#fff;">
+  <div style="max-width:960px;margin:0 auto;padding:80px 24px 60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+    <div>
+      <p style="font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">HydroShell Daily</p>
+      <h1 style="font-size:2rem;font-weight:800;line-height:1.5;color:var(--blue-dark);margin-bottom:20px;">毎日のことだから、<br>中身で選びたい。</h1>
+      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.9;margin-bottom:28px;">
+        国産原料・独自加工・第三者試験。<br>
+        過程の見える水素サプリメントです。
+      </p>
+      <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.8;margin-bottom:24px;">120粒入り / 約30〜60日分<br>初回限定価格 &yen;7,980（税込・送料無料）</p>
+      <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格で購入する</button>
     </div>
-    <div class="fv-side">
-      <div class="fv-label">アクティブな日は</div>
-      <div class="fv-number">4<span>粒</span></div>
+    <div style="text-align:center;">
+      <img src="images/package.png" alt="HydroShell Daily パッケージ" style="max-width:360px;width:100%;filter:drop-shadow(0 16px 48px rgba(0,0,0,0.12));">
     </div>
   </div>
-</div>
+</section>
 
 <!-- ===== PRODUCT + CAPSULE (統合) ===== -->
 <section class="section" id="about">
@@ -1750,8 +1734,8 @@
     <div class="usage-layout fade-up">
       <div class="usage-text">
         <p class="section-label en">How to Use</p>
-        <h2 class="section-title">飲み方</h2>
-        <p>1日2〜4粒を目安に、水またはぬるま湯でそのままお召し上がりください。普段は2粒、運動する日は4粒など、体調やライフスタイルに合わせて調整できます。</p>
+        <h2 class="section-title">日常にも、アクティブな日にも。</h2>
+        <p>普段は2粒、運動する日は4粒を目安に。水またはぬるま湯でそのままお召し上がりください。1袋120粒入りで、ライフスタイルに合わせて30〜60日分です。</p>
         <div class="usage-note">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           <p>本品は栄養補助食品です。医薬品ではありません。カプセルを開けて中身を直接口に含まないでください。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
@@ -1773,8 +1757,8 @@
 
       <div class="voice-item fade-up">
         <div class="voice-bubble">
-          <p class="voice-heading">運動する日は4粒にしています</p>
-          <p class="voice-body">普段は朝に2粒、ジムに行く日は4粒を目安にしています。量を自分で調整できるのがいいですね。</p>
+          <p class="voice-heading">原料の情報が見えるものを選びたかった</p>
+          <p class="voice-body">サプリはたくさんありますが、試験データや研究情報がサイトに載っていたので、納得して選べました。</p>
         </div>
         <div class="voice-person">
           <div class="voice-person-icon">
@@ -1940,6 +1924,22 @@
           <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
         </button>
         <div class="faq-a"><div class="faq-a-inner">毎日の習慣として続けやすいものを探している方や、原料の背景や品質情報を重視して選びたい方にご覧いただいています。</div></div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-q">
+          定期購入ですか？
+          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">定期購入ではありません。都度購入です。必要なタイミングでご注文ください。</div></div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-q">
+          保存方法を教えてください
+          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">直射日光、高温多湿を避けて保存してください。開封後はチャックをしっかり閉じ、なるべく早めにお召し上がりください。</div></div>
       </div>
 
       <div class="faq-item fade-up">
