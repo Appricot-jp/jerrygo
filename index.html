@@ -574,6 +574,33 @@
     color: var(--text-muted);
     margin-left: 2px;
   }
+  .measure-points {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex: 1;
+    align-items: center;
+  }
+  .measure-point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+  }
+  .measure-point-time {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+  }
+  .measure-point-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: var(--mp-opacity, 1);
+    display: block;
+  }
   .h2-timeline {
     flex: 1;
     display: flex;
@@ -1486,18 +1513,31 @@
 <p class="evidence-big-sub">30分〜24時間の測定を実施</p>
 </div>
 <div class="evidence-detail">
-<h3 class="evidence-h">気相水素濃度の時間経過（GC法）</h3>
-<div class="h2-timeline">
-<div class="h2-timeline-track">
-<div class="h2-timeline-gradient"></div>
-<div class="h2-timeline-point" style="left:0%"><span class="h2-timeline-dot" style="opacity:0.25;"></span><span class="h2-timeline-label">30分</span></div>
-<div class="h2-timeline-point" style="left:22%"><span class="h2-timeline-dot" style="opacity:0.4;"></span><span class="h2-timeline-label">1時間</span></div>
-<div class="h2-timeline-point" style="left:50%"><span class="h2-timeline-dot" style="opacity:0.6;"></span><span class="h2-timeline-label">4時間</span></div>
-<div class="h2-timeline-point" style="left:78%"><span class="h2-timeline-dot" style="opacity:0.8;"></span><span class="h2-timeline-label">16時間</span></div>
-<div class="h2-timeline-point" style="left:100%"><span class="h2-timeline-dot" style="opacity:1;"></span><span class="h2-timeline-label">24時間</span></div>
+<h3 class="evidence-h">測定ポイント（GC法）</h3>
+<div class="measure-points">
+<div class="measure-point" style="--mp-opacity:0.25;">
+<span class="measure-point-time">30分</span>
+<span class="measure-point-dot"></span>
+</div>
+<div class="measure-point" style="--mp-opacity:0.4;">
+<span class="measure-point-time">1時間</span>
+<span class="measure-point-dot"></span>
+</div>
+<div class="measure-point" style="--mp-opacity:0.6;">
+<span class="measure-point-time">4時間</span>
+<span class="measure-point-dot"></span>
+</div>
+<div class="measure-point" style="--mp-opacity:0.8;">
+<span class="measure-point-time">16時間</span>
+<span class="measure-point-dot"></span>
+</div>
+<div class="measure-point" style="--mp-opacity:1;">
+<span class="measure-point-time">24時間</span>
+<span class="measure-point-dot"></span>
 </div>
 </div>
-<p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）/ 信和化工マイクロシリンジ<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
+<p style="font-size:0.78rem;color:var(--text);text-align:center;margin-top:16px;line-height:1.6;">各時点で気相水素濃度を確認</p>
+<p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
 </div>
 </div>
 </div>
