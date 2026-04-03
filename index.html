@@ -507,6 +507,14 @@
     background: linear-gradient(90deg, rgba(26,139,135,0.4), var(--teal));
     transition: width 0.8s ease;
   }
+  .hbar-ref {
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+  }
+  .hbar-ref-line {
+    margin-top: 4px;
+  }
   .evidence-bar-note {
     font-size: 0.62rem;
     color: var(--text-muted);
@@ -1597,20 +1605,18 @@
 <p class="evidence-big-sub">参考値：飽和水素水換算 約14.4L/g</p>
 </div>
 <div class="evidence-detail">
-<h3 class="evidence-h">NADH標準との比較測定（340nm吸光度）</h3>
+<h3 class="evidence-h">ハイドロシェル添加による吸光度変化（340nm）</h3>
 <div class="hbar-group">
 <div class="hbar-item">
-<div class="hbar-top"><span class="hbar-label">0.5 mmol NADH（標準）</span><span class="hbar-val en">2.752</span></div>
-<div class="hbar-track"><div class="hbar-fill" style="width:92%;"></div></div>
+<div class="hbar-top"><span class="hbar-label">NAD+（反応前）</span><span class="hbar-val en">≈ 0</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:2%;opacity:0.3;"></div></div>
 </div>
 <div class="hbar-item">
-<div class="hbar-top"><span class="hbar-label">NAD+ + ハイドロシェル</span><span class="hbar-val en">2.006</span></div>
-<div class="hbar-track"><div class="hbar-fill" style="width:67%;"></div></div>
+<div class="hbar-top"><span class="hbar-label">NAD+ + ハイドロシェル（反応後）</span><span class="hbar-val en">2.006</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:73%;"></div></div>
 </div>
-<div class="hbar-item">
-<div class="hbar-top"><span class="hbar-label">1 mmol NAD+</span><span class="hbar-val en">—</span></div>
-<div class="hbar-track"><div class="hbar-fill" style="width:2%;"></div></div>
-</div>
+<p class="hbar-ref">NADH標準 0.5 mmol = 2.752（基準値）</p>
+<div class="hbar-track hbar-ref-line"><div class="hbar-fill" style="width:100%;opacity:0.15;"></div></div>
 </div>
 <p class="evidence-bar-note">測定: 山梨県産業技術センター（産技セ第3102号）<br>※上記測定データを基に自社にて算出</p>
 </div>
