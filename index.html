@@ -574,6 +574,51 @@
     color: var(--text-muted);
     margin-left: 2px;
   }
+  .h2-timeline {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .h2-timeline-track {
+    position: relative;
+    width: 100%;
+    height: 8px;
+  }
+  .h2-timeline-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(26,139,135,0.15), var(--teal));
+  }
+  .h2-timeline-point {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .h2-timeline-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px rgba(26,139,135,0.2);
+    display: block;
+  }
+  .h2-timeline-label {
+    position: absolute;
+    top: 28px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
   .evidence-source {
     font-size: 0.68rem;
     color: var(--text-muted);
@@ -1441,13 +1486,16 @@
 <p class="evidence-big-sub">30分〜24時間の測定を実施</p>
 </div>
 <div class="evidence-detail">
-<h3 class="evidence-h">水素発生量の推移（GC法）</h3>
-<div class="evidence-timeline">
-<div class="evidence-tl-item"><span class="evidence-tl-time">30分</span><div class="evidence-tl-bar-wrap"><div class="evidence-tl-bar" style="width:40%;"></div></div><span class="evidence-tl-val en">233,000<span>ppm</span></span></div>
-<div class="evidence-tl-item"><span class="evidence-tl-time">1時間</span><div class="evidence-tl-bar-wrap"><div class="evidence-tl-bar" style="width:55%;"></div></div><span class="evidence-tl-val en">321,000<span>ppm</span></span></div>
-<div class="evidence-tl-item"><span class="evidence-tl-time">4時間</span><div class="evidence-tl-bar-wrap"><div class="evidence-tl-bar" style="width:88%;"></div></div><span class="evidence-tl-val en">510,000<span>ppm</span></span></div>
-<div class="evidence-tl-item"><span class="evidence-tl-time">16時間</span><div class="evidence-tl-bar-wrap"><div class="evidence-tl-bar" style="width:91%;"></div></div><span class="evidence-tl-val en">530,000<span>ppm</span></span></div>
-<div class="evidence-tl-item"><span class="evidence-tl-time">24時間</span><div class="evidence-tl-bar-wrap"><div class="evidence-tl-bar" style="width:100%;"></div></div><span class="evidence-tl-val en">580,000<span>ppm</span></span></div>
+<h3 class="evidence-h">気相水素濃度の時間経過（GC法）</h3>
+<div class="h2-timeline">
+<div class="h2-timeline-track">
+<div class="h2-timeline-gradient"></div>
+<div class="h2-timeline-point" style="left:0%"><span class="h2-timeline-dot" style="opacity:0.25;"></span><span class="h2-timeline-label">30分</span></div>
+<div class="h2-timeline-point" style="left:22%"><span class="h2-timeline-dot" style="opacity:0.4;"></span><span class="h2-timeline-label">1時間</span></div>
+<div class="h2-timeline-point" style="left:50%"><span class="h2-timeline-dot" style="opacity:0.6;"></span><span class="h2-timeline-label">4時間</span></div>
+<div class="h2-timeline-point" style="left:78%"><span class="h2-timeline-dot" style="opacity:0.8;"></span><span class="h2-timeline-label">16時間</span></div>
+<div class="h2-timeline-point" style="left:100%"><span class="h2-timeline-dot" style="opacity:1;"></span><span class="h2-timeline-label">24時間</span></div>
+</div>
 </div>
 <p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）/ 信和化工マイクロシリンジ<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
 </div>
