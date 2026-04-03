@@ -602,19 +602,27 @@
   .dot-grid {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex: 1;
-    gap: 8px;
-    padding: 0 4px;
-    margin-top: 0;
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px 0;
   }
   .dot-grid-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     flex: 1;
-    padding: 8px 0;
+  }
+  .dot-grid-time {
+    font-size: 0.7rem;
+    color: var(--blue-dark);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .dot-grid-bubble-wrap {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .dot-grid-bubble {
     width: var(--dot-size, 32px);
@@ -624,18 +632,16 @@
     opacity: var(--dot-o, 1);
   }
   .dot-grid-val {
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     font-weight: 500;
     color: var(--text-light);
     letter-spacing: 0.02em;
-  }
-  .dot-grid-time {
-    font-size: 0.7rem;
-    color: var(--blue-dark);
-    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    margin-top: 12px;
   }
   .dot-grid-unit {
-    font-size: 0.55rem;
+    font-size: 0.52rem;
     font-weight: 400;
   }
   .scatter-chart {
@@ -1637,27 +1643,27 @@
 <div class="dot-grid">
 <div class="dot-grid-col">
 <span class="dot-grid-time">30分</span>
-<div class="dot-grid-bubble" style="--dot-o:0.25;--dot-size:40px;"></div>
+<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.25;--dot-size:40px;"></div></div>
 <span class="dot-grid-val en">233,000<br><span class="dot-grid-unit">ppm</span></span>
 </div>
 <div class="dot-grid-col">
 <span class="dot-grid-time">1時間</span>
-<div class="dot-grid-bubble" style="--dot-o:0.4;--dot-size:48px;"></div>
+<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.4;--dot-size:48px;"></div></div>
 <span class="dot-grid-val en">321,000<br><span class="dot-grid-unit">ppm</span></span>
 </div>
 <div class="dot-grid-col">
 <span class="dot-grid-time">4時間</span>
-<div class="dot-grid-bubble" style="--dot-o:0.65;--dot-size:56px;"></div>
+<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.65;--dot-size:56px;"></div></div>
 <span class="dot-grid-val en">510,000<br><span class="dot-grid-unit">ppm</span></span>
 </div>
 <div class="dot-grid-col">
 <span class="dot-grid-time">16時間</span>
-<div class="dot-grid-bubble" style="--dot-o:0.8;--dot-size:58px;"></div>
+<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.8;--dot-size:58px;"></div></div>
 <span class="dot-grid-val en">530,000<br><span class="dot-grid-unit">ppm</span></span>
 </div>
 <div class="dot-grid-col">
 <span class="dot-grid-time">24時間</span>
-<div class="dot-grid-bubble" style="--dot-o:1;--dot-size:64px;"></div>
+<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:1;--dot-size:64px;"></div></div>
 <span class="dot-grid-val en">580,000<br><span class="dot-grid-unit">ppm</span></span>
 </div>
 </div>
