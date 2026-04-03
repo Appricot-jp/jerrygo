@@ -601,6 +601,71 @@
     opacity: var(--mp-opacity, 1);
     display: block;
   }
+  .scatter-chart {
+    display: flex;
+    gap: 8px;
+    flex: 1;
+    align-items: stretch;
+  }
+  .scatter-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 0;
+  }
+  .scatter-y-axis span {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: right;
+    width: 28px;
+  }
+  .scatter-area {
+    flex: 1;
+    position: relative;
+    min-height: 180px;
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .scatter-grid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-top: 1px dashed rgba(0,0,0,0.06);
+  }
+  .scatter-line {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .scatter-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: var(--dot-o, 1);
+    transform: translate(-50%, 50%);
+    z-index: 2;
+  }
+  .scatter-label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .scatter-x-axis {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: 4px;
+  }
   .h2-timeline {
     flex: 1;
     display: flex;
@@ -1513,30 +1578,26 @@
 <p class="evidence-big-sub">30分〜24時間の測定を実施</p>
 </div>
 <div class="evidence-detail">
-<h3 class="evidence-h">測定ポイント（GC法）</h3>
-<div class="measure-points">
-<div class="measure-point" style="--mp-opacity:0.25;">
-<span class="measure-point-time">30分</span>
-<span class="measure-point-dot"></span>
+<h3 class="evidence-h">気相水素濃度の推移（GC法）</h3>
+<div class="scatter-chart">
+<div class="scatter-y-axis">
+<span>24h</span><span>16h</span><span>4h</span><span>1h</span><span>30m</span>
 </div>
-<div class="measure-point" style="--mp-opacity:0.4;">
-<span class="measure-point-time">1時間</span>
-<span class="measure-point-dot"></span>
-</div>
-<div class="measure-point" style="--mp-opacity:0.6;">
-<span class="measure-point-time">4時間</span>
-<span class="measure-point-dot"></span>
-</div>
-<div class="measure-point" style="--mp-opacity:0.8;">
-<span class="measure-point-time">16時間</span>
-<span class="measure-point-dot"></span>
-</div>
-<div class="measure-point" style="--mp-opacity:1;">
-<span class="measure-point-time">24時間</span>
-<span class="measure-point-dot"></span>
+<div class="scatter-area">
+<div class="scatter-grid" style="bottom:0%;"></div>
+<div class="scatter-grid" style="bottom:25%;"></div>
+<div class="scatter-grid" style="bottom:50%;"></div>
+<div class="scatter-grid" style="bottom:75%;"></div>
+<div class="scatter-grid" style="bottom:100%;"></div>
+<svg class="scatter-line" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline points="40,100 55,75 88,50 91,25 100,0" fill="none" stroke="var(--teal)" stroke-width="1" opacity="0.25"/></svg>
+<div class="scatter-dot" style="left:40%;bottom:0%;--dot-o:0.3;"><span class="scatter-label">233,000</span></div>
+<div class="scatter-dot" style="left:55%;bottom:25%;--dot-o:0.45;"><span class="scatter-label">321,000</span></div>
+<div class="scatter-dot" style="left:88%;bottom:50%;--dot-o:0.65;"><span class="scatter-label">510,000</span></div>
+<div class="scatter-dot" style="left:91%;bottom:75%;--dot-o:0.8;"><span class="scatter-label">530,000</span></div>
+<div class="scatter-dot" style="left:100%;bottom:100%;--dot-o:1;"><span class="scatter-label">580,000</span></div>
 </div>
 </div>
-<p style="font-size:0.78rem;color:var(--text);text-align:center;margin-top:16px;line-height:1.6;">各時点で気相水素濃度を確認</p>
+<p class="scatter-x-axis">ppm（気相）→</p>
 <p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
 </div>
 </div>
