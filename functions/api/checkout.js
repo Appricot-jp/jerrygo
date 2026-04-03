@@ -53,6 +53,8 @@ export async function onRequestPost(context) {
   stripeParams.append('success_url', `${origin}/?checkout=success`);
   stripeParams.append('cancel_url', `${origin}/?checkout=cancel`);
   stripeParams.append('shipping_address_collection[allowed_countries][0]', 'JP');
+  stripeParams.append('payment_method_types[0]', 'card');
+  stripeParams.append('payment_method_types[1]', 'konbini');
 
   try {
     const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
