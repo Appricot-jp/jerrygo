@@ -11,21 +11,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 :root {
-  --bg-main: #FAFAF8;
-  --bg-subtle: #F7F8FA;
-  --card-bg: #FFFFFF;
-  --text-primary: #1B2230;
-  --text-secondary: #5E6675;
-  --text-muted: #7C8491;
-  --border-light: #E3E7EE;
-  --border-mid: #D0D5DE;
-  --accent: #1C2D5A;
-  --accent-dark: #162447;
-  --accent-soft: #EDF0F7;
-  --note-bg: #F5F6F9;
-  --note-text: #6E7580;
-  --gold: #B59A4A;
-  --gold-soft: #C8B26A;
+  --bg-main: #F7F6F2;
+  --bg-subtle: #F1F0EB;
+  --card-bg: #FCFCFA;
+  --text-primary: #2A2F38;
+  --text-secondary: #666C75;
+  --text-muted: #8A9098;
+  --border-light: #E5E2DA;
+  --border-mid: #D9D5CC;
+  --accent: #273354;
+  --accent-dark: #222C47;
+  --accent-soft: #EDECEA;
+  --note-bg: #F1F0EB;
+  --note-text: #8A9098;
+  --gold: #B79A63;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,7 +69,7 @@ a { color: var(--accent); text-decoration: none; }
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--accent);
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 .fv-title {
@@ -94,12 +93,13 @@ a { color: var(--accent); text-decoration: none; }
 }
 .fv-badge {
   display: inline-block;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
+  background: var(--card-bg);
+  color: var(--accent);
   padding: 6px 16px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
+  border: 1px solid var(--border-light);
 }
 .fv-price-area { margin-bottom: 24px; }
 .fv-price-label {
@@ -193,8 +193,8 @@ a { color: var(--accent); text-decoration: none; }
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
-  height: 2px;
+  width: 32px;
+  height: 1.5px;
   background: var(--gold);
 }
 .section--center .section-title::after {
