@@ -1213,20 +1213,43 @@ a { color: var(--accent); text-decoration: none; }
   </div>
 </section>
 
-<!-- ===== SECTION 7: 製品情報と価格 ===== -->
-<section class="section" id="product">
+<!-- ===== SECTION 7: ご購入 ===== -->
+<section class="section final-cta" id="purchase">
   <div class="container">
-    <h2 class="section-title section-center fade-up">製品情報</h2>
-    <div style="max-width:720px;margin:48px auto 0;">
-      <table class="product-table fade-up">
-        <tr><th>名称</th><td>未焼成カルシウム加工食品</td></tr>
-        <tr><th>原材料名</th><td>未焼成カルシウム、結晶セルロース、HPMC、炭酸カリウム、クエン酸カリウム、ステアリン酸カルシウム、炭酸水素ナトリウム、二酸化ケイ素、カラメル色素</td></tr>
-        <tr><th>内容量</th><td>59.4g（495mg×120カプセル）</td></tr>
-        <tr><th>目安摂取量</th><td>1日2〜4粒</td></tr>
-        <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
-        <tr><th style="white-space:nowrap;">栄養成分 <small>4粒あたり</small></th><td>エネルギー 4.06kcal / たんぱく質 0g / 脂質 0.03g / 炭水化物 0.95g / 食塩相当量 0.04g</td></tr>
-      </table>
+    <h2 class="section-title fade-up">まずは初回価格でお試しください</h2>
+    <p class="section-desc fade-up">原料の背景まで確認して選びたい方へ。ハイドロシェルデイリーを、初回限定価格でご用意しています。</p>
+    <div class="final-cta-cards">
+      <div class="pricing-card pricing-card--featured fade-up">
+        <div class="pricing-badge">初回限定</div>
+        <p class="pricing-label">はじめての方へ</p>
+        <p class="pricing-price"><span class="yen">&yen;</span>7,980</p>
+        <p class="pricing-tax">税込 / 送料無料</p>
+        <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
+        <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で購入する</button>
+      </div>
+      <div class="pricing-card fade-up">
+        <p class="pricing-label">2回目以降のご購入</p>
+        <p class="pricing-price"><span class="yen">&yen;</span>14,800</p>
+        <p class="pricing-tax">税込 / 送料無料</p>
+        <p class="pricing-detail">120粒入り（約30〜60日分）</p>
+        <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
+      </div>
     </div>
+    <div class="payment-methods fade-up">
+      <span class="payment-badge">
+        <i class="fa-brands fa-cc-visa" style="font-size:1.1rem;color:#1A1F71;"></i>
+        <i class="fa-brands fa-cc-mastercard" style="font-size:1.1rem;color:#EB001B;"></i>
+        <i class="fa-brands fa-cc-amex" style="font-size:1.1rem;color:#006FCF;"></i>
+        <i class="fa-brands fa-cc-jcb" style="font-size:1.1rem;color:#0E4C96;"></i>
+      </span>
+      <span class="payment-badge">
+        <i class="fa-brands fa-apple-pay" style="font-size:1.3rem;color:#000;"></i>
+      </span>
+      <span class="payment-badge">
+        <i class="fa-brands fa-google-pay" style="font-size:1.3rem;color:#5F6368;"></i>
+      </span>
+    </div>
+    <p class="fade-up" style="font-size:12px;color:var(--text-muted);margin-top:16px;">発送予定：2026年5月18日以降、ご予約順に発送</p>
   </div>
 </section>
 
@@ -1267,43 +1290,20 @@ a { color: var(--accent); text-decoration: none; }
   </div>
 </section>
 
-<!-- ===== SECTION 9: 最終CTA ===== -->
-<section class="section final-cta" id="purchase">
+<!-- ===== SECTION 9: 製品情報 ===== -->
+<section class="section" id="product">
   <div class="container">
-    <h2 class="section-title fade-up">まずは初回価格でお試しください</h2>
-    <p class="section-desc fade-up">原料の背景まで確認して選びたい方へ。ハイドロシェルデイリーを、初回限定価格でご用意しています。</p>
-    <div class="final-cta-cards">
-      <div class="pricing-card pricing-card--featured fade-up">
-        <div class="pricing-badge">初回限定</div>
-        <p class="pricing-label">はじめての方へ</p>
-        <p class="pricing-price"><span class="yen">&yen;</span>7,980</p>
-        <p class="pricing-tax">税込 / 送料無料</p>
-        <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
-        <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で購入する</button>
-      </div>
-      <div class="pricing-card fade-up">
-        <p class="pricing-label">2回目以降のご購入</p>
-        <p class="pricing-price"><span class="yen">&yen;</span>14,800</p>
-        <p class="pricing-tax">税込 / 送料無料</p>
-        <p class="pricing-detail">120粒入り（約30〜60日分）</p>
-        <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
-      </div>
+    <h2 class="section-title section-center fade-up">製品情報</h2>
+    <div style="max-width:720px;margin:48px auto 0;">
+      <table class="product-table fade-up">
+        <tr><th>名称</th><td>未焼成カルシウム加工食品</td></tr>
+        <tr><th>原材料名</th><td>未焼成カルシウム、結晶セルロース、HPMC、炭酸カリウム、クエン酸カリウム、ステアリン酸カルシウム、炭酸水素ナトリウム、二酸化ケイ素、カラメル色素</td></tr>
+        <tr><th>内容量</th><td>59.4g（495mg×120カプセル）</td></tr>
+        <tr><th>目安摂取量</th><td>1日2〜4粒</td></tr>
+        <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
+        <tr><th style="white-space:nowrap;">栄養成分 <small>4粒あたり</small></th><td>エネルギー 4.06kcal / たんぱく質 0g / 脂質 0.03g / 炭水化物 0.95g / 食塩相当量 0.04g</td></tr>
+      </table>
     </div>
-    <div class="payment-methods fade-up">
-      <span class="payment-badge">
-        <i class="fa-brands fa-cc-visa" style="font-size:1.1rem;color:#1A1F71;"></i>
-        <i class="fa-brands fa-cc-mastercard" style="font-size:1.1rem;color:#EB001B;"></i>
-        <i class="fa-brands fa-cc-amex" style="font-size:1.1rem;color:#006FCF;"></i>
-        <i class="fa-brands fa-cc-jcb" style="font-size:1.1rem;color:#0E4C96;"></i>
-      </span>
-      <span class="payment-badge">
-        <i class="fa-brands fa-apple-pay" style="font-size:1.3rem;color:#000;"></i>
-      </span>
-      <span class="payment-badge">
-        <i class="fa-brands fa-google-pay" style="font-size:1.3rem;color:#5F6368;"></i>
-      </span>
-    </div>
-    <p class="fade-up" style="font-size:12px;color:var(--text-muted);margin-top:16px;">発送予定：2026年5月18日以降、ご予約順に発送</p>
   </div>
 </section>
 
