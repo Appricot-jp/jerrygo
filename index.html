@@ -12,18 +12,20 @@
 <style>
 :root {
   --bg-main: #FAFAF8;
-  --bg-subtle: #F3F4F1;
+  --bg-subtle: #F7F8FA;
   --card-bg: #FFFFFF;
-  --text-primary: #1F2522;
-  --text-secondary: #5F6762;
-  --text-muted: #7C847F;
-  --border-light: #E6E8E3;
-  --border-mid: #D8DDD6;
-  --accent: #5D6B5F;
-  --accent-dark: #4B574D;
-  --accent-soft: #EEF2EC;
-  --note-bg: #F6F6F3;
-  --note-text: #6E756F;
+  --text-primary: #1B2230;
+  --text-secondary: #5E6675;
+  --text-muted: #7C8491;
+  --border-light: #E3E7EE;
+  --border-mid: #D0D5DE;
+  --accent: #1C2D5A;
+  --accent-dark: #162447;
+  --accent-soft: #EDF0F7;
+  --note-bg: #F5F6F9;
+  --note-text: #6E7580;
+  --gold: #B59A4A;
+  --gold-soft: #C8B26A;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -75,7 +77,7 @@ a { color: var(--accent); text-decoration: none; }
   font-size: 50px;
   font-weight: 700;
   line-height: 1.4;
-  color: var(--text-primary);
+  color: var(--accent);
   margin-bottom: 18px;
 }
 .fv-subtitle {
@@ -109,7 +111,7 @@ a { color: var(--accent); text-decoration: none; }
 .fv-price-main {
   font-size: 28px;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--accent);
   line-height: 1.3;
 }
 .fv-price-original {
@@ -181,8 +183,23 @@ a { color: var(--accent); text-decoration: none; }
   font-size: 34px;
   font-weight: 700;
   line-height: 1.45;
-  color: var(--text-primary);
+  color: var(--accent);
   margin-bottom: 16px;
+  padding-bottom: 16px;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+}
+.section--center .section-title::after {
+  left: 50%;
+  transform: translateX(-50%);
 }
 .section-desc {
   font-size: 16px;
