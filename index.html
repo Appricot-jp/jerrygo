@@ -8,1837 +8,1288 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #A68B2C;
-    --gold-light: #C4A94A;
-    --gold-pale: #FAF8F1;
-    --gold-dark: #8A7420;
-    --gold-deep: #3E3008;
-    --blue: #1A6B8F;
-    --blue-light: #4D9DBD;
-    --blue-pale: #EDF5F9;
-    --blue-dark: #0F2E40;
-    --teal: #3A7A78;
-    --teal-light: #D0ECEB;
-    --text: #1A1F24;
-    --text-light: #3D4F5C;
-    --text-muted: #7A858D;
-    --bg: #FAFBFC;
-    --bg-off: #F3F4F2;
-    --border: #D8E0E6;
-    --radius: 10px;
-    --shadow: 0 2px 16px rgba(0,0,0,0.05);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
-  }
-
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.85;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  .en { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
-  img { max-width: 100%; height: auto; display: block; }
-  a { color: var(--gold); text-decoration: none; }
-
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ===== FV (ローカル版そのまま) ===== */
-  .fv {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    overflow: hidden;
-  }
-  .fv-bg {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .fv-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0) 0%,
-      rgba(0,0,0,0) 50%,
-      rgba(0,0,0,0.5) 100%
-    );
-  }
-  .fv-content {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 60px 5% 36px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-  }
-  .fixed-cta-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    padding: 12px 16px;
-    text-align: center;
-    z-index: 100;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-  }
-  .fixed-cta-bar.visible {
-    transform: translateY(0);
-  }
-  .fv-cta-btn {
-    background: var(--blue-dark);
-    color: #fff;
-    border: none;
-    padding: 14px 36px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 60px;
-    cursor: pointer;
-    font-family: inherit;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 16px rgba(15,46,64,0.25);
-    transition: background 0.3s, transform 0.2s;
-  }
-  .fv-cta-btn:hover {
-    background: #0A2030;
-    transform: translateY(-2px);
-  }
-  .fv-side {
-    text-align: center;
-    color: #fff;
-    flex: 1;
-  }
-  .fv-label {
-    font-size: 1.1rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-  .fv-number {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  }
-  .fv-number span {
-    font-size: 1.8rem;
-    font-weight: 500;
-  }
-  .fv-badge {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(20,64,90,0.75);
-    color: #fff;
-    padding: 10px 16px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-align: center;
-    z-index: 2;
-    backdrop-filter: blur(6px);
-  }
-  .fv-headline {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
-    z-index: 2;
-  }
-  .fv-headline h1 {
-    font-size: 2.4rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
-  }
-  .fv-headline p {
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-  }
-
-  /* ===== SECTION COMMON ===== */
-  .section { padding: 72px 0; }
-  .section--off { background: var(--bg-off); }
-  .section--center { text-align: center; }
-  .section--center .section-desc { margin-left: auto; margin-right: auto; }
-
-  .section-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 6px;
-  }
-  .section-title {
-    font-size: 1.55rem;
-    font-weight: 700;
-    line-height: 1.45;
-    margin-bottom: 14px;
-    color: var(--blue-dark);
-  }
-  .section-desc {
-    font-size: 0.92rem;
-    color: var(--text-light);
-    max-width: 600px;
-    line-height: 1.85;
-    margin-bottom: 40px;
-  }
-
-  /* ===== PRODUCT + CAPSULE ===== */
-  .product-capsule-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .product-capsule-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .pkg-img {
-    max-width: 320px;
-    width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 40px rgba(0,0,0,0.15));
-  }
-  .capsule-row {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 24px;
-  }
-  .capsule-row-img {
-    width: 100px;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.1));
-    flex-shrink: 0;
-  }
-  .capsule-row-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--blue-dark);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .capsule-row-num span {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-muted);
-  }
-  .capsule-row-label {
-    font-size: 0.82rem;
-    color: var(--text-light);
-  }
-  .capsule-specs {
-    display: flex;
-    gap: 0;
-    margin-top: 8px;
-  }
-  .capsule-spec-item {
-    flex: 1;
-    padding: 16px 0;
-    border-top: 2px solid var(--border);
-    text-align: center;
-  }
-  .capsule-spec-item:first-child { border-top-color: var(--gold); }
-  .capsule-spec-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--blue-dark);
-    line-height: 1.2;
-  }
-  .capsule-spec-num span {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-  .capsule-spec-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-  .spec-row {
-    display: flex;
-    gap: 24px;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-  .spec-item {
-    flex: 1;
-    padding: 20px;
-    background: var(--bg-off);
-    border-radius: 12px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .spec-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 2px;
-  }
-  .spec-value {
-    font-family: 'Inter', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--blue-dark);
-    line-height: 1.2;
-    margin-bottom: 6px;
-    margin-top: 8px;
-  }
-  .spec-value span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-light);
-  }
-  .spec-title {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--blue-dark);
-    margin-bottom: 4px;
-  }
-  .spec-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* ===== EVIDENCE ===== */
-  .evidence-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  .evidence-block {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-  }
-  .evidence-hero {
-    background: var(--blue-dark);
-    color: #fff;
-    padding: 36px 32px;
-    text-align: center;
-  }
-  .evidence-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 12px;
-  }
-  .evidence-big-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 3.6rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .evidence-big-num span {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.5);
-    margin-left: 4px;
-  }
-  .evidence-big-title {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .evidence-big-sub {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.55);
-  }
-  .evidence-detail {
-    padding: 32px 32px 28px;
-  }
-  .evidence-h {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .evidence-points {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .evidence-point-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--blue-dark);
-    line-height: 1.2;
-  }
-  .evidence-point-num span {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin: 0 4px;
-  }
-  .evidence-point-label {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
-  .evidence-visual {
-    margin-top: 8px;
-  }
-  .evidence-visual-title {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-  .evidence-bar-group {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    flex: 1;
-    justify-content: center;
-  }
-  .evidence-bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .evidence-bar-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-light);
-    width: 90px;
-    flex-shrink: 0;
-    text-align: right;
-  }
-  .evidence-bar {
-    height: 36px;
-    border-radius: 6px;
-    transition: width 0.8s ease;
-  }
-  .evidence-bar-val {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    flex-shrink: 0;
-  }
-  .hbar-group {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .hbar-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .hbar-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .hbar-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--blue-dark);
-  }
-  .hbar-val {
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--text-light);
-  }
-  .hbar-track {
-    width: 100%;
-    height: 8px;
-    background: var(--bg-off);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .hbar-fill {
-    height: 100%;
-    border-radius: 99px;
-    background: linear-gradient(90deg, rgba(26,139,135,0.4), var(--teal));
-    transition: width 0.8s ease;
-  }
-  .hbar-ref {
-    font-size: 0.62rem;
-    color: var(--text-muted);
-    margin-top: 8px;
-  }
-  .hbar-ref-line {
-    margin-top: 4px;
-  }
-  .evidence-bar-note {
-    font-size: 0.62rem;
-    color: var(--text-muted);
-    margin-top: auto;
-    padding-top: 12px;
-    line-height: 1.7;
-  }
-  .evidence-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-    justify-content: center;
-  }
-  .evidence-tl-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .evidence-tl-time {
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-light);
-    width: 56px;
-    flex-shrink: 0;
-    text-align: right;
-  }
-  .evidence-tl-bar-wrap {
-    flex: 1;
-    height: 20px;
-    background: var(--bg-off);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .evidence-tl-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--teal), var(--blue));
-    border-radius: 4px;
-    transition: width 0.8s ease;
-  }
-  .evidence-tl-val {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    width: 100px;
-    flex-shrink: 0;
-  }
-  .evidence-tl-val span {
-    font-size: 0.6rem;
-    font-weight: 400;
-    color: var(--text-muted);
-    margin-left: 2px;
-  }
-  .measure-points {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex: 1;
-    align-items: center;
-  }
-  .measure-point {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-  }
-  .measure-point-time {
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-  }
-  .measure-point-dot {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--teal);
-    opacity: var(--mp-opacity, 1);
-    display: block;
-  }
-  .dot-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 4px;
-    padding: 8px 0;
-  }
-  .dot-grid-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-  }
-  .dot-grid-time {
-    font-size: 0.7rem;
-    color: var(--blue-dark);
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-  .dot-grid-bubble-wrap {
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .dot-grid-bubble {
-    width: var(--dot-size, 32px);
-    height: var(--dot-size, 32px);
-    border-radius: 50%;
-    background: var(--teal);
-    opacity: var(--dot-o, 1);
-  }
-  .dot-grid-val {
-    font-size: 0.6rem;
-    font-weight: 500;
-    color: var(--text-light);
-    letter-spacing: 0.02em;
-    text-align: center;
-    line-height: 1.4;
-    margin-top: 12px;
-  }
-  .dot-grid-unit {
-    font-size: 0.52rem;
-    font-weight: 400;
-  }
-  .scatter-chart {
-    display: flex;
-    gap: 8px;
-    flex: 1;
-    align-items: stretch;
-  }
-  .scatter-y-axis {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 4px 0;
-  }
-  .scatter-y-axis span {
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-align: right;
-    width: 28px;
-  }
-  .scatter-area {
-    flex: 1;
-    position: relative;
-    height: 150px;
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .scatter-grid {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 0;
-    border-top: 1px dashed rgba(0,0,0,0.06);
-  }
-  .scatter-line {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .scatter-dot {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--teal);
-    opacity: var(--dot-o, 1);
-    transform: translate(-50%, 50%);
-    z-index: 2;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px rgba(26,139,135,0.2);
-  }
-  .scatter-label {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.62rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-  .scatter-x-labels {
-    display: flex;
-    padding-left: 36px;
-    margin-top: 4px;
-  }
-  .scatter-x-labels span {
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-align: center;
-  }
-  .scatter-x-labels span:nth-child(1) { position: relative; left: 2%; }
-  .scatter-x-labels span:nth-child(2) { position: relative; left: 8%; }
-  .scatter-x-labels span:nth-child(3) { position: relative; left: 22%; }
-  .scatter-x-labels span:nth-child(4) { position: relative; left: 55%; }
-  .scatter-x-labels span:nth-child(5) { margin-left: auto; }
-  .scatter-x-axis {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    text-align: right;
-    margin-top: 4px;
-  }
-  .h2-timeline {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 20px 0;
-  }
-  .h2-timeline-track {
-    position: relative;
-    width: 100%;
-    height: 8px;
-  }
-  .h2-timeline-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    border-radius: 4px;
-    background: linear-gradient(90deg, rgba(26,139,135,0.15), var(--teal));
-  }
-  .h2-timeline-point {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .h2-timeline-dot {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--teal);
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 1px rgba(26,139,135,0.2);
-    display: block;
-  }
-  .h2-timeline-label {
-    position: absolute;
-    top: 28px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--text-light);
-    white-space: nowrap;
-  }
-  .evidence-source {
-    font-size: 0.68rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-    text-align: center;
-  }
-
-  /* ===== RESEARCH BLOCK ===== */
-  .research-block {
-    max-width: 1100px;
-    margin: 24px auto 0;
-    padding: 0 24px;
-  }
-  .research-block-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-    border: 1px solid var(--border);
-  }
-  .research-block-hero {
-    background: var(--blue-dark);
-    color: #fff;
-    padding: 28px 32px;
-    text-align: center;
-  }
-  .research-block-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 6px;
-  }
-  .research-block-univ {
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
-  .research-block-detail {
-    padding: 28px 32px;
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-  .research-block-text { flex: 1; }
-  .research-block-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    margin-bottom: 8px;
-  }
-  .research-block-paper {
-    font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.7;
-    margin-bottom: 4px;
-  }
-  .research-block-meta {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
-  .research-block-prof {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
-    padding-left: 32px;
-    border-left: 1px solid var(--border);
-  }
-  .research-block-photo {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .research-block-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .research-block-prof-name {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--blue-dark);
-  }
-  .research-block-prof-affil {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 2px;
-  }
-
-  /* ===== SAFETY ===== */
-  .safety-strip {
-    padding: 20px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .safety-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-  }
-  .safety-icon {
-    width: 28px;
-    height: 28px;
-    color: var(--teal);
-    flex-shrink: 0;
-  }
-  .safety-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-  .safety-text {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-light);
-  }
-
-  /* ===== CAPSULE HERO ===== */
-  .capsule-hero {
-    background: #0A0A0A;
-    padding: 64px 0;
-    overflow: hidden;
-  }
-  .capsule-hero-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-  }
-  .capsule-img {
-    max-height: 280px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 40px rgba(255,255,255,0.08));
-  }
-  .capsule-text {
-    text-align: left;
-  }
-  .capsule-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .capsule-num span {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.5);
-  }
-  .capsule-copy {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.7;
-    letter-spacing: 0.03em;
-  }
-
-  /* ===== legacy (keep for other sections) ===== */
-  .ingredient-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-  .ingredient-item {
-    margin-bottom: 20px;
-  }
-  .ingredient-item:last-child { margin-bottom: 0; }
-  .ingredient-item h4 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--blue-dark);
-  }
-  .ingredient-item p {
-    font-size: 0.88rem;
-    color: var(--text-light);
-    line-height: 1.75;
-  }
-  .ingredient-card {
-    background: #fff;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-  }
-  .ingredient-card-body {
-    padding: 36px 28px;
-    text-align: center;
-  }
-  .ingredient-card-body .label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 16px;
-  }
-  .ingredient-formula {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    line-height: 1.5;
-    margin-bottom: 14px;
-  }
-  .ingredient-formula .x {
-    color: var(--teal);
-    margin: 0 4px;
-  }
-  .ingredient-card-note {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    line-height: 1.7;
-  }
-
-  /* ===== FEATURES ===== */
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .feature-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 30px 24px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-  }
-  .feature-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #DDE3E8;
-    line-height: 1;
-    margin-bottom: 14px;
-  }
-  .feature-card h3 {
-    font-size: 0.98rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--blue-dark);
-  }
-  .feature-card p {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.75;
-  }
-
-  /* ===== RECOMMEND ===== */
-  .recommend-row-h {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .recommend-col {
-    text-align: center;
-    padding: 8px 0;
-  }
-  .recommend-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 10px;
-    opacity: 0.35;
-  }
-  .recommend-word {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    line-height: 1.5;
-  }
-
-  /* ===== USAGE ===== */
-  .usage-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: stretch;
-  }
-  .usage-image {
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .usage-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .usage-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .usage-text p {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    line-height: 2;
-  }
-  .usage-note {
-    margin-top: 32px;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-  }
-  .usage-note svg { width: 20px; height: 20px; fill: var(--text-muted); flex-shrink: 0; margin-top: 2px; }
-  .usage-note p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
-
-  /* ===== VOICE (person + bubble) ===== */
-  .voice-list {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr;
-    gap: 20px;
-    align-items: end;
-  }
-  .voice-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .voice-bubble {
-    position: relative;
-    padding: 20px 22px;
-    border-radius: 8px;
-    font-size: 0.84rem;
-    line-height: 1.85;
-    color: var(--text);
-    margin-bottom: 12px;
-    width: 100%;
-    background: #fff;
-    border-left: 3px solid var(--blue-dark);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
-  .voice-bubble::after { display: none; }
-  .voice-heading {
-    font-weight: 600;
-    margin-bottom: 6px;
-    font-size: 0.9rem;
-  }
-  .voice-body {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    line-height: 1.8;
-  }
-  .voice-person {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-  }
-  .voice-person-icon {
-    width: 64px;
-    height: 64px;
-  }
-  .voice-item:nth-child(2) .voice-person-icon {
-    width: 72px;
-    height: 72px;
-  }
-  .voice-person-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-  .voice-name {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-  }
-  .voice-note {
-    margin-top: 28px;
-    font-size: 0.72rem;
-    color: var(--text-muted);
-  }
-
-  /* ===== PRODUCT TABLE ===== */
-  .product-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--border);
-    font-size: 0.85rem;
-  }
-  .product-table th,
-  .product-table td {
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    text-align: left;
-  }
-  .product-table th {
-    background: var(--blue-pale);
-    font-weight: 600;
-    color: var(--blue-dark);
-    width: 150px;
-  }
-  .product-table td { color: var(--text-light); }
-  .product-table tr:last-child th,
-  .product-table tr:last-child td { border-bottom: none; }
-
-  /* ===== PURCHASE ===== */
-  .purchase-bg {
-    background: linear-gradient(180deg, var(--gold-pale) 0%, var(--bg) 100%);
-  }
-  .pricing-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 640px;
-    margin: 0 auto;
-  }
-  .pricing-card {
-    background: #fff;
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    padding: 30px 22px;
-    text-align: center;
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .pricing-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-  }
-  .pricing-card--featured { border-color: var(--gold); }
-  .pricing-badge {
-    position: absolute;
-    top: -13px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--gold);
-    color: #fff;
-    padding: 4px 18px;
-    border-radius: 20px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .pricing-label {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .pricing-price {
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: var(--blue-dark);
-    line-height: 1.2;
-    margin-bottom: 2px;
-  }
-  .pricing-price .yen { font-size: 1.1rem; font-weight: 500; }
-  .pricing-tax {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-  }
-  .pricing-detail {
-    font-size: 0.82rem;
-    color: var(--text-light);
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  .pricing-btn {
-    display: block;
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    font-family: inherit;
-  }
-  .pricing-btn--primary {
-    background: var(--blue-dark);
-    color: #fff;
-    box-shadow: 0 4px 16px rgba(15,46,64,0.25);
-  }
-  .pricing-btn--primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(15,46,64,0.35);
-  }
-  .pricing-btn--secondary {
-    background: #fff;
-    color: var(--blue-dark);
-    border: 2px solid var(--blue-dark);
-  }
-  .pricing-btn--secondary:hover {
-    background: var(--blue-pale);
-    transform: translateY(-2px);
-  }
-  .pricing-note {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-  }
-
-  /* ===== FAQ ===== */
-  .faq-list { max-width: 700px; margin: 0 auto; }
-  .faq-item {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-  .faq-q {
-    width: 100%;
-    padding: 18px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text);
-    text-align: left;
-    font-family: inherit;
-    line-height: 1.6;
-  }
-  .faq-q svg {
-    width: 18px; height: 18px;
-    fill: var(--text-muted);
-    flex-shrink: 0;
-    transition: transform 0.3s;
-  }
-  .faq-item.open .faq-q svg { transform: rotate(180deg); }
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  .faq-a-inner {
-    padding: 0 22px 18px;
-    font-size: 0.88rem;
-    color: var(--text-light);
-    line-height: 1.85;
-  }
-
-  /* ===== CTA ===== */
-  .cta {
-    background: var(--blue-dark);
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    padding: 12px 20px;
-    color: #fff;
-  }
-  .cta-text {
-    text-align: left;
-    flex-shrink: 1;
-  }
-  .cta-title {
-    font-size: 0.95rem;
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-  .cta-sub {
-    font-size: 0.8rem;
-    opacity: 0.9;
-  }
-  .cta-btn {
-    display: inline-block;
-    padding: 10px 40px;
-    background: #fff;
-    color: var(--gold);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    transition: transform 0.15s;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
-  }
-
-  /* ===== FOOTER ===== */
-  .footer {
-    background: var(--blue-dark);
-    color: rgba(255,255,255,0.7);
-    padding: 20px 0;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-    margin-bottom: 28px;
-  }
-  .footer h4 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 10px;
-  }
-  .footer p { font-size: 0.8rem; line-height: 1.8; }
-  .footer a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
-  .footer a:hover { color: #fff; }
-
-  .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
-  .footer-legal-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .legal-sep {
-    color: rgba(255,255,255,0.25);
-    font-size: 0.72rem;
-    user-select: none;
-  }
-  .legal-toggle {
-    background: none;
-    border: none;
-    color: rgba(255,255,255,0.4);
-    font-size: 0.72rem;
-    cursor: pointer;
-    font-family: inherit;
-    padding: 4px 0;
-    display: inline;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .legal-toggle:hover { color: rgba(255,255,255,0.65); }
-  .legal-toggle.open { color: rgba(255,255,255,0.7); }
-  .legal-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
-  .legal-content-inner {
-    padding: 14px 0;
-    font-size: 0.72rem;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.4);
-  }
-  .legal-content-inner h5 {
-    color: rgba(255,255,255,0.6);
-    font-size: 0.76rem;
-    margin: 14px 0 4px;
-  }
-  .legal-content-inner h5:first-child { margin-top: 0; }
-  .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.3);
-  }
-
-  /* ===== FADE ===== */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .pc-only { display: none; }
-    .fv > div:first-child { grid-template-columns: 1fr !important; text-align: center; padding: 48px 24px 40px !important; }
-    .fv > div:first-child > div:last-child { order: -1; }
-    .fv-cta-btn { font-size: 0.88rem; padding: 12px 28px; }
-    .section { padding: 52px 0; }
-    .section-title { font-size: 1.3rem; }
-    .ingredient-grid { grid-template-columns: 1fr; gap: 20px; }
-    .product-capsule-grid { grid-template-columns: 1fr; gap: 28px; text-align: center; }
-    .pkg-img { max-width: 260px; }
-    .capsule-row-img { width: 72px; }
-    .capsule-row-num { font-size: 2.2rem; }
-    .capsule-spec-num { font-size: 1.4rem; }
-    .evidence-grid { grid-template-columns: 1fr; }
-    .research-block-detail { flex-direction: column; gap: 16px; padding: 20px; }
-    .research-block-prof { padding-left: 0; border-left: none; padding-top: 16px; border-top: 1px solid var(--border); justify-content: center; }
-    .evidence-hero { padding: 28px 20px; }
-    .evidence-big-num { font-size: 2.6rem; }
-    .evidence-detail { padding: 20px 16px; }
-    .evidence-bar-label { width: 70px; font-size: 0.65rem; }
-    .evidence-tl-time { width: 44px; font-size: 0.7rem; }
-    .evidence-tl-val { width: 80px; font-size: 0.68rem; }
-    .ingredient-card img { max-height: 200px; object-fit: cover; }
-    .feature-grid { grid-template-columns: 1fr; gap: 24px; }
-    .recommend-grid { grid-template-columns: 1fr; gap: 16px; }
-    .usage-layout { grid-template-columns: 1fr; gap: 24px; }
-    .usage-image img { max-height: 220px; }
-    .recommend-row-h { gap: 16px; }
-    .recommend-word { font-size: 0.88rem; }
-    .recommend-num { font-size: 2rem; }
-    .voice-list { grid-template-columns: 1fr; max-width: 360px; gap: 28px; }
-    .voice-bubble { padding: 16px 18px; font-size: 0.8rem; }
-    .voice-person-icon, .voice-item:nth-child(2) .voice-person-icon { width: 56px; height: 56px; }
-    .cta-title { font-size: 0.82rem; }
-    .cta-sub { font-size: 0.72rem; }
-    .cta-btn { padding: 9px 28px; font-size: 0.82rem; }
-    .cta { padding: 20px 16px; }
-    .fixed-cta-bar { padding: 10px 12px; }
-    .fixed-cta-bar .fv-cta-btn { font-size: 0.82rem; padding: 10px 24px; }
-    .pricing-cards { grid-template-columns: 1fr; max-width: 340px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 20px; }
-    .product-table th { width: 110px; padding: 12px 14px; }
-    .product-table td { padding: 12px 14px; }
-  }
-</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+:root {
+  --bg-main: #FAFAF8;
+  --bg-subtle: #F3F4F1;
+  --card-bg: #FFFFFF;
+  --text-primary: #1F2522;
+  --text-secondary: #5F6762;
+  --text-muted: #7C847F;
+  --border-light: #E6E8E3;
+  --border-mid: #D8DDD6;
+  --accent: #5D6B5F;
+  --accent-dark: #4B574D;
+  --accent-soft: #EEF2EC;
+  --note-bg: #F6F6F3;
+  --note-text: #6E756F;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.en { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--accent); text-decoration: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ===== FV ===== */
+.fv {
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+}
+.fv-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px 60px;
+  display: grid;
+  grid-template-columns: 54% 46%;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+}
+.fv-text { display: flex; flex-direction: column; gap: 0; }
+.fv-eyebrow {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.fv-title {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+.fv-subtitle {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.fv-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.fv-badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.fv-price-area { margin-bottom: 24px; }
+.fv-price-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.fv-price-main {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.fv-price-original {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+.fv-cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0 40px;
+  height: 56px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  transition: background 0.3s, transform 0.2s;
+}
+.fv-cta-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+.fv-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 14px;
+  line-height: 1.7;
+}
+.fv-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fv-image img {
+  max-width: 420px;
+  width: 100%;
+  filter: drop-shadow(0 16px 48px rgba(0,0,0,0.10));
+}
+
+/* ===== FIXED CTA BAR ===== */
+.fixed-cta-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  padding: 12px 20px;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.06);
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+.fixed-cta-bar.visible { transform: translateY(0); }
+.fixed-cta-bar .fv-cta-btn { height: 48px; font-size: 15px; padding: 0 32px; }
+
+/* ===== SECTION COMMON ===== */
+.section { padding: 112px 0; }
+.section--subtle { background: var(--bg-subtle); }
+
+.section-title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.95;
+  margin-bottom: 48px;
+}
+.section-center { text-align: center; }
+.section-center .section-desc { margin-left: auto; margin-right: auto; }
+
+/* ===== ABOUT ===== */
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.about-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  padding: 36px 28px;
+}
+.about-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.about-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+/* ===== REASONS ===== */
+.reasons-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.reasons-left .section-title { margin-bottom: 16px; }
+.reasons-left .section-desc { margin-bottom: 0; }
+.reasons-cards { display: flex; flex-direction: column; gap: 20px; }
+.reason-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 28px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.reason-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--border-mid);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.reason-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.reason-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ===== EVIDENCE ===== */
+.evidence-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.evidence-summary-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  padding: 32px 24px;
+  text-align: center;
+}
+.evidence-summary-card .ev-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.evidence-summary-card .ev-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.evidence-summary-card .ev-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Research block */
+.research-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.research-card-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 24px 32px;
+  text-align: center;
+}
+.research-card-header p {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+.research-card-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.research-card-body {
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.research-card-text { flex: 1; }
+.research-card-text h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.research-card-text .meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.research-card-prof {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding-left: 32px;
+  border-left: 1px solid var(--border-light);
+}
+.research-card-prof img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.research-card-prof-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.research-card-prof-affil {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Detail accordion */
+.detail-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-dark);
+  cursor: pointer;
+  font-family: inherit;
+  margin: 0 auto 24px;
+  transition: background 0.2s;
+}
+.detail-accordion-trigger:hover { background: #E4EAE1; }
+.detail-accordion-trigger svg {
+  width: 18px; height: 18px;
+  transition: transform 0.3s;
+}
+.detail-accordion-trigger.open svg { transform: rotate(180deg); }
+.detail-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.evidence-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+.evidence-detail-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.evidence-detail-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 28px 28px;
+  text-align: center;
+}
+.evidence-detail-header .ev-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+.evidence-detail-header .ev-big {
+  font-family: 'Inter', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.evidence-detail-header .ev-big span {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-left: 4px;
+}
+.evidence-detail-header .ev-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.evidence-detail-header .ev-sub {
+  font-size: 13px;
+  opacity: 0.6;
+}
+.evidence-detail-body {
+  padding: 28px 28px 24px;
+}
+.evidence-detail-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* NAD+ bars */
+.hbar-group { display: flex; flex-direction: column; gap: 24px; }
+.hbar-item { display: flex; flex-direction: column; gap: 8px; }
+.hbar-top { display: flex; justify-content: space-between; align-items: baseline; }
+.hbar-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.hbar-val { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+.hbar-track {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-subtle);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.hbar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(93,107,95,0.4), var(--accent));
+  transition: width 0.8s ease;
+}
+.hbar-ref {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Bubble chart */
+.dot-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 4px;
+  padding: 8px 0;
+}
+.dot-grid-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.dot-grid-time {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.dot-grid-bubble-wrap {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot-grid-bubble {
+  width: var(--dot-size, 32px);
+  height: var(--dot-size, 32px);
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: var(--dot-o, 1);
+}
+.dot-grid-val {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+.dot-grid-unit { font-size: 10px; font-weight: 400; }
+
+.evidence-bar-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+/* ===== USAGE ===== */
+.usage-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.usage-image {
+  border-radius: 22px;
+  overflow: hidden;
+}
+.usage-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.usage-text h2 { margin-bottom: 16px; }
+.usage-text > p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 2;
+  margin-bottom: 28px;
+}
+.usage-points {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.usage-point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.usage-point-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.usage-note-box {
+  background: var(--note-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+.usage-note-box p {
+  font-size: 13px;
+  color: var(--note-text);
+  line-height: 1.8;
+}
+
+/* ===== VOICE ===== */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.voice-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--accent);
+  border-radius: 20px;
+  padding: 28px 24px;
+}
+.voice-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.voice-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+.voice-card .voice-attr {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+.voice-disclaimer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 28px;
+}
+
+/* ===== PRODUCT + PRICE ===== */
+.product-price-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  font-size: 14px;
+}
+.product-table th,
+.product-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border-light);
+  text-align: left;
+}
+.product-table th {
+  background: var(--accent-soft);
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 150px;
+}
+.product-table td { color: var(--text-secondary); }
+.product-table tr:last-child th,
+.product-table tr:last-child td { border-bottom: none; }
+
+.pricing-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pricing-card {
+  background: var(--card-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 22px;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+}
+.pricing-card--featured { border-color: var(--accent); }
+.pricing-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pricing-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.pricing-price {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.pricing-price .yen { font-size: 18px; font-weight: 500; }
+.pricing-tax {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.pricing-detail {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.pricing-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  height: 52px;
+  border: none;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+.pricing-btn--primary {
+  background: var(--accent);
+  color: #fff;
+}
+.pricing-btn--primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+.pricing-btn--secondary {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-mid);
+}
+.pricing-btn--secondary:hover {
+  background: var(--bg-subtle);
+  transform: translateY(-2px);
+}
+.product-price-note {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  max-width: 700px;
+  margin: 40px auto 0;
+  text-align: center;
+}
+.shipping-note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.payment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  padding: 6px 12px;
+  border-radius: 8px;
+  height: 34px;
+}
+
+/* ===== FAQ ===== */
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: left;
+  font-family: inherit;
+  line-height: 1.6;
+}
+.faq-q svg {
+  width: 18px; height: 18px;
+  fill: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-q svg { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a-inner {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  text-align: center;
+}
+.final-cta .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+.final-cta-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--text-primary);
+  color: rgba(255,255,255,0.6);
+  padding: 28px 0;
+}
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.legal-sep {
+  color: rgba(255,255,255,0.2);
+  font-size: 12px;
+  user-select: none;
+}
+.legal-toggle {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal-toggle:hover { color: rgba(255,255,255,0.65); }
+.legal-toggle.open { color: rgba(255,255,255,0.7); }
+.legal-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.legal-content-inner {
+  padding: 16px 0;
+  font-size: 12px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.4);
+}
+.legal-content-inner h5 {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  margin: 14px 0 4px;
+}
+.legal-content-inner h5:first-child { margin-top: 0; }
+.footer-bottom {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ===== FADE ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .section { padding: 72px 0; }
+  .section-title { font-size: 26px; }
+  .section-desc { font-size: 15px; }
+
+  .fv { min-height: auto; }
+  .fv-inner {
+    grid-template-columns: 1fr;
+    padding: 56px 20px 48px;
+    gap: 36px;
+  }
+  .fv-image { order: -1; }
+  .fv-image img { max-width: 280px; margin: 0 auto; }
+  .fv-title { font-size: 32px; }
+  .fv-subtitle { font-size: 15px; }
+  .fv-text { text-align: center; align-items: center; }
+  .fv-badges { justify-content: center; }
+
+  .about-cards { grid-template-columns: 1fr; }
+
+  .reasons-layout { grid-template-columns: 1fr; gap: 32px; }
+
+  .evidence-summary-cards { grid-template-columns: 1fr; }
+  .evidence-detail-grid { grid-template-columns: 1fr; }
+  .research-card-body { flex-direction: column; gap: 16px; }
+  .research-card-prof {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
+    justify-content: center;
+  }
+  .evidence-detail-header .ev-big { font-size: 32px; }
+
+  .usage-layout { grid-template-columns: 1fr; gap: 28px; }
+  .usage-image img { max-height: 240px; }
+
+  .voice-grid { grid-template-columns: 1fr; }
+
+  .product-price-layout { grid-template-columns: 1fr; gap: 32px; }
+  .product-table th { width: 110px; padding: 12px 14px; }
+  .product-table td { padding: 12px 14px; }
+
+  .final-cta-cards { grid-template-columns: 1fr; max-width: 340px; }
+
+  .fixed-cta-bar { padding: 10px 16px; }
+  .fixed-cta-bar .fv-cta-btn { height: 44px; font-size: 14px; padding: 0 24px; }
+}
+</style>
 </head>
 <body>
 
-<!-- ===== FV ===== -->
-<section class="fv" style="height:auto;min-height:auto;background:#fff;">
-  <div style="max-width:960px;margin:0 auto;padding:80px 24px 60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
-    <div>
-      <p style="font-size:0.72rem;font-weight:600;letter-spacing:0.08em;color:var(--gold);margin-bottom:16px;">ハイドロシェルデイリー</p>
-      <h1 style="font-size:2rem;font-weight:800;line-height:1.5;color:var(--blue-dark);margin-bottom:20px;">毎日のことだから、<br>中身で選びたい。</h1>
-      <p style="font-size:0.88rem;color:var(--text-light);line-height:1.9;margin-bottom:28px;">
-        国産原料・独自加工・第三者試験。<br>
-        背景まで確認できる、毎日の水素サプリメントです。
-      </p>
-      <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.8;margin-bottom:24px;">120粒入り / 約30〜60日分<br>初回限定価格 &yen;7,980（税込・送料無料）</p>
+<!-- ===== SECTION 1: FV ===== -->
+<section class="fv" id="fv">
+  <div class="fv-inner">
+    <div class="fv-text">
+      <p class="fv-eyebrow">国産原料・独自加工・第三者試験</p>
+      <h1 class="fv-title">毎日のことだから、<br>中身で選びたい。</h1>
+      <p class="fv-subtitle">原料の背景まで確認できる、毎日の水素サプリメントです。</p>
+      <div class="fv-badges">
+        <span class="fv-badge">第三者機関で測定</span>
+        <span class="fv-badge">大学との共同研究</span>
+        <span class="fv-badge">製造ごとの品質検査</span>
+      </div>
+      <div class="fv-price-area">
+        <p class="fv-price-label">初回限定価格</p>
+        <p class="fv-price-main">7,980円（税込・送料無料）</p>
+        <p class="fv-price-original">通常価格 14,800円</p>
+      </div>
       <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格で購入する</button>
+      <p class="fv-note">120粒入り / 約30〜60日分 / 都度購入</p>
     </div>
-    <div style="text-align:center;">
-      <img src="images/package.png" alt="HydroShell Daily パッケージ" style="max-width:360px;width:100%;filter:drop-shadow(0 16px 48px rgba(0,0,0,0.12));">
-    </div>
-  </div>
-</section>
-
-<!-- ===== ABOUT ===== -->
-<section class="section" id="about" style="position:relative;overflow:hidden;">
-  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:url('images/powder-bg.png') center/cover no-repeat;opacity:0.2;z-index:0;"></div>
-  <div class="container section--center" style="position:relative;z-index:1;">
-    <p class="section-label fade-up">原料</p>
-    <h2 class="section-title fade-up">ハイドロシェルデイリーについて</h2>
-    <p class="section-desc fade-up" style="margin-left:auto;margin-right:auto;line-height:2;">
-      国産ホタテ貝殻末などの天然素材をベースに、<br>
-      ardesign社が独自の加工技術で開発した<br>
-      水素サプリメント原料「ハイドロシェル」を配合。<br><br>
-      原料試験データの取得、大学との共同研究、<br>
-      製造ごとの品質検査。<br>
-      すべての工程を経て、製品化しています。
-    </p>
-  </div>
-</section>
-
-<!-- ===== CAPSULE DETAIL ===== -->
-<section class="section" id="capsule" style="position:relative;overflow:hidden;">
-  <video autoplay muted loop playsinline src="images/capsule-bg.mp4" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;filter:blur(4px) brightness(0.95);transform:scale(1.05);z-index:0;"></video>
-  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.85);z-index:1;"></div>
-  <div class="container" style="position:relative;z-index:2;">
-    <div class="product-capsule-grid fade-up">
-      <div class="product-capsule-info">
-        <p class="section-label">1粒の原料設計</p>
-        <h2 class="section-title" style="margin-bottom:10px;">カプセル1粒に、飽和水素水約3.6L分</h2>
-        <p style="font-size:0.88rem;color:var(--text-light);line-height:1.8;margin-bottom:8px;">1カプセルあたりハイドロシェル原料250mg配合。1日4粒で試験データと同じ原料1g。</p>
-<p style="font-size:0.68rem;color:var(--text-muted);margin-bottom:24px;">※飽和水素水換算 約3.6L/粒は原料試験データに基づく参考値です。</p>
-      </div>
-      <div class="product-capsule-visual">
-        <img src="images/capsule.png" alt="ハイドロシェル カプセル" class="pkg-img" style="max-width:400px;">
-      </div>
+    <div class="fv-image">
+      <img src="images/package.png" alt="HydroShell Daily パッケージ">
     </div>
   </div>
 </section>
 
-<!-- ===== BRIDGE ===== -->
-<div style="text-align:center;padding:40px 24px 0;">
-  <p class="fade-up" style="font-size:0.88rem;color:var(--text-light);line-height:1.9;">毎日続けるものだからこそ、原料の背景まで確認できることを大切にしました。</p>
-</div>
-
-<!-- ===== STRENGTH ===== -->
-<section class="section" id="strength" style="background:linear-gradient(135deg, #0F2E40 0%, #1A4A60 50%, #0F2E40 100%);position:relative;overflow:hidden;">
-  <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:url('images/lab-bg.jpg') center/cover no-repeat;opacity:0.08;z-index:0;"></div>
-  <div class="container" style="position:relative;z-index:2;">
-    <p class="section-label fade-up" style="color:var(--gold-light);">選ばれる理由</p>
-    <h2 class="section-title fade-up" style="color:#fff;">ハイドロシェルデイリーが選ばれる理由</h2>
-
-    <div style="max-width:680px;margin:36px auto 0;display:flex;flex-direction:column;gap:16px;" class="fade-up">
-      <div style="display:flex;gap:20px;background:rgba(255,255,255,0.06);border-radius:10px;padding:28px 24px;border-left:3px solid var(--gold);">
-        <span style="font-family:'Inter',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold-light);flex-shrink:0;line-height:1.2;">1</span>
-        <div>
-          <p style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:6px;">第三者機関で確認された原料試験</p>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.8;">原料の水素発生に関する測定は、産業技術センターなどの公的機関で実施。自社データだけに頼らない確認体制を取っています。</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:20px;background:rgba(255,255,255,0.06);border-radius:10px;padding:28px 24px;border-left:3px solid var(--gold);">
-        <span style="font-family:'Inter',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold-light);flex-shrink:0;line-height:1.2;">2</span>
-        <div>
-          <p style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:6px;">独自加工による原料設計</p>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.8;">国産ホタテ貝殻末などの天然素材をベースに、ardesign社が独自の加工技術で開発。水素原料専用の生産ラインで製造しています。</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:20px;background:rgba(255,255,255,0.06);border-radius:10px;padding:28px 24px;border-left:3px solid var(--gold);">
-        <span style="font-family:'Inter',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold-light);flex-shrink:0;line-height:1.2;">3</span>
-        <div>
-          <p style="font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:6px;">製造ごとの品質検査</p>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.65);line-height:1.8;">日本食品分析センター（JFRL）による品質検査を製造ごとに実施。安全性の確認を重ねた原料のみを使用しています。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== EVIDENCE ===== -->
-<section class="section section--off" id="evidence">
-<div class="container section--center">
-<p class="section-label fade-up">試験データ</p>
-<h2 class="section-title fade-up">第三者機関による原料試験</h2>
-<p class="section-desc fade-up" style="margin-left:auto;margin-right:auto;">ハイドロシェル原料の水素発生に関する測定は、すべて公的機関・認証機関にて実施しています。</p>
-</div>
-<div class="evidence-grid fade-up">
-<div class="evidence-block">
-<div class="evidence-hero">
-<p class="evidence-label">試験データ 01</p>
-<p class="evidence-big-num en">23.02<span>mg/g</span></p>
-<p class="evidence-big-title">原料1gあたりの還元当量（中央値）</p>
-<p class="evidence-big-sub">参考値：飽和水素水換算 約14.4L/g</p>
-</div>
-<div class="evidence-detail">
-<h3 class="evidence-h">ハイドロシェル添加による吸光度変化（340nm）</h3>
-<div class="hbar-group">
-<div class="hbar-item">
-<div class="hbar-top"><span class="hbar-label">NAD+（反応前）</span><span class="hbar-val en">≈ 0</span></div>
-<div class="hbar-track"><div class="hbar-fill" style="width:2%;opacity:0.3;"></div></div>
-</div>
-<div class="hbar-item">
-<div class="hbar-top"><span class="hbar-label">NAD+ + ハイドロシェル（反応後）</span><span class="hbar-val en">2.006</span></div>
-<div class="hbar-track"><div class="hbar-fill" style="width:73%;"></div></div>
-</div>
-<p class="hbar-ref">NADH標準 0.5 mmol = 2.752（基準値）</p>
-</div>
-<p class="evidence-bar-note">測定:山梨県産業技術センター（産技セ第3102号）<br>※上記測定データを基に自社にて算出<br>※NADH標準液との吸光度比から、反応により生じたNADH量を求め、還元当量（mg/g）に換算しています</p>
-</div>
-</div>
-<div class="evidence-block">
-<div class="evidence-hero">
-<p class="evidence-label">試験データ 02</p>
-<p class="evidence-big-num en">24<span>h</span></p>
-<p class="evidence-big-title">原料試験における測定時間</p>
-<p class="evidence-big-sub">30分〜24時間の測定を実施</p>
-</div>
-<div class="evidence-detail">
-<h3 class="evidence-h">気相水素濃度の推移（GC法）</h3>
-<div class="dot-grid">
-<div class="dot-grid-col">
-<span class="dot-grid-time">30分</span>
-<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.25;--dot-size:40px;"></div></div>
-<span class="dot-grid-val en">233,000<br><span class="dot-grid-unit">ppm</span></span>
-</div>
-<div class="dot-grid-col">
-<span class="dot-grid-time">1時間</span>
-<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.4;--dot-size:48px;"></div></div>
-<span class="dot-grid-val en">321,000<br><span class="dot-grid-unit">ppm</span></span>
-</div>
-<div class="dot-grid-col">
-<span class="dot-grid-time">4時間</span>
-<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.65;--dot-size:56px;"></div></div>
-<span class="dot-grid-val en">510,000<br><span class="dot-grid-unit">ppm</span></span>
-</div>
-<div class="dot-grid-col">
-<span class="dot-grid-time">16時間</span>
-<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.8;--dot-size:58px;"></div></div>
-<span class="dot-grid-val en">530,000<br><span class="dot-grid-unit">ppm</span></span>
-</div>
-<div class="dot-grid-col">
-<span class="dot-grid-time">24時間</span>
-<div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:1;--dot-size:64px;"></div></div>
-<span class="dot-grid-val en">580,000<br><span class="dot-grid-unit">ppm</span></span>
-</div>
-</div>
-
-<p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
-</div>
-</div>
-</div>
-<div class="research-block fade-up">
-<p style="font-size:0.88rem;color:var(--text-light);text-align:center;max-width:600px;margin:0 auto 20px;line-height:1.8;">ハイドロシェル原料については、桐蔭横浜大学との共同研究を実施しています。</p>
-<div class="research-block-card">
-  <div class="research-block-hero">
-    <p class="research-block-label">共同研究</p>
-    <p class="research-block-univ">桐蔭横浜大学との共同研究</p>
-  </div>
-  <div class="research-block-detail">
-    <div class="research-block-text">
-      <h3 class="research-block-title">水素発生サプリメント摂取が骨格筋細胞内情報伝達および持久パフォーマンスに及ぼす影響</h3>
-      <p class="research-block-meta">最終報告書（2026年2月13日）</p>
-    </div>
-    <div class="research-block-prof">
-      <div class="research-block-photo">
-        <img src="images/prof-sakurai.jpg" alt="桜井 智野風 教授">
-      </div>
-      <div>
-        <p class="research-block-prof-name">桜井 智野風 教授</p>
-        <p class="research-block-prof-affil">桐蔭横浜大学大学院 スポーツ科学研究科</p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<p class="fade-up" style="font-size:0.7rem;color:var(--text-muted);margin-top:24px;text-align:center;padding:0 24px;">※本データはハイドロシェル原料に関する試験結果です。最終製品そのものの効果効能を示すものではありません。試験条件に基づく測定値です。</p>
-</section>
-
-<!-- ===== SAFETY ===== -->
-<section class="safety-strip" id="safety">
+<!-- ===== SECTION 2: ハイドロシェルデイリーについて ===== -->
+<section class="section section-center" id="about">
   <div class="container">
-    <div class="safety-row fade-up">
-      <div class="safety-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    <h2 class="section-title fade-up">ハイドロシェルデイリーについて</h2>
+    <p class="section-desc fade-up">国産ホタテ貝殻末などの天然素材をベースに、独自の加工技術で開発した水素サプリメント原料 ハイドロシェルを配合。原料試験データの取得、大学との共同研究、製造ごとの品質検査を経て、製品化しています。</p>
+    <div class="about-cards">
+      <div class="about-card fade-up">
+        <h3>天然素材をベースに開発</h3>
+        <p>北海道産ホタテ貝殻末などの国産天然素材をベースに、独自の加工技術で開発。水素原料専用の生産ラインで製造しています。</p>
       </div>
-      <p class="safety-text">日本食品分析センター（JFRL）による製造ごとの品質検査済み原料を採用</p>
+      <div class="about-card fade-up">
+        <h3>1粒あたり 250mg 配合</h3>
+        <p>1カプセルあたりハイドロシェル原料250mgを配合。1日4粒で1g、試験データと同じ原料量を摂取できる設計です。</p>
+      </div>
+      <div class="about-card fade-up">
+        <h3>背景まで確認できる設計</h3>
+        <p>第三者機関での試験データ、大学との共同研究、製造ごとの品質検査。原料の背景情報を公開し、納得して選んでいただける設計です。</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== USAGE ===== -->
-<section class="section section--off" id="usage">
+<!-- ===== SECTION 3: 選ばれる理由 ===== -->
+<section class="section" id="reasons">
+  <div class="container">
+    <div class="reasons-layout">
+      <div class="reasons-left">
+        <h2 class="section-title fade-up">ハイドロシェルデイリーが<br>選ばれる理由</h2>
+        <p class="section-desc fade-up">毎日続けるものだからこそ、原料の背景や検査体制まで確認できることを大切にしました。</p>
+      </div>
+      <div class="reasons-cards">
+        <div class="reason-card fade-up">
+          <span class="reason-num en">01</span>
+          <div>
+            <h3>第三者機関による試験データ</h3>
+            <p>原料の水素発生に関する測定は、産業技術センターなどの公的機関で実施。自社データだけに頼らない確認体制を取っています。</p>
+          </div>
+        </div>
+        <div class="reason-card fade-up">
+          <span class="reason-num en">02</span>
+          <div>
+            <h3>独自加工による原料設計</h3>
+            <p>国産ホタテ貝殻末などの天然素材をベースに、独自の加工技術で開発。水素原料専用の生産ラインで製造しています。</p>
+          </div>
+        </div>
+        <div class="reason-card fade-up">
+          <span class="reason-num en">03</span>
+          <div>
+            <h3>製造ごとの品質検査</h3>
+            <p>日本食品分析センター（JFRL）による品質検査を製造ごとに実施。安全性の確認を重ねた原料のみを使用しています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 4: 試験データと共同研究 ===== -->
+<section class="section section--subtle" id="evidence">
+  <div class="container section-center">
+    <h2 class="section-title fade-up">第三者機関による試験と共同研究</h2>
+    <p class="section-desc fade-up">ハイドロシェル原料の水素発生に関する測定は、すべて公的機関・認証機関にて実施しています。</p>
+
+    <div class="evidence-summary-cards fade-up">
+      <div class="evidence-summary-card">
+        <p class="ev-label">還元当量を確認</p>
+        <p class="ev-number en">23.02 <span style="font-size:16px;font-weight:500;color:var(--text-muted);">mg/g</span></p>
+        <p class="ev-note">山梨県産業技術センターで測定</p>
+      </div>
+      <div class="evidence-summary-card">
+        <p class="ev-label">長時間の水素発生を確認</p>
+        <p class="ev-number en">24<span style="font-size:16px;font-weight:500;color:var(--text-muted);">時間測定</span></p>
+        <p class="ev-note">WHSA認証機関による測定</p>
+      </div>
+      <div class="evidence-summary-card">
+        <p class="ev-label">共同研究を実施</p>
+        <p class="ev-number">桐蔭横浜大学</p>
+        <p class="ev-note">最終報告書取得済み</p>
+      </div>
+    </div>
+
+    <div class="research-card fade-up">
+      <div class="research-card-header">
+        <p>共同研究</p>
+        <h3>桐蔭横浜大学との共同研究</h3>
+      </div>
+      <div class="research-card-body">
+        <div class="research-card-text">
+          <h4>水素発生サプリメント摂取が骨格筋細胞内情報伝達および持久パフォーマンスに及ぼす影響</h4>
+          <p class="meta">最終報告書（2026年2月13日）</p>
+        </div>
+        <div class="research-card-prof">
+          <img src="images/prof-sakurai.jpg" alt="桜井 智野風 教授">
+          <div>
+            <p class="research-card-prof-name">桜井 智野風 教授</p>
+            <p class="research-card-prof-affil">桐蔭横浜大学大学院<br>スポーツ科学研究科</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail accordion -->
+    <button class="detail-accordion-trigger fade-up" id="detailToggle">
+      詳細な試験データを確認する
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+    </button>
+    <div class="detail-accordion-content" id="detailContent">
+      <div class="evidence-detail-grid">
+        <div class="evidence-detail-card">
+          <div class="evidence-detail-header">
+            <p class="ev-tag">試験データ 01</p>
+            <p class="ev-big en">23.02<span>mg/g</span></p>
+            <p class="ev-title">原料1gあたりの還元当量（中央値）</p>
+            <p class="ev-sub">参考値：飽和水素水換算 約14.4L/g</p>
+          </div>
+          <div class="evidence-detail-body">
+            <h4>ハイドロシェル添加による吸光度変化（340nm）</h4>
+            <div class="hbar-group">
+              <div class="hbar-item">
+                <div class="hbar-top"><span class="hbar-label">NAD+（反応前）</span><span class="hbar-val en">≈ 0</span></div>
+                <div class="hbar-track"><div class="hbar-fill" style="width:2%;opacity:0.3;"></div></div>
+              </div>
+              <div class="hbar-item">
+                <div class="hbar-top"><span class="hbar-label">NAD+ + ハイドロシェル（反応後）</span><span class="hbar-val en">2.006</span></div>
+                <div class="hbar-track"><div class="hbar-fill" style="width:73%;"></div></div>
+              </div>
+              <p class="hbar-ref">NADH標準 0.5 mmol = 2.752（基準値）</p>
+            </div>
+            <p class="evidence-bar-note">測定:山梨県産業技術センター（産技セ第3102号）<br>※上記測定データを基に自社にて算出<br>※NADH標準液との吸光度比から、反応により生じたNADH量を求め、還元当量（mg/g）に換算しています</p>
+          </div>
+        </div>
+        <div class="evidence-detail-card">
+          <div class="evidence-detail-header">
+            <p class="ev-tag">試験データ 02</p>
+            <p class="ev-big en">24<span>h</span></p>
+            <p class="ev-title">原料試験における測定時間</p>
+            <p class="ev-sub">30分〜24時間の測定を実施</p>
+          </div>
+          <div class="evidence-detail-body">
+            <h4>気相水素濃度の推移（GC法）</h4>
+            <div class="dot-grid">
+              <div class="dot-grid-col">
+                <span class="dot-grid-time">30分</span>
+                <div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.25;--dot-size:40px;"></div></div>
+                <span class="dot-grid-val en">233,000<br><span class="dot-grid-unit">ppm</span></span>
+              </div>
+              <div class="dot-grid-col">
+                <span class="dot-grid-time">1時間</span>
+                <div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.4;--dot-size:48px;"></div></div>
+                <span class="dot-grid-val en">321,000<br><span class="dot-grid-unit">ppm</span></span>
+              </div>
+              <div class="dot-grid-col">
+                <span class="dot-grid-time">4時間</span>
+                <div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.65;--dot-size:56px;"></div></div>
+                <span class="dot-grid-val en">510,000<br><span class="dot-grid-unit">ppm</span></span>
+              </div>
+              <div class="dot-grid-col">
+                <span class="dot-grid-time">16時間</span>
+                <div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:0.8;--dot-size:58px;"></div></div>
+                <span class="dot-grid-val en">530,000<br><span class="dot-grid-unit">ppm</span></span>
+              </div>
+              <div class="dot-grid-col">
+                <span class="dot-grid-time">24時間</span>
+                <div class="dot-grid-bubble-wrap"><div class="dot-grid-bubble" style="--dot-o:1;--dot-size:64px;"></div></div>
+                <span class="dot-grid-val en">580,000<br><span class="dot-grid-unit">ppm</span></span>
+              </div>
+            </div>
+            <p class="evidence-bar-note">試料: 原料1g＋純水5mL / ヘッドスペースバイアル20mL<br>装置: 島津 GC-2010plus（GC-BID）<br>測定: 一般社団法人 国際水素規格協会（WHSA認証）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="fade-up" style="font-size:13px;color:var(--text-muted);margin-top:16px;">※本データはハイドロシェル原料に関する試験結果です。最終製品そのものの効果効能を示すものではありません。試験条件に基づく測定値です。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 5: 飲み方 ===== -->
+<section class="section" id="usage">
   <div class="container">
     <div class="usage-layout fade-up">
-      <div class="usage-text">
-        <p class="section-label">飲み方</p>
-        <h2 class="section-title">続けやすさも、考えました。</h2>
-        <p>普段は2粒、運動する日は4粒を目安に。水またはぬるま湯でそのままお召し上がりください。1袋120粒入りで、ライフスタイルに合わせて30〜60日分です。</p>
-        <div class="usage-note">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-          <p>本品は栄養補助食品です。医薬品ではありません。カプセルを開けて中身を直接口に含まないでください。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
-        </div>
-      </div>
       <div class="usage-image">
         <img src="images/usage-hand.png" alt="手のひらの上のサプリメント">
       </div>
+      <div class="usage-text">
+        <h2 class="section-title">続け方は、シンプルです</h2>
+        <p>普段は2粒、運動する日は4粒を目安に。水またはぬるま湯でそのままお召し上がりください。1袋120粒入りで、ライフスタイルに合わせて30〜60日分です。</p>
+        <div class="usage-points">
+          <div class="usage-point"><span class="usage-point-dot"></span>普段は2粒</div>
+          <div class="usage-point"><span class="usage-point-dot"></span>運動する日は4粒</div>
+          <div class="usage-point"><span class="usage-point-dot"></span>1袋で約30〜60日分</div>
+        </div>
+        <div class="usage-note-box">
+          <p>本品は栄養補助食品です。医薬品ではありません。カプセルを開けて中身を直接口に含まないでください。体質や体調に合わない場合は使用を中止し、医師にご相談ください。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== VOICE ===== -->
-<section class="section" id="voice">
-  <div class="container section--center">
-    <p class="section-label fade-up">お客様の声</p>
-    <h2 class="section-title fade-up">ご利用いただいた方の声</h2>
-    <div class="voice-list">
-
-      <div class="voice-item fade-up">
-        <div class="voice-bubble">
-          <p class="voice-heading">原料の情報が見えるものを選びたかった</p>
-          <p class="voice-body">サプリはたくさんありますが、試験データや研究情報がサイトに載っていたので、納得して選べました。</p>
-        </div>
-        <div class="voice-person">
-          <div class="voice-person-icon">
-            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="30" r="18" fill="#C8D6DC"/>
-              <path d="M50 52c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#C8D6DC"/>
-              <circle cx="50" cy="30" r="14" fill="#E8EFF2"/>
-              <path d="M50 48c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#E8EFF2"/>
-              <path d="M42 27c0-1 1-3 4-4s8 0 8 0" stroke="#A0B4BE" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p class="voice-name">40代・女性</p>
-        </div>
+<!-- ===== SECTION 6: ご利用者の声 ===== -->
+<section class="section section--subtle" id="voice">
+  <div class="container section-center">
+    <h2 class="section-title fade-up">ご利用者の声</h2>
+    <p class="section-desc fade-up">背景が見えること、続けやすいこと。実際に選ばれた理由の一部をご紹介します。</p>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <h3>原料の情報が見えるものを選びたかった</h3>
+        <p>サプリはたくさんありますが、試験データや研究情報がサイトに載っていたので、納得して選べました。</p>
+        <p class="voice-attr">40代・女性</p>
       </div>
-
-      <div class="voice-item fade-up">
-        <div class="voice-bubble">
-          <p class="voice-heading">毎日の生活に組み込みやすかった</p>
-          <p class="voice-body">朝に2粒を目安に続けています。量を調整しやすく、生活リズムに入れやすいのがよかったです。</p>
-        </div>
-        <div class="voice-person">
-          <div class="voice-person-icon">
-            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="28" r="18" fill="#C0D4C8"/>
-              <path d="M50 50c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#C0D4C8"/>
-              <circle cx="50" cy="28" r="14" fill="#EDF5F0"/>
-              <path d="M50 46c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#EDF5F0"/>
-              <rect x="38" y="18" width="24" height="6" rx="3" fill="#C0D4C8"/>
-            </svg>
-          </div>
-          <p class="voice-name">30代・男性</p>
-        </div>
+      <div class="voice-card fade-up">
+        <h3>派手なうたい文句より、中身で選びたかった</h3>
+        <p>効果を大げさにうたうサプリが多い中、データや研究に基づいた情報開示をしている点が信頼できました。</p>
+        <p class="voice-attr">30代・男性</p>
       </div>
-
-      <div class="voice-item fade-up">
-        <div class="voice-bubble">
-          <p class="voice-heading">情報が開示されている安心感</p>
-          <p class="voice-body">試験データや研究内容がサイトに載っていたので、中身がわかった上で選べました。家族にもすすめています。</p>
-        </div>
-        <div class="voice-person">
-          <div class="voice-person-icon">
-            <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="30" r="18" fill="#D8CFC4"/>
-              <path d="M50 52c-20 0-36 10-36 24v8c0 2 1 3 3 3h66c2 0 3-1 3-3v-8c0-14-16-24-36-24z" fill="#D8CFC4"/>
-              <circle cx="50" cy="30" r="14" fill="#F2EDE8"/>
-              <path d="M50 48c-16 0-28 8-28 20v6h56v-6c0-12-12-20-28-20z" fill="#F2EDE8"/>
-              <path d="M36 24c2-6 8-10 14-10s12 4 14 10c1 2 0 4-2 4H38c-2 0-3-2-2-4z" fill="#D8CFC4"/>
-            </svg>
-          </div>
-          <p class="voice-name">50代・女性</p>
-        </div>
+      <div class="voice-card fade-up">
+        <h3>2粒か4粒か、シンプルで続けやすい</h3>
+        <p>普段は2粒、運動する日は4粒。量の調整が簡単で、生活リズムに組み込みやすいのがよかったです。</p>
+        <p class="voice-attr">50代・女性</p>
       </div>
-
     </div>
-    <p class="voice-note fade-up">※ 個人の感想であり、効果効能を保証するものではありません。</p>
+    <p class="voice-disclaimer fade-up">※個人の感想であり、効果効能を保証するものではありません。</p>
   </div>
 </section>
 
-<!-- ===== PRODUCT ===== -->
-<section class="section section--off" id="product">
+<!-- ===== SECTION 7: 製品情報と価格 ===== -->
+<section class="section" id="product">
   <div class="container">
-    <p class="section-label fade-up">製品情報</p>
-    <h2 class="section-title fade-up">製品情報</h2>
-
-    <table class="product-table fade-up">
-      <tr><th>名称</th><td>未焼成カルシウム加工食品</td></tr>
-      <tr><th>原材料名</th><td>未焼成カルシウム、結晶セルロース、HPMC、炭酸カリウム、クエン酸カリウム、ステアリン酸カルシウム、炭酸水素ナトリウム、二酸化ケイ素、カラメル色素</td></tr>
-      <tr><th>内容量</th><td>59.4g（495mg×120カプセル）</td></tr>
-      <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
-      <tr><th style="white-space:nowrap;">栄養成分 <small>4カプセルあたり</small></th><td>エネルギー 4.06kcal / たんぱく質 0g / 脂質 0.03g / 炭水化物 0.95g / 食塩相当量 0.04g</td></tr>
-    </table>
+    <h2 class="section-title section-center fade-up">製品情報と価格</h2>
+    <div class="product-price-layout" style="margin-top:48px;">
+      <div class="fade-up">
+        <table class="product-table">
+          <tr><th>名称</th><td>未焼成カルシウム加工食品</td></tr>
+          <tr><th>原材料名</th><td>未焼成カルシウム、結晶セルロース、HPMC、炭酸カリウム、クエン酸カリウム、ステアリン酸カルシウム、炭酸水素ナトリウム、二酸化ケイ素、カラメル色素</td></tr>
+          <tr><th>内容量</th><td>59.4g（495mg×120カプセル）</td></tr>
+          <tr><th>保存方法</th><td>直射日光、高温多湿を避けて保存してください</td></tr>
+          <tr><th style="white-space:nowrap;">栄養成分 <small>4カプセルあたり</small></th><td>エネルギー 4.06kcal / たんぱく質 0g / 脂質 0.03g / 炭水化物 0.95g / 食塩相当量 0.04g</td></tr>
+        </table>
+      </div>
+      <div class="pricing-cards fade-up">
+        <div class="pricing-card pricing-card--featured">
+          <div class="pricing-badge">初回限定</div>
+          <p class="pricing-label">はじめての方へ</p>
+          <p class="pricing-price"><span class="yen">&yen;</span>7,980</p>
+          <p class="pricing-tax">税込 / 送料無料</p>
+          <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
+          <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で購入する</button>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-label">2回目以降のご購入</p>
+          <p class="pricing-price"><span class="yen">&yen;</span>14,800</p>
+          <p class="pricing-tax">税込 / 送料無料</p>
+          <p class="pricing-detail">120粒入り（約30〜60日分）</p>
+          <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
+        </div>
+      </div>
+    </div>
+    <p class="product-price-note fade-up">国産原料の調達、独自加工、第三者機関での試験、大学との共同研究、製造ごとの品質検査。各工程を経たうえでの価格設定です。</p>
+    <p class="shipping-note fade-up">発送予定日：2026年5月18日(月)</p>
+    <div class="payment-methods fade-up">
+      <span class="payment-badge">
+        <i class="fa-brands fa-cc-visa" style="font-size:1.1rem;color:#1A1F71;"></i>
+        <i class="fa-brands fa-cc-mastercard" style="font-size:1.1rem;color:#EB001B;"></i>
+        <i class="fa-brands fa-cc-amex" style="font-size:1.1rem;color:#006FCF;"></i>
+        <i class="fa-brands fa-cc-jcb" style="font-size:1.1rem;color:#0E4C96;"></i>
+      </span>
+      <span class="payment-badge">
+        <i class="fa-brands fa-apple-pay" style="font-size:1.3rem;color:#000;"></i>
+      </span>
+      <span class="payment-badge">
+        <i class="fa-brands fa-google-pay" style="font-size:1.3rem;color:#5F6368;"></i>
+      </span>
+    </div>
   </div>
 </section>
 
-<!-- ===== PRICE CONTEXT ===== -->
-<section class="section" id="price-context" style="padding-bottom:0;">
-  <div class="container section--center">
-    <p class="section-label fade-up">価格について</p>
-    <h2 class="section-title fade-up">価格の背景</h2>
-    <p class="section-desc fade-up" style="margin-left:auto;margin-right:auto;">国産原料の調達、独自加工、第三者機関での試験、<br>大学との共同研究、製造ごとの品質検査。<br>各工程を経たうえでの価格です。</p>
+<!-- ===== SECTION 8: FAQ ===== -->
+<section class="section section--subtle" id="faq">
+  <div class="container section-center">
+    <h2 class="section-title fade-up">よくあるご質問</h2>
+    <div class="faq-list" style="margin-top:40px;">
+      <div class="faq-item fade-up">
+        <button class="faq-q">1袋でどのくらいもちますか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">1袋120粒入りです。1日2粒を目安とする場合は約60日分、4粒を目安とする場合は約30日分です。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">定期購入ですか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">定期購入ではありません。都度購入です。必要なタイミングでご注文ください。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">いつ飲むのがいいですか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">薬と一緒に飲んでも大丈夫ですか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">保存方法を教えてください<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">直射日光、高温多湿を避けて保存してください。開封後はチャックをしっかり閉じ、なるべく早めにお召し上がりください。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">初回価格と通常価格の違いは何ですか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">初回価格は、はじめてご購入いただく方に向けたお試し価格です。内容量は通常購入と同じ120粒入りです。</div></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">返品・交換はできますか？<svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></button>
+        <div class="faq-a"><div class="faq-a-inner">お客様都合による返品・返金は原則としてお受けしておりません。商品に不備（破損・汚損・誤配送等）があった場合に限り、送料当社負担にて交換対応いたします。商品到着後7日以内に、お客様ご相談窓口（customer-service@jerrygo.jp）までご連絡ください。</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ===== PURCHASE ===== -->
-<section class="section purchase-bg section--center" id="purchase">
+<!-- ===== SECTION 9: 最終CTA ===== -->
+<section class="section final-cta" id="purchase">
   <div class="container">
-    <p class="section-label fade-up">ご購入</p>
-    <h2 class="section-title fade-up">ご購入</h2>
-    <p class="section-desc fade-up">初めての方は、初回限定価格でお試しいただけます。</p>
-
-    <div class="pricing-cards">
+    <h2 class="section-title fade-up">まずは初回価格でお試しください</h2>
+    <p class="section-desc fade-up">原料の背景まで確認して選びたい方へ。ハイドロシェルデイリーを、初回限定価格でご用意しています。</p>
+    <div class="final-cta-cards">
       <div class="pricing-card pricing-card--featured fade-up">
         <div class="pricing-badge">初回限定</div>
         <p class="pricing-label">はじめての方へ</p>
@@ -1855,161 +1306,75 @@
         <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
       </div>
     </div>
-
-    <p class="pricing-note fade-up" style="margin-bottom:6px;"><strong style="color:var(--blue-dark);">発送予定日：2026年5月18日(月)</strong></p>
-    <div class="payment-methods fade-up" style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-bottom:16px;">
-      <span style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;color:var(--text-light);background:#f5f5f5;padding:6px 10px;border-radius:6px;height:32px;">
+    <p class="shipping-note fade-up">発送予定日：2026年5月18日(月)</p>
+    <div class="payment-methods fade-up">
+      <span class="payment-badge">
         <i class="fa-brands fa-cc-visa" style="font-size:1.1rem;color:#1A1F71;"></i>
         <i class="fa-brands fa-cc-mastercard" style="font-size:1.1rem;color:#EB001B;"></i>
         <i class="fa-brands fa-cc-amex" style="font-size:1.1rem;color:#006FCF;"></i>
         <i class="fa-brands fa-cc-jcb" style="font-size:1.1rem;color:#0E4C96;"></i>
       </span>
-      <span style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;color:var(--text-light);background:#f5f5f5;padding:6px 10px;border-radius:6px;height:32px;">
+      <span class="payment-badge">
         <i class="fa-brands fa-apple-pay" style="font-size:1.3rem;color:#000;"></i>
       </span>
-      <span style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;color:var(--text-light);background:#f5f5f5;padding:6px 10px;border-radius:6px;height:32px;">
+      <span class="payment-badge">
         <i class="fa-brands fa-google-pay" style="font-size:1.3rem;color:#5F6368;"></i>
       </span>
     </div>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="section section--off" id="faq">
-  <div class="container section--center">
-    <p class="section-label fade-up">よくあるご質問</p>
-    <h2 class="section-title fade-up">よくあるご質問</h2>
-
-    <div class="faq-list">
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          いつ飲むのがいいですか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">食品ですので、いつお召し上がりいただいても構いません。朝食時など毎日決まったタイミングで飲まれると習慣化しやすくなります。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          薬と一緒に飲んでも大丈夫ですか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">本品は食品ですが、お薬を服用中の方や通院中の方は、かかりつけの医師にご相談の上お召し上がりください。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          1袋でどのくらいもちますか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">1袋120粒入りです。1日2粒を目安とする場合は約60日分、4粒を目安とする場合は約30日分です。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          初回価格と通常価格の違いは何ですか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">初回価格は、はじめてご購入いただく方に向けたお試し価格です。内容量は通常購入と同じ120粒入りです。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          どんな方に選ばれていますか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">毎日の習慣として続けやすいものを探している方や、原料の背景や品質情報を重視して選びたい方にご覧いただいています。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          定期購入ですか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">定期購入ではありません。都度購入です。必要なタイミングでご注文ください。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          保存方法を教えてください
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">直射日光、高温多湿を避けて保存してください。開封後はチャックをしっかり閉じ、なるべく早めにお召し上がりください。</div></div>
-      </div>
-
-      <div class="faq-item fade-up">
-        <button class="faq-q">
-          返品・交換はできますか？
-          <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">お客様都合による返品・返金は原則としてお受けしておりません。商品に不備（破損・汚損・誤配送等）があった場合に限り、送料当社負担にて交換対応いたします。商品到着後7日以内に、お客様ご相談窓口（customer-service@jerrygo.jp）までご連絡ください。</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA (1本だけ) ===== -->
-<div class="cta">
-  <div class="cta-text">
-    <button class="fv-cta-btn" onclick="handleCheckout('first')">まずは初回価格 &yen;7,980（税込）で試す<span style="font-size:0.7em;opacity:0.85;margin-left:12px;">｜発送予定 5/18(月)</span></button>
-  </div>
-</div>
-
-<!-- ===== FOOTER ===== -->
+<!-- ===== SECTION 10: Footer ===== -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-legal">
-      <div class="footer-legal-links">
-        <button class="legal-toggle" onclick="togglePanel('terms', this)">利用規約</button>
-        <span class="legal-sep">,</span>
-        <button class="legal-toggle" onclick="togglePanel('privacy', this)">プライバシーポリシー</button>
-        <span class="legal-sep">|</span>
-        <button class="legal-toggle" onclick="togglePanel('tokushouhou', this)">特定商取引法に基づく表記</button>
-      </div>
+    <div class="footer-legal-links">
+      <button class="legal-toggle" onclick="togglePanel('terms', this)">利用規約</button>
+      <span class="legal-sep">,</span>
+      <button class="legal-toggle" onclick="togglePanel('privacy', this)">プライバシーポリシー</button>
+      <span class="legal-sep">|</span>
+      <button class="legal-toggle" onclick="togglePanel('tokushouhou', this)">特定商取引法に基づく表記</button>
+    </div>
 
-      <div class="legal-content" id="tokushouhou">
-        <div class="legal-content-inner">
-          <p>
-            販売業者: 有限会社ジェリーゴウ<br>
-            運営責任者: 石井 里美<br>
-            所在地: 〒248-0005 神奈川県鎌倉市雪ノ下三丁目10番23号<br>
-            電話番号: 03-6388-1796<br>
-            お客様ご相談窓口: customer-service@jerrygo.jp<br>
-            販売URL: https://jerrygo.jp/<br>
-            販売価格: 初回 7,980円（税込）/ 通常 14,800円（税込）<br>
-            商品代金以外の必要料金: 送料無料<br>
-            お支払方法: クレジットカード、コンビニ決済、銀行振込、Apple Pay、Google Pay、PayPay（Stripe）<br>
-            お支払時期: ご注文時にお支払い<br>
-            商品の引渡時期: 入荷予定日 2026年5月18日以降、ご予約順に3〜5営業日以内に発送<br>
-            返品・キャンセル: お客様都合による返品・キャンセルは原則としてお受けしておりません。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせはお客様ご相談窓口までご連絡ください。
-          </p>
-        </div>
+    <div class="legal-content" id="tokushouhou">
+      <div class="legal-content-inner">
+        <p>
+          販売業者: 有限会社ジェリーゴウ<br>
+          運営責任者: 石井 里美<br>
+          所在地: 〒248-0005 神奈川県鎌倉市雪ノ下三丁目10番23号<br>
+          電話番号: 03-6388-1796<br>
+          お客様ご相談窓口: customer-service@jerrygo.jp<br>
+          販売URL: https://jerrygo.jp/<br>
+          販売価格: 初回 7,980円（税込）/ 通常 14,800円（税込）<br>
+          商品代金以外の必要料金: 送料無料<br>
+          お支払方法: クレジットカード、コンビニ決済、銀行振込、Apple Pay、Google Pay、PayPay（Stripe）<br>
+          お支払時期: ご注文時にお支払い<br>
+          商品の引渡時期: 入荷予定日 2026年5月18日以降、ご予約順に3〜5営業日以内に発送<br>
+          返品・キャンセル: お客様都合による返品・キャンセルは原則としてお受けしておりません。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせはお客様ご相談窓口までご連絡ください。
+        </p>
       </div>
+    </div>
 
-      <div class="legal-content" id="privacy">
-        <div class="legal-content-inner">
-          <p>
-            当サイト（jerrygo.jp）は、有限会社ジェリーゴウが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、お客様ご相談窓口までご連絡ください。
-          </p>
-        </div>
+    <div class="legal-content" id="privacy">
+      <div class="legal-content-inner">
+        <p>
+          当サイト（jerrygo.jp）は、有限会社ジェリーゴウが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、お客様ご相談窓口までご連絡ください。
+        </p>
       </div>
+    </div>
 
-      <div class="legal-content" id="terms">
-        <div class="legal-content-inner">
-          <p>
-            本サイトのご利用にあたっては、以下の事項にご同意の上ご利用ください。<br><br>
-            1. 本製品は栄養補助食品であり、医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。<br>
-            2. 効果効能を保証するものではありません。掲載されている原料評価データは、原料に対する測定データであり、本製品の効果を示すものではありません。<br>
-            3. 掲載情報の正確性には万全を期しておりますが、予告なく内容を変更する場合があります。<br>
-            4. 商品画像はイメージであり、実際の商品と異なる場合があります。<br>
-            5. カプセルを開けて中身を直接口に含まないでください。<br>
-            6. 体質や体調に合わない場合は使用を中止し、医師にご相談ください。<br>
-            7. お子様の手の届かない場所に保管してください。
-          </p>
-        </div>
+    <div class="legal-content" id="terms">
+      <div class="legal-content-inner">
+        <p>
+          本サイトのご利用にあたっては、以下の事項にご同意の上ご利用ください。<br><br>
+          1. 本製品は栄養補助食品であり、医薬品ではありません。疾病の診断、治療、予防を目的としたものではありません。<br>
+          2. 効果効能を保証するものではありません。掲載されている原料評価データは、原料に対する測定データであり、本製品の効果を示すものではありません。<br>
+          3. 掲載情報の正確性には万全を期しておりますが、予告なく内容を変更する場合があります。<br>
+          4. 商品画像はイメージであり、実際の商品と異なる場合があります。<br>
+          5. カプセルを開けて中身を直接口に含まないでください。<br>
+          6. 体質や体調に合わない場合は使用を中止し、医師にご相談ください。<br>
+          7. お子様の手の届かない場所に保管してください。
+        </p>
       </div>
-
     </div>
 
     <div class="footer-bottom">
@@ -2018,8 +1383,9 @@
   </div>
 </footer>
 
+<!-- Fixed CTA Bar -->
 <div class="fixed-cta-bar" id="fixedCta">
-  <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格 &yen;7,980（税込）で試す</button>
+  <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格で購入する</button>
 </div>
 
 <script>
@@ -2051,22 +1417,34 @@
     });
   });
 
-  // Legal panel toggle (independent panels)
+  // Detail data accordion
+  const detailToggle = document.getElementById('detailToggle');
+  const detailContent = document.getElementById('detailContent');
+  detailToggle.addEventListener('click', () => {
+    const isOpen = detailToggle.classList.contains('open');
+    if (isOpen) {
+      detailToggle.classList.remove('open');
+      detailContent.style.maxHeight = '0';
+    } else {
+      detailToggle.classList.add('open');
+      detailContent.style.maxHeight = detailContent.scrollHeight + 'px';
+    }
+  });
+
+  // Legal panel toggle
   function togglePanel(id, btn) {
     const el = document.getElementById(id);
     if (!el) return;
     const isOpen = btn.classList.contains('open');
-    // Close all panels first
     document.querySelectorAll('.legal-content').forEach(p => p.style.maxHeight = '0');
     document.querySelectorAll('.footer-legal-links .legal-toggle').forEach(b => b.classList.remove('open'));
-    // Open clicked one if it was closed
     if (!isOpen) {
       btn.classList.add('open');
       el.style.maxHeight = el.scrollHeight + 'px';
     }
   }
 
-  // Fixed CTA bar — show after scrolling past FV, hide near footer purchase section
+  // Fixed CTA bar
   const fixedCta = document.getElementById('fixedCta');
   const fvEl = document.querySelector('.fv');
   const purchaseEl = document.getElementById('purchase');
