@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
 :root {
   --bg-main: #F7F6F2;
@@ -762,24 +762,6 @@ a { color: var(--accent); text-decoration: none; }
   font-weight: 600;
   color: var(--text-primary);
 }
-.payment-methods {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-.payment-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  background: var(--bg-subtle);
-  padding: 6px 12px;
-  border-radius: 8px;
-  height: 34px;
-}
 
 /* ===== FAQ ===== */
 .faq-list { max-width: 720px; margin: 0 auto; }
@@ -975,12 +957,11 @@ a { color: var(--accent); text-decoration: none; }
         <span class="fv-badge">製造ごとの品質検査</span>
       </div>
       <div class="fv-price-area">
-        <p class="fv-price-label">初回限定価格</p>
-        <p class="fv-price-main">7,980円（税込・送料無料）</p>
-        <p class="fv-price-original">通常価格 14,800円</p>
+        <p class="fv-price-label" style="font-size:13px;color:var(--text-secondary);">クリニック・サロン様向け専売品</p>
+        <p class="fv-price-main" style="font-size:16px;">取扱・導入についてはお問い合わせください</p>
       </div>
-      <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格で購入する</button>
-      <p class="fv-note">120粒入り / 約30〜60日分 / 都度購入</p>
+      <a href="mailto:customer-service@jerrygo.jp?subject=ハイドロシェルデイリーについて" class="fv-cta-btn" style="display:inline-block;text-decoration:none;text-align:center;">お問い合わせ</a>
+      <p class="fv-note">クリニック・サロン様向け専売品</p>
     </div>
     <div class="fv-image">
       <img src="images/package.png" alt="HydroShell Daily パッケージ">
@@ -1214,43 +1195,15 @@ a { color: var(--accent); text-decoration: none; }
   </div>
 </section>
 
-<!-- ===== SECTION 7: ご購入 ===== -->
-<section class="section final-cta" id="purchase">
-  <div class="container">
-    <h2 class="section-title fade-up">まずは初回価格でお試しください</h2>
-    <p class="section-desc fade-up">原料の背景まで確認して選びたい方へ。ハイドロシェルデイリーを、初回限定価格でご用意しています。</p>
-    <div class="final-cta-cards">
-      <div class="pricing-card pricing-card--featured fade-up">
-        <div class="pricing-badge">初回限定</div>
-        <p class="pricing-label">はじめての方へ</p>
-        <p class="pricing-price"><span class="yen">&yen;</span>7,980</p>
-        <p class="pricing-tax">税込 / 送料無料</p>
-        <p class="pricing-detail">120粒入り（約30〜60日分）<br>おひとり様1回限り</p>
-        <button class="pricing-btn pricing-btn--primary" onclick="handleCheckout('first')">初回価格で購入する</button>
-      </div>
-      <div class="pricing-card fade-up">
-        <p class="pricing-label">2回目以降のご購入</p>
-        <p class="pricing-price"><span class="yen">&yen;</span>14,800</p>
-        <p class="pricing-tax">税込 / 送料無料</p>
-        <p class="pricing-detail">120粒入り（約30〜60日分）</p>
-        <button class="pricing-btn pricing-btn--secondary" onclick="handleCheckout('regular')">通常価格で購入する</button>
-      </div>
+<!-- ===== SECTION 7: お問い合わせ ===== -->
+<section class="section final-cta" id="contact">
+  <div class="container section-center">
+    <h2 class="section-title fade-up">取扱・導入について</h2>
+    <p class="section-desc fade-up">こちらの製品は、クリニック・サロン様向け専売品としてご案内しております。<br>取扱・導入をご検討の方は、お気軽にお問い合わせください。</p>
+    <div style="margin-top:40px;" class="fade-up">
+      <a href="mailto:customer-service@jerrygo.jp?subject=ハイドロシェルデイリー 取扱について" class="fv-cta-btn" style="display:inline-block;text-decoration:none;text-align:center;">取扱について問い合わせる</a>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:16px;">customer-service@jerrygo.jp</p>
     </div>
-    <div class="payment-methods fade-up">
-      <span class="payment-badge">
-        <i class="fa-brands fa-cc-visa" style="font-size:1.1rem;color:#1A1F71;"></i>
-        <i class="fa-brands fa-cc-mastercard" style="font-size:1.1rem;color:#EB001B;"></i>
-        <i class="fa-brands fa-cc-amex" style="font-size:1.1rem;color:#006FCF;"></i>
-        <i class="fa-brands fa-cc-jcb" style="font-size:1.1rem;color:#0E4C96;"></i>
-      </span>
-      <span class="payment-badge">
-        <i class="fa-brands fa-apple-pay" style="font-size:1.3rem;color:#000;"></i>
-      </span>
-      <span class="payment-badge">
-        <i class="fa-brands fa-google-pay" style="font-size:1.3rem;color:#5F6368;"></i>
-      </span>
-    </div>
-    <p class="fade-up" style="font-size:12px;color:var(--text-muted);margin-top:16px;">発送予定：2026年5月18日以降、ご予約順に発送</p>
   </div>
 </section>
 
@@ -1330,8 +1283,7 @@ a { color: var(--accent); text-decoration: none; }
           販売URL: https://jerrygo.jp/<br>
           販売価格: 初回 7,980円（税込）/ 通常 14,800円（税込）<br>
           商品代金以外の必要料金: 送料無料<br>
-          お支払方法: クレジットカード、Apple Pay、Google Pay（Stripe決済）<br>
-          お支払時期: ご注文時にお支払い<br>
+          お支払方法: 取扱先にてご確認ください<br>
           商品の引渡時期: 入荷予定日 2026年5月18日以降、ご予約順に3〜5営業日以内に発送<br>
           返品・キャンセル: お客様都合による返品・キャンセルは原則としてお受けしておりません。商品に不備があった場合は、送料当社負担にて交換いたします。お問い合わせはお客様ご相談窓口までご連絡ください。
         </p>
@@ -1341,7 +1293,7 @@ a { color: var(--accent); text-decoration: none; }
     <div class="legal-content" id="privacy">
       <div class="legal-content-inner">
         <p>
-          当サイト（jerrygo.jp）は、有限会社ジェリーゴウが運営しています。お客様の個人情報は、商品の発送およびお問い合わせへの対応の目的でのみ使用し、それ以外の目的には使用いたしません。決済情報はStripe, Inc.のセキュアな環境で処理され、当社がクレジットカード情報を保持することはありません。個人情報の取り扱いに関するお問い合わせは、お客様ご相談窓口までご連絡ください。
+          当サイト（jerrygo.jp）は、有限会社ジェリーゴウが運営しています。お客様の個人情報は、お問い合わせへの対応および製品のご案内の目的でのみ使用し、それ以外の目的には使用いたしません。個人情報の取り扱いに関するお問い合わせは、お客様ご相談窓口までご連絡ください。
         </p>
       </div>
     </div>
@@ -1369,7 +1321,7 @@ a { color: var(--accent); text-decoration: none; }
 
 <!-- Fixed CTA Bar -->
 <div class="fixed-cta-bar" id="fixedCta">
-  <button class="fv-cta-btn" onclick="handleCheckout('first')">初回価格で購入する</button>
+  <a href="mailto:customer-service@jerrygo.jp?subject=ハイドロシェルデイリーについて" class="fv-cta-btn" style="text-decoration:none;">お問い合わせ</a>
 </div>
 
 <script>
@@ -1443,25 +1395,6 @@ a { color: var(--accent); text-decoration: none; }
     }
   }, { passive: true });
 
-  // Stripe Checkout
-  async function handleCheckout(priceType) {
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ price_type: priceType })
-      });
-      if (!res.ok) {
-        const err = await res.json();
-        alert(err.error || '決済の処理中にエラーが発生しました。');
-        return;
-      }
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-    } catch (e) {
-      alert('ネットワークエラーが発生しました。時間をおいて再度お試しください。');
-    }
-  }
 </script>
 
 </body>
